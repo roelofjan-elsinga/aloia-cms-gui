@@ -1,0 +1,34 @@
+{
+    "name": "roelofjan-elsinga/flat-file-cms-gui",
+    "description": "The GUI for the roelofjan-elsinga/flat-file-cms package",
+    "require": {
+        "roelofjan-elsinga/flat-file-cms": "^0.3.0",
+        "illuminate/support": "^5.8"
+    },
+    "keywords": [
+        "laravel",
+        "cms",
+        "file",
+        "user interface"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Roelof Jan Elsinga",
+            "email": "roelofjanelsinga@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "FlatFileCms\\GUI\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "FlatFileCms\\GUI\\FlatFileCmsServiceProvider"
+            ]
+        }
+    }
+}
