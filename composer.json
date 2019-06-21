@@ -3,7 +3,8 @@
     "description": "The GUI for the roelofjan-elsinga/flat-file-cms package",
     "require": {
         "roelofjan-elsinga/flat-file-cms": "^0.3.0",
-        "illuminate/support": "^5.8"
+        "illuminate/support": "^5.8",
+        "illuminate/view": "^5.9@dev"
     },
     "keywords": [
         "laravel",
