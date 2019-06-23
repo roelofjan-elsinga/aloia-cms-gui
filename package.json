@@ -1,0 +1,25 @@
+{
+  "name": "flat-file-cms-gui",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:roelofjan-elsinga/flat-file-cms-gui.git",
+  "author": "Roelof Jan Elsinga <roelofjanelsinga@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "watch-poll": "npm run watch -- --watch-poll",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "laravel-mix": "^4.0.16",
+    "laravel-mix-purgecss": "^4.1.0",
+    "sass": "^1.21.0",
+    "sass-loader": "7.*",
+    "tailwindcss": "^1.0.4"
+  }
+}

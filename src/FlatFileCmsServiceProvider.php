@@ -40,6 +40,10 @@ class FlatFileCmsServiceProvider extends ServiceProvider
             __DIR__.'/../config/flatfilecmsgui.php' => config_path('flatfilecmsgui.php'),
         ]);
 
+        $this->publishes([
+            __DIR__ . '/../public' => public_path('vendor/flatfilecmsgui'),
+        ], 'public');
+
         $this->loadViewsFrom(__DIR__.'/../views', 'flatfilecmsgui');
 
         $this->registerRoutes();

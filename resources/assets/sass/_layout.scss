@@ -1,0 +1,82 @@
+.social {
+    
+    .twitter {
+        color: #1da1f2;
+    }
+    
+    .medium {
+        color: black;
+    }
+    
+    .github {
+        color: black;
+    }
+    
+    .linkedin {
+        color: #0073b1;
+    }
+    
+}
+
+.about {
+    img {
+        max-width: 300px;
+        height: auto;
+        margin-bottom: 15px;
+    }
+}
+
+.more-link {
+    background-color: #3498db;
+    color: white;
+    padding: 16px 24px;
+    border-radius: 4px;
+    margin-top: 8px;
+    
+    &:hover {
+        text-decoration: none;
+        color: white;
+        background-color: darken(#3498db, 5%);
+    }
+}
+
+.read-more-button {
+    background-color: #e2e2e2;
+    color: black;
+    padding: 8px 16px;
+    border-radius: 4px;
+    
+    &:hover {
+        text-decoration: none;
+        color: black;
+        background-color: darken(#e2e2e2, 5%);
+    }
+}
+
+.paragraph-spacing {
+
+    h1 {
+        font-size: 1.875rem;
+        margin-bottom: 1rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+        margin-bottom: 0.5rem;
+    }
+
+    h3, h4 {
+        margin-top: 1.5rem;
+        margin-bottom: 0.25rem;
+    }
+
+    p {
+        line-height: 2;
+    }
+
+    li {
+        line-height: 2;
+    }
+
+}
+
