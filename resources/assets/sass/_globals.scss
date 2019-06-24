@@ -1,0 +1,28 @@
+body,
+html {
+    height: 100%
+}
+
+.link {
+    @apply text-blue-900;
+    font-weight: 700;
+    padding-bottom: .25rem;
+    text-decoration: none;
+
+    &:hover, &--underline {
+        border-bottom-width: 2px;
+        @apply border-blue-900;
+    }
+
+    &--light {
+        font-weight: 400;
+    }
+}
+
+.link-no-underline {
+    @extend .link;
+
+    &:hover {
+        border: none;
+    }
+}

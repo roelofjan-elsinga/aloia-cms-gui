@@ -1,0 +1,11 @@
+.status {
+  @apply bg-gray-500 text-white py-1 px-2 inline-block rounded mt-2;
+
+  &.green {
+    @apply bg-green-500;
+  }
+
+  &.orange {
+    @apply bg-orange-500;
+  }
+}
