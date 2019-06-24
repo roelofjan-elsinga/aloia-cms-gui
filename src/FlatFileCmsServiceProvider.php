@@ -27,6 +27,13 @@ class FlatFileCmsServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             __DIR__.'/../config/flatfilecmsgui.php', 'flatfilecmsgui'
         );
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                Console\AssetsCommand::class,
+                Console\ConfigCommand::class,
+            ]);
+        }
     }
 
     /**
@@ -38,7 +45,7 @@ class FlatFileCmsServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/../config/flatfilecmsgui.php' => config_path('flatfilecmsgui.php'),
-        ]);
+        ], 'config');
 
         $this->publishes([
             __DIR__ . '/../public' => public_path('vendor/flatfilecmsgui'),

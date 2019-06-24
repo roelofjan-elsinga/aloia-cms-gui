@@ -20,7 +20,7 @@
 
     <!-- Bootstrap -->
     @section('stylesheets')
-        <link href="{{ mix('css/back.css') }}" rel="stylesheet" defer>
+        <link href="{{ asset(mix('style.css', 'vendor/flatfilecmsgui')) }}" rel="stylesheet" defer>
     @show
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -34,7 +34,7 @@
 
 @section('navigation')
 
-    @include('admin::blocks.navigation')
+    @include('flatfilecmsgui::blocks.navigation')
 
 @show
 

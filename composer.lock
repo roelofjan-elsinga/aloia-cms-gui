@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b2a32d7bc624be203e2bc4d9983c5f16",
+    "content-hash": "76447284c1fe36c637d352cb654f97b6",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -708,7 +708,7 @@
         },
         {
             "name": "roelofjan-elsinga/flat-file-cms",
-            "version": "0.3.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roelofjan-elsinga/flat-file-cms.git",
@@ -1298,6 +1298,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "roelofjan-elsinga/flat-file-cms": 20,
         "illuminate/view": 20
     },
     "prefer-stable": false,

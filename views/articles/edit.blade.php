@@ -1,8 +1,8 @@
-@extends('admin::template')
+@extends('flatfilecmsgui::template')
 
 @section('content')
 
-    <h1 class="mb-8">Edit "{{$article->title}}"</h1>
+    <h1 class="mb-8 text-xl font-semibold">Edit "{{$article->title}}"</h1>
 
     {!! Form::model($article, ['route' => 'article.update', 'method' => 'put']) !!}
 
@@ -44,9 +44,9 @@
     </div>
 
     <div class="text-right">
-        {!! Form::submit('Update article', ['class' => 'bg-green-dark text-white rounded p-4 my-4']) !!}
+        {!! Form::submit('Update article', ['class' => 'bg-green-600 text-white rounded p-4 my-4']) !!}
     </div>
 
     {!! Form::close() !!}
 
-@endsection()
+@endsection

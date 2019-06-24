@@ -39,6 +39,26 @@ return [
     |
     */
 
-    'middleware' => ['web']
+    'middleware' => ['web'],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Flat File CMS GUI Dashboard URL path
+    |--------------------------------------------------------------------------
+    |
+    | This is the URI path where the GUI will send links to the dashboard to.
+    |
+    */
+    'dashboard_url' => '/dashboard',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Flat File CMS GUI Website URL path
+    |--------------------------------------------------------------------------
+    |
+    | This is the URI path where the GUI will send links to the website to.
+    |
+    */
+    'website_url' => '/',
 
 ];
