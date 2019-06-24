@@ -3,7 +3,7 @@
     "description": "The GUI for the roelofjan-elsinga/flat-file-cms package",
     "version": "0.1.0",
     "require": {
-        "roelofjan-elsinga/flat-file-cms": "dev-master",
+        "roelofjan-elsinga/flat-file-cms": "0.4.0",
         "illuminate/support": "^5.8",
         "illuminate/view": "^5.9@dev"
     },

@@ -9,7 +9,7 @@ use FlatFileCms\TagsParser;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
-use Illuminate\View\View as ViewResponse;
+use Illuminate\Contracts\View\View as ViewResponse;
 
 class ArticleController
 {

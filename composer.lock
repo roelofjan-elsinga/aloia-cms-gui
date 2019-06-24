@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "76447284c1fe36c637d352cb654f97b6",
+    "content-hash": "e9d5e2d4d126054b1712cf2b28608a04",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -708,19 +708,21 @@
         },
         {
             "name": "roelofjan-elsinga/flat-file-cms",
-            "version": "dev-master",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roelofjan-elsinga/flat-file-cms.git",
-                "reference": "b884a270df50700eeedcf540314c885b1d5c44e6"
+                "reference": "23b2c411fef1b33d4ec4ceb2a3e5773088bc859f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roelofjan-elsinga/flat-file-cms/zipball/b884a270df50700eeedcf540314c885b1d5c44e6",
-                "reference": "b884a270df50700eeedcf540314c885b1d5c44e6",
+                "url": "https://api.github.com/repos/roelofjan-elsinga/flat-file-cms/zipball/23b2c411fef1b33d4ec4ceb2a3e5773088bc859f",
+                "reference": "23b2c411fef1b33d4ec4ceb2a3e5773088bc859f",
                 "shasum": ""
             },
             "require": {
+                "ext-dom": "*",
+                "ext-json": "*",
                 "illuminate/console": "^5.7",
                 "illuminate/support": "^5.7",
                 "roelofjan-elsinga/content-to-html-parser": "^0.1.0"
@@ -754,7 +756,7 @@
                 "file",
                 "laravel"
             ],
-            "time": "2019-06-21T18:29:28+00:00"
+            "time": "2019-06-24T17:33:40+00:00"
         },
         {
             "name": "symfony/console",
@@ -1298,7 +1300,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "roelofjan-elsinga/flat-file-cms": 20,
         "illuminate/view": 20
     },
     "prefer-stable": false,
