@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e9d5e2d4d126054b1712cf2b28608a04",
+    "content-hash": "9485b44340998aac6af817b6d7a9b5f5",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -422,12 +422,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/view.git",
-                "reference": "cbe90c5b959315914fc61ba34c3f2121dd512822"
+                "reference": "b43666ed48a39e7f5d1a32c3a40da64a799b6392"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/view/zipball/cbe90c5b959315914fc61ba34c3f2121dd512822",
-                "reference": "cbe90c5b959315914fc61ba34c3f2121dd512822",
+                "url": "https://api.github.com/repos/illuminate/view/zipball/b43666ed48a39e7f5d1a32c3a40da64a799b6392",
+                "reference": "b43666ed48a39e7f5d1a32c3a40da64a799b6392",
                 "shasum": ""
             },
             "require": {
@@ -463,7 +463,7 @@
             ],
             "description": "The Illuminate View package.",
             "homepage": "https://laravel.com",
-            "time": "2019-06-13T19:12:39+00:00"
+            "time": "2019-06-21T13:12:25+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -1299,9 +1299,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "illuminate/view": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
