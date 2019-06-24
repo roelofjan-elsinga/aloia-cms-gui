@@ -112,7 +112,7 @@
 
 .inline-link {
 
-    @apply text-blue-darkest border-blue-darkest;
+    @apply text-blue-900 border-blue-900;
 
     font-weight: 700;
     padding-bottom: .25rem;
@@ -143,7 +143,7 @@
     }
 
     .caption {
-        @apply block -mt-2 text-sm text-grey-dark text-center;
+        @apply block -mt-2 text-sm text-gray-700 text-center;
 
         &.left {
             @apply text-left;
@@ -151,7 +151,7 @@
     }
 
     .quote {
-        @apply text-grey-dark text-3xl italic my-8;
+        @apply text-gray-700 text-3xl italic my-8;
     }
 
     h1 {
@@ -163,7 +163,7 @@
     }
 
     code {
-        @apply bg-grey-light block p-8 break-words overflow-x-scroll;
+        @apply bg-gray-400 block p-8 break-words overflow-x-scroll;
 
         @screen md {
             @apply overflow-x-hidden;
