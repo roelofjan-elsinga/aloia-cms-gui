@@ -5,9 +5,9 @@ namespace FlatFileCms\GUI\Requests;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
 use FlatFileCms\Article;
-use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateArticleRequest extends Request
+class UpdateArticleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

@@ -1,10 +1,10 @@
 <?php
 
-namespace Main\Http\Requests;
+namespace FlatFileCms\GUI\Requests;
 
-use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Foundation\Http\FormRequest;
 
-class UploadImageRequest extends Request
+class UploadImageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

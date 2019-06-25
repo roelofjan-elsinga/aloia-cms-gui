@@ -5,6 +5,7 @@ namespace FlatFileCms\GUI\Controllers;
 use FlatFileCms\GUI\Requests\CreateArticleRequest;
 use FlatFileCms\GUI\Requests\UpdateArticleRequest;
 use FlatFileCms\Article;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 use Illuminate\Contracts\View\View as ViewResponse;
@@ -32,7 +33,8 @@ class ArticleController extends Controller
     {
         $request->save();
 
-        return Redirect::route('dashboard')->with('create_article', true);
+        return Redirect::to( Config::get('flatfilecmsgui.dashboard_url') )
+            ->with('create_article', true);
     }
 
     /**
@@ -60,6 +62,7 @@ class ArticleController extends Controller
     {
         $request->save();
 
-        return Redirect::route('dashboard')->with('updated_article', true);
+        return Redirect::to( Config::get('flatfilecmsgui.dashboard_url') )
+            ->with('updated_article', true);
     }
 }

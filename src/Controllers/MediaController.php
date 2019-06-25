@@ -4,10 +4,10 @@ namespace FlatFileCms\GUI\Controllers;
 
 use Gumlet\ImageResize;
 use FlatFileCms\Media;
+use FlatFileCms\GUI\Requests\UploadImageRequest;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
-use Main\Http\Requests\UploadImageRequest;
 use Illuminate\Contracts\View\View as ViewResponse;
 
 class MediaController extends Controller
@@ -22,7 +22,7 @@ class MediaController extends Controller
      */
     public function index(Media $media): ViewResponse
     {
-        return View::make('admin.media.index', [
+        return View::make('flatfilecmsgui::media.index', [
             'images' => $media->allFiles()->onlyFullSize()
         ]);
     }
@@ -34,7 +34,7 @@ class MediaController extends Controller
      */
     public function create(): ViewResponse
     {
-        return View::make('admin.media.create');
+        return View::make('flatfilecmsgui::media.create');
     }
 
     /**
