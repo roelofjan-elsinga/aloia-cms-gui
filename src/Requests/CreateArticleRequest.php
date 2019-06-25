@@ -2,12 +2,11 @@
 
 namespace FlatFileCms\GUI\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\File;
 use FlatFileCms\Article;
-use Main\User;
+use Symfony\Component\HttpFoundation\Request;
 
-class CreateArticleRequest extends FormRequest
+class CreateArticleRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -16,7 +15,7 @@ class CreateArticleRequest extends FormRequest
      */
     public function authorize()
     {
-        return !is_null(User::fromRequest($this));
+        return true;
     }
 
     /**
