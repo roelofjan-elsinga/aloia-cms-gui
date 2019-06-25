@@ -20,7 +20,7 @@
         To include these images in a post, simply copy/paste the markdown or copy the URL.
     </p>
 
-    <a href="{{route('media.create')}}" class="text-blue-800 mb-2 block">Upload an image</a>
+    <a href="{{route('media.create')}}" class="text-blue-800 mb-2 block underline">Upload an image</a>
 
     @foreach($images as $image)
 
@@ -30,7 +30,7 @@
 
             <div class="w-5/6">
                 <h4>Markdown</h4>
-                <p class="text-sm bg-grey-400 block p-2">!["{{\FlatFileCms\Media::filenameToTitle($image->getFilename())}}"](/{{$image->getPathname()}})</p>
+                <p class="text-sm bg-gray-400 block p-2">!["{{\FlatFileCms\Media::filenameToTitle($image->getFilename())}}"](/{{$image->getPathname()}})</p>
 
                 <h4 class="mt-2">As URL</h4>
 
