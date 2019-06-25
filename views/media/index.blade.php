@@ -1,4 +1,4 @@
-@extends('admin.template')
+@extends('flatfilecmsgui::template')
 
 @section('content')
 
