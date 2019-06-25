@@ -3,9 +3,11 @@
     "description": "The GUI for the roelofjan-elsinga/flat-file-cms package",
     "version": "0.1.2",
     "require": {
-        "roelofjan-elsinga/flat-file-cms": "0.4.0",
+        "roelofjan-elsinga/flat-file-cms": "0.5.0",
         "illuminate/support": "^5.8",
-        "illuminate/view": "^5.8"
+        "illuminate/view": "^5.8",
+        "gumlet/php-image-resize": "^1.9",
+        "illuminate/http": "^5.8"
     },
     "keywords": [
         "laravel",
@@ -20,7 +22,7 @@
             "email": "roelofjanelsinga@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
             "FlatFileCms\\GUI\\": "src/"
