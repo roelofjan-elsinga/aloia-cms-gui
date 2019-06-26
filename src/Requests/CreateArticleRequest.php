@@ -3,6 +3,7 @@
 namespace FlatFileCms\GUI\Requests;
 
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Config;
 use FlatFileCms\Article;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -40,8 +41,14 @@ class CreateArticleRequest extends FormRequest
      */
     public function save()
     {
+        $folder_path = Config::get('flatfilecms.articles.folder_path');
+
+        if(! file_exists($folder_path)) {
+            mkdir($folder_path);
+        }
+
         File::put(
-            resource_path("content/articles/{$this->get('slug')}.md"),
+            "{$folder_path}/{$this->get('slug')}.md",
             trim($this->get('content'))
         );
 
