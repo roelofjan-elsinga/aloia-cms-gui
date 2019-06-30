@@ -86,7 +86,8 @@ class UpdateArticleRequest extends FormRequest
         $articles = Article::raw()
             ->map(function ($article) use ($old_slug, $new_article_attributes) {
                 if (strpos($article['filename'], $old_slug) !== false) {
-                    return $new_article_attributes;
+
+                    return array_merge($article, $new_article_attributes);
                 }
 
                 return $article;
