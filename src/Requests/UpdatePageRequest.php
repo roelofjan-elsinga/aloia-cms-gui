@@ -2,13 +2,14 @@
 
 namespace FlatFileCms\GUI\Requests;
 
+
 use Carbon\Carbon;
+use FlatFileCms\Page;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
-use FlatFileCms\Article;
-use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateArticleRequest extends FormRequest
+class UpdatePageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,12 +30,13 @@ class UpdateArticleRequest extends FormRequest
     {
         return [
             'original_slug' => 'required',
+            'title' => 'required',
             'slug' => 'required',
             'content' => 'required',
             'description' => 'required',
-            'post_date' => 'required',
             'published' => 'required|boolean',
-            'scheduled' => 'required|boolean',
+            'summary' => 'required',
+            'template_name' => 'required',
         ];
     }
 
@@ -44,21 +46,32 @@ class UpdateArticleRequest extends FormRequest
     public function save()
     {
         File::put(
-            Config::get('flatfilecms.articles.folder_path') . "/{$this->get('original_slug')}.{$this->get('file_type')}",
+            Config::get('flatfilecms.pages.folder_path') . "/{$this->get('original_slug')}.{$this->get('file_type')}",
             $this->get('content')
         );
 
         if ($this->get('original_slug') !== $this->get('slug')) {
-            $this->renameFile("{$this->get('original_slug')}.md", "{$this->get('slug')}.md");
+            $this->renameFile(
+                "{$this->get('original_slug')}.{$this->get('file_type')}",
+                "{$this->get('slug')}.{$this->get('file_type')}"
+            );
         }
 
         $this->updatePostAttributesForSlug($this->get('original_slug'), [
-            'filename' => "{$this->get('slug')}.md",
+            'title' => $this->get('title'),
+            'filename' => "{$this->get('slug')}.{$this->get('file_type')}",
             'description' => $this->get('description'),
+            'summary' => $this->get('summary'),
+            'author' => $this->get('author'),
+            'canonical' => $this->get('canonical'),
+            'in_menu' => $this->get('in_menu') === "1",
+            'keywords' => $this->get('keywords'),
+            'image' => $this->get('image'),
             'postDate' => $this->get('post_date'),
-            'updateDate' => Carbon::now()->toDateTimeString(),
             'isPublished' => $this->get('published') === "1",
             'isScheduled' => $this->get('scheduled') === "1",
+            'template_name' => $this->get('template_name'),
+            'updateDate' => Carbon::now()->toDateTimeString(),
         ]);
     }
 
@@ -71,8 +84,8 @@ class UpdateArticleRequest extends FormRequest
     private function renameFile(string $old_filename, string $new_filename): void
     {
         File::move(
-            Config::get('flatfilecms.articles.folder_path') . "/{$old_filename}",
-            Config::get('flatfilecms.articles.folder_path') . "/{$new_filename}"
+            Config::get('flatfilecms.pages.folder_path') . "/{$old_filename}",
+            Config::get('flatfilecms.pages.folder_path') . "/{$new_filename}"
         );
     }
 
@@ -84,17 +97,17 @@ class UpdateArticleRequest extends FormRequest
      */
     private function updatePostAttributesForSlug(string $old_slug, array $new_article_attributes): void
     {
-        $articles = Article::raw()
+        $articles = Page::raw()
             ->map(function ($article) use ($old_slug, $new_article_attributes) {
                 if (strpos($article['filename'], $old_slug) !== false) {
 
                     return array_merge($article, $new_article_attributes);
                 }
 
-                return $article;
+                return \FlatFileCms\DataSource\Page::create($article)->toArray();
             });
 
 
-        Article::update($articles);
+        Page::update($articles);
     }
 }

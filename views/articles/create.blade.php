@@ -4,7 +4,7 @@
 
     <h1 class="mb-8 text-xl font-semibold">Create article</h1>
 
-    {!! Form::open(['route' => 'article.store', 'method' => 'post']) !!}
+    {!! Form::open(['route' => 'articles.store', 'method' => 'post']) !!}
 
     {!! Form::label('slug', 'URL', ['class' => 'label']) !!}
     {!! Form::text('slug', null, ['class' => 'text-field']) !!}

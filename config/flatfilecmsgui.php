@@ -49,7 +49,7 @@ return [
     | This is the URI path where the GUI will send links to the dashboard to.
     |
     */
-    'dashboard_url' => '/dashboard',
+    'dashboard_url' => '/cms/dashboard',
 
     /*
     |--------------------------------------------------------------------------

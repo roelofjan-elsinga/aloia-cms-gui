@@ -4,7 +4,7 @@
 
     <h1 class="mb-8 text-xl font-semibold">Edit "{{$article->title}}"</h1>
 
-    {!! Form::model($article, ['route' => 'article.update', 'method' => 'put']) !!}
+    {!! Form::model($article, ['route' => ['articles.update', $article->slug], 'method' => 'put']) !!}
 
     {!! Form::hidden('original_slug', $article->slug()) !!}
     {!! Form::label('slug', 'URL', ['class' => 'label']) !!}
