@@ -1,7 +1,6 @@
 {
     "name": "roelofjan-elsinga/flat-file-cms-gui",
     "description": "The GUI for the roelofjan-elsinga/flat-file-cms package",
-    "version": "0.2.8",
     "require": {
         "php": ">=7.1.3",
         "roelofjan-elsinga/flat-file-cms": "^0.7.0",
