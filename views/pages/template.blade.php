@@ -68,13 +68,7 @@
     @section('stylesheets')
         <link href="{{ mix('css/front.css') }}" rel="stylesheet" defer>
 @show
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    
 </head>
 <body class="{{isset($customClass) ? $customClass : ''}} container mx-auto text-blue-darkest px-4 lg:px-0">
 
@@ -93,68 +87,5 @@
     @include('blocks.navigation')
 
 @show
-
-<script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "url": "https://plantcareforbeginners.com",
-          "name": "Plant care for beginners",
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+31-6-2232-4113",
-            "contactType": "Customer service"
-          }
-        }
-        </script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-    (function() {
-        $('a').click(function () {
-            $('html, body').animate({
-                scrollTop: $($(this).attr('href')).offset().top
-            }, 500);
-            return false;
-        });
-    })();
-</script>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139200670-1"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-139200670-1');
-</script>
-<script>
-    if('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations()
-            .then(function(registrations) {
-                for(let registration of registrations) {
-                    registration.unregister()
-                }
-            })
-    }
-</script>
-
-{{--<script>--}}
-{{--if('serviceWorker' in navigator) {--}}
-{{--navigator.serviceWorker--}}
-{{--.register('/sw.js')--}}
-{{--.then(function() { console.log("Service Worker Registered"); });--}}
-{{--}--}}
-{{--</script>--}}
-<script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:1254063,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
 </body>
 </html>
