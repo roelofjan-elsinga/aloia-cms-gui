@@ -1,6 +1,6 @@
 <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
 
-<textarea name="{{$name}}" id="editor">{{$value}}</textarea>
+<textarea name="{{$name}}" id="editor" rows="10">{{$value}}</textarea>
 
 <script>
     ClassicEditor

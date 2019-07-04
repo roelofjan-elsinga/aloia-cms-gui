@@ -14,6 +14,30 @@ class ArticleController extends Controller
 {
 
     /**
+     * Show all articles
+     *
+     * @return ViewResponse
+     */
+    public function index(): ViewResponse
+    {
+        return View::make('flatfilecmsgui::articles.index', [
+            'articles' => Article::all()
+                ->map(function (Article $article) {
+                    return [
+                        'title' => $article->title(),
+                        'image' => $article->thumbnail(),
+                        'slug' => $article->slug(),
+                        'isPublished' => $article->isPublished(),
+                        'isScheduled' => $article->isScheduled(),
+                        'postDate' => $article->rawPostDate()
+                    ];
+                })
+                ->sortByDesc('postDate')
+                ->values()
+        ]);
+    }
+
+    /**
      * Create a new article
      *
      * @return ViewResponse
@@ -33,7 +57,7 @@ class ArticleController extends Controller
     {
         $request->save();
 
-        return Redirect::to( Config::get('flatfilecmsgui.dashboard_url') )
+        return Redirect::route('articles.index')
             ->with('create_article', true);
     }
 
@@ -56,13 +80,14 @@ class ArticleController extends Controller
      * Save the changes to the article to files
      *
      * @param UpdateArticleRequest $request
+     * @param string $slug
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateArticleRequest $request)
+    public function update(UpdateArticleRequest $request, string $slug)
     {
         $request->save();
 
-        return Redirect::to( Config::get('flatfilecmsgui.dashboard_url') )
+        return Redirect::route('articles.index')
             ->with('updated_article', true);
     }
 }

@@ -32,6 +32,7 @@ class FlatFileCmsServiceProvider extends ServiceProvider
             $this->commands([
                 Console\AssetsCommand::class,
                 Console\ConfigCommand::class,
+                Console\ViewsCommand::class,
             ]);
         }
     }
@@ -52,6 +53,10 @@ class FlatFileCmsServiceProvider extends ServiceProvider
         ], 'public');
 
         $this->loadViewsFrom(__DIR__.'/../views', 'flatfilecmsgui');
+
+        $this->publishes([
+            __DIR__.'/../views/templates' => resource_path('views/vendor/flatfilecmsgui/templates'),
+        ], 'views');
 
         $this->registerRoutes();
     }
