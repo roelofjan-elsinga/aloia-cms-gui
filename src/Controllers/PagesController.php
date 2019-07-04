@@ -43,7 +43,7 @@ class PagesController extends Controller
     public function create(): ViewResponse
     {
         return View::make('flatfilecmsgui::pages.create', [
-            'template_name' => 'flatfilecmsgui::pages.template',
+            'template_name' => 'flatfilecmsgui::templates.default',
             'file_type' => request()->has('file_type') ? request()->get('file_type') : 'html',
         ]);
     }

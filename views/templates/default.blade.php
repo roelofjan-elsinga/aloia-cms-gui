@@ -68,13 +68,13 @@
     @section('stylesheets')
         <link href="{{ mix('css/front.css') }}" rel="stylesheet" defer>
 @show
-    
+
 </head>
 <body class="{{isset($customClass) ? $customClass : ''}} container mx-auto text-blue-darkest px-4 lg:px-0">
 
 @section('navigation')
 
-    @include('blocks.navigation')
+    @include('flatfilecmsgui::templates.header')
 
 @show
 
@@ -82,9 +82,7 @@
 
 @section('footer')
 
-    @include('blocks.mailchimp_form')
-
-    @include('blocks.navigation')
+    @include('flatfilecmsgui::templates.footer')
 
 @show
 </body>
