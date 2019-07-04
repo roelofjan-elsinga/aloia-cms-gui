@@ -4,7 +4,7 @@
 
     <main class="flex">
 
-        <section>
+        <section class="flex-1 mr-4">
 
             <h3 class="mb-4">
                 Edit your articles
@@ -42,6 +42,12 @@
                 </a>
 
             @endforeach
+
+        </section>
+
+        <section class="w-1/4">
+
+            @include('flatfilecmsgui::blocks.actions-sidebar')
 
         </section>
 

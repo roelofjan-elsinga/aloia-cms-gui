@@ -9,8 +9,8 @@
     <label for="file_type" class="label">Page type</label>
     <div class="flex">
         <select name="file_type" class="text-field">
-            <option value="html">HTML</option>
-            <option value="md">Markdown</option>
+            <option value="html" {{$file_type === 'html' ? 'selected' : ''}}>HTML</option>
+            <option value="md" {{$file_type === 'md' ? 'selected' : ''}}>Markdown</option>
         </select>
         <button type="submit" class="bg-blue-800 text-white rounded p-4 rounded-l-none">
             Select
@@ -24,6 +24,7 @@
     {!! Form::hidden('scheduled', "0") !!}
     {!! Form::hidden('thumbnail', null) !!}
     {!! Form::hidden('post_date', null) !!}
+    {!! Form::hidden('file_type', $file_type) !!}
 
     {!! Form::label('title', 'Page title *', ['class' => 'label']) !!}
     {!! Form::text('title', null, ['class' => 'text-field']) !!}
