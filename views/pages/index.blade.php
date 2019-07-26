@@ -34,6 +34,10 @@
                         @if(!$article['isPublished'])
                             <p class="status">Not published</p>
                         @endif
+
+                        @if($article['isHomepage'])
+                            <p class="status orange">Homepage</p>
+                        @endif
                     </div>
                 </a>
 

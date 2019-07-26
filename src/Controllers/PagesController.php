@@ -27,7 +27,8 @@ class PagesController extends Controller
                         'title' => $page->title(),
                         'image' => $page->thumbnail(),
                         'slug' => $page->slug(),
-                        'isPublished' => $page->isPublished()
+                        'isPublished' => $page->isPublished(),
+                        'isHomepage' => $page->isHomepage(),
                     ];
                 })
                 ->sortByDesc('title')

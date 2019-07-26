@@ -84,6 +84,14 @@
         {!! Form::label('in_menu', 'Page is in menu') !!}
     </div>
 
+    <div class="my-4">
+        {!! Form::hidden('is_homepage', "0") !!}
+
+        {!! Form::checkbox('is_homepage', "1", false) !!}
+
+        {!! Form::label('is_homepage', 'Page is homepage') !!}
+    </div>
+
     * = Required
 
     <div class="text-right">

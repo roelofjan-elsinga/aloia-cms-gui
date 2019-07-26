@@ -3,6 +3,7 @@
 namespace FlatFileCms\GUI\Requests;
 
 use FlatFileCms\Page;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 use Illuminate\Foundation\Http\FormRequest;
@@ -44,7 +45,7 @@ class CreatePageRequest extends FormRequest
     {
         $folder_path = Config::get('flatfilecms.pages.folder_path');
 
-        if(! file_exists($folder_path)) {
+        if (!file_exists($folder_path)) {
             mkdir($folder_path);
         }
 
@@ -61,6 +62,7 @@ class CreatePageRequest extends FormRequest
             'author' => $this->get('author'),
             'canonical' => $this->get('canonical'),
             'in_menu' => $this->get('in_menu') === "1",
+            'is_homepage' => $this->get('is_homepage') === "1",
             'keywords' => $this->get('keywords'),
             'image' => $this->get('image'),
             'postDate' => $this->get('post_date'),
@@ -80,6 +82,34 @@ class CreatePageRequest extends FormRequest
         $articles = Page::raw()
             ->push(\FlatFileCms\DataSource\Page::create($new_article_attributes)->toArray());
 
+        if ($new_article_attributes['is_homepage']) {
+
+            $articles = $this->markOtherPagesAsNotHomepage($articles, $new_article_attributes);
+
+        }
+
         Page::update($articles);
+    }
+
+    /**
+     * Mark other pages not matching $new_article as not being the homepage
+     *
+     * @param Collection $articles
+     * @param array $new_article
+     * @return Collection
+     */
+    private function markOtherPagesAsNotHomepage(Collection $articles, array $new_article): Collection
+    {
+        $articles
+            ->map(function (array $page) use ($new_article) {
+
+                if ($page['filename'] !== $new_article['filename']) {
+                    $page['is_homepage'] = false;
+                }
+
+                return $page;
+            });
+
+        return $articles;
     }
 }
