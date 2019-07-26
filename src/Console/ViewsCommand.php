@@ -11,7 +11,7 @@ class ViewsCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'flatfilecms:publish:views';
+    protected $signature = 'flatfilecmsgui:publish:views';
     /**
      * The console command description.
      *

@@ -12,7 +12,7 @@ class AssetsCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'flatfilecms:publish:assets';
+    protected $signature = 'flatfilecmsgui:publish:assets';
     /**
      * The console command description.
      *

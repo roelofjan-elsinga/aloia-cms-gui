@@ -12,7 +12,7 @@ class ConfigCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'flatfilecms:publish:config';
+    protected $signature = 'flatfilecmsgui:publish:config';
     /**
      * The console command description.
      *
