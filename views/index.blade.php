@@ -6,7 +6,7 @@
 
         <section class="flex-1 mr-4">
 
-            <h1 class="mb-8">Welcome {{user()->username()}}!</h1>
+            <h1 class="mb-8">{{_translate("WELCOME")}} {{user()->username()}}!</h1>
 
         </section>
 
