@@ -42,4 +42,13 @@ return [
     "DELETE" => "Delete",
     "EDIT_CONTENT_BLOCK" => "Edit \"%s\" content block",
     "UPDATE_CONTENT_BLOCK" => "Update content block",
+    "UPLOAD_IMAGE" => "Upload image",
+    "UPLOAD_AN_IMAGE" => "Upload an image",
+    "WHAT_IS_NAME_OF_IMAGE" => "What is the name of this image?",
+    "IMAGE_NAME" => "Image name",
+    "IMAGE_NEEDS_THUMBNAIL" => "This image needs a thumbnail",
+    "IMAGE_UPLOADED" => "The image was uploaded successfully!",
+    "IMAGE_DELETED" => "The image was deleted successfully!",
+    "HOW_TO_INCLUDE_IN_POST" => "To include these images in your content, simply copy/paste the markdown or copy the URL.",
+    "AS_URL" => "As URL",
 ];

@@ -42,4 +42,13 @@ return [
     "DELETE" => "Verwijder",
     "EDIT_CONTENT_BLOCK" => "Content blok \"%s\" aanpassen",
     "UPDATE_CONTENT_BLOCK" => "Update content blok",
+    "UPLOAD_IMAGE" => "Afbeelding uploaden",
+    "UPLOAD_AN_IMAGE" => "Upload een afbeelding",
+    "WHAT_IS_NAME_OF_IMAGE" => "Wat is de naam van deze afbeelding?",
+    "IMAGE_NAME" => "Naam van afbeelding",
+    "IMAGE_NEEDS_THUMBNAIL" => "Deze afbeelding heeft een thumbnail nodig",
+    "IMAGE_UPLOADED" => "De afbeelding is opgeslagen!",
+    "IMAGE_DELETED" => "De afbeelding is verwijderd!",
+    "HOW_TO_INCLUDE_IN_POST" => "Deze afbeeldingen kun je in content opnemen door de Markdown of de link te knippen en plakken.",
+    "AS_URL" => "als URL",
 ];

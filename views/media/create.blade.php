@@ -12,27 +12,27 @@
         </div>
     @endif
 
-    <h1 class="mb-4">Upload an image</h1>
+    <h1 class="mb-4">{{_translate('UPLOAD_IMAGE')}}</h1>
 
     {!! Form::open(['route' => 'media.store', 'method' => 'post', 'files' => true]) !!}
 
     <div>
-        {!! Form::label('image', 'Upload an image', ['class' => 'label']) !!}
+        {!! Form::label('image', _translate('UPLOAD_AN_IMAGE'), ['class' => 'label']) !!}
         {!! Form::file('image') !!}
     </div>
 
     <div>
-        {!! Form::label('name', 'What is the name of this image?', ['class' => 'label']) !!}
-        {!! Form::text('name', null, ['class' => 'text-field', 'placeholder' => 'Image name', 'minlength' => 4]) !!}
+        {!! Form::label('name', _translate('WHAT_IS_NAME_OF_IMAGE'), ['class' => 'label']) !!}
+        {!! Form::text('name', null, ['class' => 'text-field', 'placeholder' => _translate('IMAGE_NAME'), 'minlength' => 4]) !!}
     </div>
 
     <div class="mt-2">
         {!! Form::hidden('including_thumbnail', "0") !!}
         {!! Form::checkbox('including_thumbnail', "1", false) !!}
-        {!! Form::label('including_thumbnail', 'This image needs a thumbnail') !!}
+        {!! Form::label('including_thumbnail', _translate('IMAGE_NEEDS_THUMBNAIL')) !!}
     </div>
 
-    {!! Form::submit('Upload image', ['class' => 'bg-green-dark text-white rounded p-4 my-4']) !!}
+    {!! Form::submit(_translate('UPLOAD_IMAGE'), ['class' => 'bg-green-dark text-white rounded p-4 my-4']) !!}
 
     {!! Form::close() !!}
 
