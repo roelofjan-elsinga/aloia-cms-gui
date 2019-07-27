@@ -18,4 +18,13 @@ return [
     "PUBLISHED" => "Published",
     "SCHEDULED" => "Scheduled",
     "DRAFT" => "Draft",
+    "WHAT_DO_YOU_WANT" => "What do you want to do?",
+    "CREATE_NEW_PAGE" => "Create a new page",
+    "CREATE_NEW_ARTICLE" => "Create a new article",
+    "MANAGE_IMAGES" => "Manage images",
+    "MANAGE_CONTENT_BLOCKS" => "Manage content blocks",
+    "PAGES" => "Pages",
+    "ARTICLES" => "Articles",
+    "MEDIA" => "Media",
+    "VIEW_WEBSITE" => "View website",
 ];

@@ -18,4 +18,13 @@ return [
     "PUBLISHED" => "Gepuliceerd",
     "SCHEDULED" => "Ingepland",
     "DRAFT" => "Concept",
+    "WHAT_DO_YOU_WANT" => "Wat wil je doen?",
+    "CREATE_NEW_PAGE" => "Nieuwe pagina aanmaken",
+    "CREATE_NEW_ARTICLE" => "Nieuw artikel aanmaken",
+    "MANAGE_IMAGES" => "Afbeeldingen beheren",
+    "MANAGE_CONTENT_BLOCKS" => "Content blokken beheren",
+    "PAGES" => "Pagina's",
+    "ARTICLES" => "Artikelen",
+    "MEDIA" => "Media",
+    "VIEW_WEBSITE" => "Bekijk site",
 ];
