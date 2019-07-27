@@ -7,3 +7,4 @@ Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@ind
 Route::resource('articles', 'ArticleController', ['except' => ['show', 'destroy']]);
 Route::resource('pages', 'PagesController', ['except' => ['show', 'destroy']]);
 Route::resource('media', 'MediaController', ['except' => ['show', 'edit', 'update']]);
+Route::resource('content-blocks', 'ContentBlocksController');

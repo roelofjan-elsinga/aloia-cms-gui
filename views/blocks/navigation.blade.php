@@ -13,7 +13,7 @@
             <li class="inline-block mx-2"><a class="link" href="{{ route('pages.index') }}">Pages</a></li>
             <li class="inline-block mx-2"><a class="link" href="{{ route('articles.index') }}">Articles</a></li>
             <li class="inline-block mx-2"><a class="link" href="{{ route('media.index') }}">Media</a></li>
-            <li class="inline-block mx-2"><a class="link" href="{{ url($website_url) }}">View website</a></li>
+            <li class="inline-block mx-2 p-2 bg-green-200 rounded-lg"><a class="link" href="{{ url($website_url) }}">View website</a></li>
         </ul>
     </div><!-- /.container-fluid -->
 </nav>

@@ -6,82 +6,94 @@
 
     {!! Form::open(['route' => ['pages.update', $page_resource->slug()], 'method' => 'put']) !!}
 
-    {!! Form::hidden('file_type', $file_type) !!}
-    {!! Form::hidden('scheduled', $page_resource->isScheduled() ? "1" : "0") !!}
-    {!! Form::hidden('thumbnail', null) !!}
-    {!! Form::hidden('post_date', null) !!}
-
-    {!! Form::label('title', 'Page title *', ['class' => 'label']) !!}
-    {!! Form::text('title', $page_resource->title(), ['class' => 'text-field']) !!}
-
-    {!! Form::hidden('original_slug', $page_resource->slug()) !!}
-    {!! Form::label('slug', 'URL *', ['class' => 'label']) !!}
-    {!! Form::text('slug', $page_resource->slug(), ['class' => 'text-field']) !!}
-
-    {!! Form::label('template_name', 'Page Template *', ['class' => 'label']) !!}
-    {!! Form::text('template_name', $page_resource->templateName(), ['class' => 'text-field']) !!}
-
     <div class="flex">
-        <label class="label flex-1">Content</label>
-        <div class="flex-1 text-right">
-            <a href="{{route('media.index')}}" target="_blank" class="mb-2 mt-4 inline-block link-no-underline">Get images for this post</a>
-        </div>
-    </div>
+        <section class="w-2/3 pr-4">
 
-    <div class="mb-4">
-        @if($file_type === 'html')
-            @include('flatfilecmsgui::blocks.ckeditor', ['name' => 'content', 'value' => $page_resource->rawContent()])
-        @else
-            @include('flatfilecmsgui::blocks.simplemde', ['name' => 'content', 'value' => $page_resource->rawContent()])
-        @endif
-    </div>
+            {!! Form::hidden('file_type', $file_type) !!}
+            {!! Form::hidden('scheduled', $page_resource->isScheduled() ? "1" : "0") !!}
+            {!! Form::hidden('thumbnail', null) !!}
+            {!! Form::hidden('post_date', null) !!}
+            {!! Form::hidden('template_name', $page_resource->templateName()) !!}
 
-    {!! Form::label('description', 'Description * ', ['class' => 'label']) !!}
-    {!! Form::textarea('description', $page_resource->description(), ['class' => 'text-field', 'rows' => 5]) !!}
+            {!! Form::label('title', 'Page title *', ['class' => 'label']) !!}
+            {!! Form::text('title', $page_resource->title(), ['class' => 'text-field']) !!}
 
-    {!! Form::label('summary', 'Summary * ', ['class' => 'label']) !!}
-    {!! Form::textarea('summary', $page_resource->summary(), ['class' => 'text-field', 'rows' => 3]) !!}
+            <div class="flex">
+                <label class="label flex-1">Content</label>
+                <div class="flex-1 text-right">
+                    <a href="{{route('media.index')}}" target="_blank" class="mb-2 mt-4 inline-block link-no-underline">Get images for this post</a>
+                </div>
+            </div>
 
-    {!! Form::label('keywords', 'Keywords', ['class' => 'label']) !!}
-    {!! Form::text('keywords', $page_resource->keywords(), ['class' => 'text-field']) !!}
+            <div class="mb-4">
+                @if($file_type === 'html')
+                    @include('flatfilecmsgui::blocks.ckeditor', ['name' => 'content', 'value' => $page_resource->rawContent()])
+                @else
+                    @include('flatfilecmsgui::blocks.simplemde', ['name' => 'content', 'value' => $page_resource->rawContent()])
+                @endif
+            </div>
 
-    {!! Form::label('author', 'Author', ['class' => 'label']) !!}
-    {!! Form::text('author', $page_resource->author(), ['class' => 'text-field']) !!}
+            {!! Form::hidden('original_slug', $page_resource->slug()) !!}
+            {!! Form::label('slug', 'URL *', ['class' => 'label', 'placeholder' => 'example-url']) !!}
+            {!! Form::text('slug', $page_resource->slug(), ['class' => 'text-field']) !!}
 
-    {!! Form::label('canonical', 'Canonical link (if this is content is posted elsewhere, submit that URL)', ['class' => 'label']) !!}
-    {!! Form::text('canonical', $page_resource->canonicalLink(), ['class' => 'text-field']) !!}
+            <div class="my-4">
+                {!! Form::hidden('published', "0") !!}
 
-    {!! Form::label('image', 'Image URL (shown in previews on social media)', ['class' => 'label']) !!}
-    {!! Form::text('image', $page_resource->image(), ['class' => 'text-field']) !!}
+                {!! Form::checkbox('published', "1", $page_resource->isPublished()) !!}
 
-    <div class="my-4">
-        {!! Form::hidden('published', "0") !!}
+                {!! Form::label('published', 'Page is published') !!}
+            </div>
 
-        {!! Form::checkbox('published', "1", $page_resource->isPublished()) !!}
+            <div class="my-4">
+                {!! Form::hidden('in_menu', "0") !!}
 
-        {!! Form::label('published', 'Page is published') !!}
-    </div>
+                {!! Form::checkbox('in_menu', "1", $page_resource->isInMenu()) !!}
 
-    <div class="my-4">
-        {!! Form::hidden('in_menu', "0") !!}
+                {!! Form::label('in_menu', 'Page is in menu') !!}
+            </div>
 
-        {!! Form::checkbox('in_menu', "1", $page_resource->isInMenu()) !!}
+            <div class="my-4">
+                {!! Form::hidden('is_homepage', "0") !!}
 
-        {!! Form::label('in_menu', 'Page is in menu') !!}
-    </div>
+                {!! Form::checkbox('is_homepage', "1", $page_resource->isHomepage()) !!}
 
-    <div class="my-4">
-        {!! Form::hidden('is_homepage', "0") !!}
+                {!! Form::label('is_homepage', 'Page is homepage') !!}
+            </div>
 
-        {!! Form::checkbox('is_homepage', "1", $page_resource->isHomepage()) !!}
+            * = Required
 
-        {!! Form::label('is_homepage', 'Page is homepage') !!}
-    </div>
+            <div class="text-left">
+                {!! Form::submit('Save page', ['class' => 'bg-green-600 text-white rounded p-4 my-4']) !!}
+            </div>
 
-    * = Required
+        </section>
 
-    <div class="text-right">
-        {!! Form::submit('Save page', ['class' => 'bg-green-600 text-white rounded p-4 my-4']) !!}
+        <section class="w-1/3 bg-gray-200 p-4 rounded-lg mb-8">
+
+            {{--{!! Form::label('template_name', 'Page Template *', ['class' => 'label']) !!}--}}
+            {{--{!! Form::text('template_name', $page_resource->templateName(), ['class' => 'text-field']) !!}--}}
+
+            {!! Form::label('description', 'SEO Description * ', ['class' => 'label']) !!}
+            {!! Form::textarea('description', $page_resource->description(), ['class' => 'text-field', 'rows' => 5]) !!}
+
+            {!! Form::label('summary', 'SEO Summary * ', ['class' => 'label']) !!}
+            {!! Form::textarea('summary', $page_resource->summary(), ['class' => 'text-field', 'rows' => 3]) !!}
+
+            {{--{!! Form::label('keywords', 'Keywords', ['class' => 'label']) !!}--}}
+            {{--{!! Form::text('keywords', $page_resource->keywords(), ['class' => 'text-field']) !!}--}}
+
+            {{--{!! Form::label('author', 'Author', ['class' => 'label']) !!}--}}
+            {{--{!! Form::text('author', $page_resource->author(), ['class' => 'text-field']) !!}--}}
+
+            {{--{!! Form::label('canonical', 'Canonical link (if this is content is posted elsewhere, submit that URL)', ['class' => 'label']) !!}--}}
+            {{--{!! Form::text('canonical', $page_resource->canonicalLink(), ['class' => 'text-field']) !!}--}}
+
+            {!! Form::label('image', 'Image URL for social media', ['class' => 'label']) !!}
+            {!! Form::text('image', $page_resource->image(), ['class' => 'text-field']) !!}
+
+        </section>
+
     </div>
 
     {!! Form::close() !!}
