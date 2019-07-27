@@ -2,6 +2,7 @@
 
 namespace FlatFileCms\GUI;
 
+use FlatFileCms\GUI\Translations\Translator;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -27,6 +28,8 @@ class FlatFileCmsServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             __DIR__.'/../config/flatfilecmsgui.php', 'flatfilecmsgui'
         );
+
+        require "Translations/helpers.php";
 
         if ($this->app->runningInConsole()) {
             $this->commands([

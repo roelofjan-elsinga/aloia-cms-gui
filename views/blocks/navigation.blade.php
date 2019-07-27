@@ -10,10 +10,26 @@
         </a>
 
         <ul class="block flex-1 flex items-center justify-end">
-            <li class="inline-block mx-2"><a class="link" href="{{ route('pages.index') }}">Pages</a></li>
-            <li class="inline-block mx-2"><a class="link" href="{{ route('articles.index') }}">Articles</a></li>
-            <li class="inline-block mx-2"><a class="link" href="{{ route('media.index') }}">Media</a></li>
-            <li class="inline-block mx-2 p-2 bg-green-200 rounded-lg"><a class="link" href="{{ url($website_url) }}">View website</a></li>
+            <li class="inline-block mx-2">
+                <a class="link" href="{{ route('pages.index') }}">
+                    {{_translate('PAGES')}}
+                </a>
+            </li>
+            <li class="inline-block mx-2">
+                <a class="link" href="{{ route('articles.index') }}">
+                    {{_translate('ARTICLES')}}
+                </a>
+            </li>
+            <li class="inline-block mx-2">
+                <a class="link" href="{{ route('media.index') }}">
+                    {{_translate('MEDIA')}}
+                </a>
+            </li>
+            <li class="inline-block mx-2 p-2 bg-green-200 rounded-lg">
+                <a class="link" href="{{ url($website_url) }}">
+                    {{_translate('VIEW_WEBSITE')}}
+                </a>
+            </li>
         </ul>
     </div><!-- /.container-fluid -->
 </nav>

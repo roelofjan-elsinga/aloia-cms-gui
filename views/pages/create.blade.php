@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1 class="mb-8 text-xl font-semibold">Create a new page</h1>
+    <h1 class="mb-8 text-xl font-semibold">{{_translate('CREATE_NEW_PAGE')}}</h1>
 
     {!! Form::open(['route' => 'pages.store', 'method' => 'post']) !!}
 
@@ -16,13 +16,13 @@
             {!! Form::hidden('file_type', $file_type) !!}
             {!! Form::hidden('template_name', $template_name) !!}
 
-            {!! Form::label('title', 'Page title *', ['class' => 'label']) !!}
+            {!! Form::label('title', _translate('PAGE_TITLE') . ' *', ['class' => 'label']) !!}
             {!! Form::text('title', null, ['class' => 'text-field']) !!}
 
             <div class="flex">
-                <label class="label flex-1">Content</label>
+                <label class="label flex-1">{{_translate('CONTENT')}}</label>
                 <div class="flex-1 text-right">
-                    <a href="{{route('media.index')}}" target="_blank" class="mb-2 mt-4 inline-block link-no-underline">Get images for this post</a>
+                    <a href="{{route('media.index')}}" target="_blank" class="mb-2 mt-4 inline-block link-no-underline">{{_translate('IMAGES_FOR_POST')}}</a>
                 </div>
             </div>
 
@@ -35,14 +35,14 @@
             </div>
 
             {!! Form::label('slug', 'URL *', ['class' => 'label']) !!}
-            {!! Form::text('slug', null, ['class' => 'text-field', 'placeholder' => 'example-url']) !!}
+            {!! Form::text('slug', null, ['class' => 'text-field', 'placeholder' => _translate('EXAMPLE_URL_PLACEHOLDER')]) !!}
 
             <div class="my-4">
                 {!! Form::hidden('published', "0") !!}
 
                 {!! Form::checkbox('published', "1", false) !!}
 
-                {!! Form::label('published', 'Page is published') !!}
+                {!! Form::label('published', _translate('PAGE_IS_PUBLISHED')) !!}
             </div>
 
             <div class="my-4">
@@ -50,7 +50,7 @@
 
                 {!! Form::checkbox('in_menu', "1", false) !!}
 
-                {!! Form::label('in_menu', 'Page is in menu') !!}
+                {!! Form::label('in_menu', _translate('PAGE_IS_IN_MENU')) !!}
             </div>
 
             <div class="my-4">
@@ -58,13 +58,13 @@
 
                 {!! Form::checkbox('is_homepage', "1", false) !!}
 
-                {!! Form::label('is_homepage', 'Page is homepage') !!}
+                {!! Form::label('is_homepage', _translate('PAGE_IS_HOMEPAGE')) !!}
             </div>
 
-            * = Required
+            * = {{_translate('REQUIRED')}}
 
             <div class="text-left">
-                {!! Form::submit('Create page', ['class' => 'bg-green-600 text-white rounded p-4 my-4']) !!}
+                {!! Form::submit(_translate('CREATE_PAGE'), ['class' => 'bg-green-600 text-white rounded p-4 my-4']) !!}
             </div>
 
         </section>
@@ -72,14 +72,14 @@
         <section class="w-1/3 bg-gray-200 p-4 rounded-lg mb-8">
 
             <label class="label">
-                Page type
+                {{_translate("PAGE_TYPE")}}
             </label>
 
             <p>
-                Currently you're using: <strong>{{$file_type}}</strong>.
+                {{_translate('CURRENTLY_USING')}}: <strong>{{$file_type}}</strong>.
             </p>
 
-            You can change to:
+            {{_translate('CHANGE_TO')}}:
 
             @if($file_type !== 'md')
                 <a href="{{route(Route::currentRouteName(), ['file_type' => 'md'])}}" class="text-blue-800 underline">Markdown</a>
@@ -92,10 +92,10 @@
             {{--{!! Form::label('template_name', 'Page Template *', ['class' => 'label']) !!}--}}
             {{--{!! Form::text('template_name', $template_name, ['class' => 'text-field']) !!}--}}
 
-            {!! Form::label('description', 'SEO Description * ', ['class' => 'label']) !!}
+            {!! Form::label('description', _translate('SEO_DESCRIPTION') . ' *', ['class' => 'label']) !!}
             {!! Form::textarea('description', null, ['class' => 'text-field', 'rows' => 5]) !!}
 
-            {!! Form::label('summary', 'SEO Summary * ', ['class' => 'label']) !!}
+            {!! Form::label('summary', _translate('SEO_SUMMARY') . ' *', ['class' => 'label']) !!}
             {!! Form::textarea('summary', null, ['class' => 'text-field', 'rows' => 3]) !!}
 
             {{--{!! Form::label('keywords', 'Keywords', ['class' => 'label']) !!}--}}
@@ -107,7 +107,7 @@
             {{--{!! Form::label('canonical', 'Canonical link (if this is content is posted elsewhere, submit that URL)', ['class' => 'label']) !!}--}}
             {{--{!! Form::text('canonical', null, ['class' => 'text-field']) !!}--}}
 
-            {!! Form::label('image', 'Image URL for social media', ['class' => 'label']) !!}
+            {!! Form::label('image', _translate('IMAGE_FOR_SOCIAL_MEDIA'), ['class' => 'label']) !!}
             {!! Form::text('image', null, ['class' => 'text-field']) !!}
 
         </section>

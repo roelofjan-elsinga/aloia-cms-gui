@@ -8,23 +8,23 @@
 
             @if(Session::has('upload_success'))
                 <div class="bg-green-600 text-white p-4 rounded mb-4">
-                    <strong>Great!</strong> The image was uploaded successfully!
+                    <strong>{{_translate('GREAT')}}!</strong> {{_translate('IMAGE_UPLOADED')}}
                 </div>
             @endif
 
             @if(Session::has('delete_success'))
                 <div class="bg-green-600 text-white p-4 rounded mb-4">
-                    <strong>Great!</strong> The image was deleted successfully!
+                    <strong>{{_translate('GREAT')}}!</strong> {{_translate('IMAGE_DELETED')}}
                 </div>
             @endif
 
-            <h1 class="mb-4 text-xl font-semibold">Manage images</h1>
+            <h1 class="mb-4 text-xl font-semibold">{{_translate('MANAGE_IMAGES')}}</h1>
 
             <p class="mb-2">
-                To include these images in a post, simply copy/paste the markdown or copy the URL.
+                {{_translate('HOW_TO_INCLUDE_IN_POST')}}
             </p>
 
-            <a href="{{route('media.create')}}" class="text-blue-800 mb-2 block underline">Upload an image</a>
+            <a href="{{route('media.create')}}" class="text-blue-800 mb-2 block underline">{{_translate('UPLOAD_AN_IMAGE')}}</a>
 
             @foreach($images as $image)
 
@@ -36,7 +36,7 @@
                         <h4>Markdown</h4>
                         <p class="text-sm bg-gray-400 block p-2">!["{{\FlatFileCms\Media::filenameToTitle($image->getFilename())}}"](/{{$image->getPathname()}})</p>
 
-                        <h4 class="mt-2">As URL</h4>
+                        <h4 class="mt-2">{{_translate('AS_URL')}}</h4>
 
                         <p class="text-sm">{{asset($image->getPathname())}}</p>
                     </div>
