@@ -7,12 +7,12 @@
         <section class="flex-1 mr-4">
 
             <h3 class="mb-4">
-                Edit your articles
+                {{_translate('EDIT_YOUR_ARTICLES')}}
             </h3>
 
             @if(session()->has('updated_article') || session()->has('create_article'))
                 <div class="bg-green-600 text-white p-4 rounded mb-4">
-                    <strong>Great!</strong> The article was saved successfully!
+                    <strong>{{_translate('GREAT')}}!</strong> {{_translate('ARTICLE_UPDATED_SUCCESS')}}
                 </div>
             @endif
 
@@ -28,15 +28,15 @@
                         <h4 class="flex-1 font-bold">{{$article['title']}}</h4>
 
                         @if($article['isPublished'])
-                            <p class="status green">Published</p>
+                            <p class="status green">{{_translate('PUBLISHED')}}</p>
                         @endif
 
                         @if($article['isScheduled'])
-                            <p class="status orange">Scheduled for publishing</p>
+                            <p class="status orange">{{_translate('SCHEDULED')}}</p>
                         @endif
 
                         @if(!$article['isPublished'] && !$article['isScheduled'])
-                            <p class="status">Draft</p>
+                            <p class="status">{{_translate('DRAFT')}}</p>
                         @endif
                     </div>
                 </a>
