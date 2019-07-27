@@ -2,13 +2,11 @@
 
 @section('content')
 
-    <h1 class="mb-8">Welcome {{user()->username()}}!</h1>
-
     <main class="flex">
 
         <section class="flex-1 mr-4">
 
-
+            <h1 class="mb-8">Welcome {{user()->username()}}!</h1>
 
         </section>
 

@@ -20,6 +20,8 @@ class ArticleController extends Controller
      */
     public function index(): ViewResponse
     {
+        $this->setTitle("Manage articles");
+
         return View::make('flatfilecmsgui::articles.index', [
             'articles' => Article::all()
                 ->map(function (Article $article) {
@@ -44,6 +46,8 @@ class ArticleController extends Controller
      */
     public function create(): ViewResponse
     {
+        $this->setTitle("Create an article");
+
         return View::make('flatfilecmsgui::articles.create');
     }
 
@@ -69,6 +73,8 @@ class ArticleController extends Controller
      */
     public function edit(string $slug): ViewResponse
     {
+        $this->setTitle("Edit an article");
+
         $article = Article::forSlug($slug);
 
         return View::make('flatfilecmsgui::articles.edit', [

@@ -5,6 +5,7 @@ namespace FlatFileCms\GUI\Controllers;
 use FlatFileCms\GUI\Requests\CreatePageRequest;
 use FlatFileCms\GUI\Requests\UpdatePageRequest;
 use FlatFileCms\Page;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
@@ -20,6 +21,8 @@ class PagesController extends Controller
      */
     public function index(): ViewResponse
     {
+        $this->setTitle("Manage pages");
+
         return View::make('flatfilecmsgui::pages.index', [
             'articles' => Page::all()
                 ->map(function (Page $page) {
@@ -43,9 +46,13 @@ class PagesController extends Controller
      */
     public function create(): ViewResponse
     {
+        $this->setTitle("Create a new page");
+
+        $request = Request::capture();
+
         return View::make('flatfilecmsgui::pages.create', [
             'template_name' => 'flatfilecmsgui::templates.default',
-            'file_type' => request()->has('file_type') ? request()->get('file_type') : 'html',
+            'file_type' => $request->has('file_type') ? $request->get('file_type') : 'html',
         ]);
     }
 
@@ -71,6 +78,8 @@ class PagesController extends Controller
      */
     public function edit(string $slug): ViewResponse
     {
+        $this->setTitle("Edit a page");
+
         $page = Page::forSlug($slug);
 
         return View::make('flatfilecmsgui::pages.edit', [

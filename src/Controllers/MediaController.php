@@ -12,8 +12,6 @@ use Illuminate\Contracts\View\View as ViewResponse;
 
 class MediaController extends Controller
 {
-
-
     /**
      * Display a listing of the resource.
      *
@@ -22,6 +20,8 @@ class MediaController extends Controller
      */
     public function index(Media $media): ViewResponse
     {
+        $this->setTitle("Manage media files");
+
         return View::make('flatfilecmsgui::media.index', [
             'images' => $media->allFiles()->onlyFullSize()
         ]);
@@ -34,6 +34,8 @@ class MediaController extends Controller
      */
     public function create(): ViewResponse
     {
+        $this->setTitle("Create a new media object");
+
         return View::make('flatfilecmsgui::media.create');
     }
 
@@ -99,5 +101,6 @@ class MediaController extends Controller
      */
     public function destroy($id)
     {
+        // Implement later
     }
 }

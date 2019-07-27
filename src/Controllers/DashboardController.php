@@ -2,12 +2,20 @@
 
 namespace FlatFileCms\GUI\Controllers;
 
-use FlatFileCms\Article;
+use Illuminate\Support\Facades\View;
+use Illuminate\Contracts\View\View as ViewResponse;
 
 class DashboardController extends Controller
 {
-    public function index()
+    /**
+     * Show the dashboard
+     *
+     * @return ViewResponse
+     */
+    public function index(): ViewResponse
     {
-        return view('flatfilecmsgui::index');
+        $this->setTitle("Dashboard");
+
+        return View::make('flatfilecmsgui::index');
     }
 }
