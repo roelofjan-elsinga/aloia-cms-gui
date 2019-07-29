@@ -14,7 +14,7 @@ return [
     "UPDATE_ARTICLE" => "Artikel aanpassen",
     "EDIT_YOUR_ARTICLES" => "Pas je artikelen aan",
     "GREAT" => "Geweldig",
-    "ARTICLE_UPDATE_SUCCESS" => "Het artikel is aangepast!",
+    "ARTICLE_UPDATED_SUCCESS" => "Het artikel is aangepast!",
     "PUBLISHED" => "Gepubliceerd",
     "SCHEDULED" => "Ingepland",
     "DRAFT" => "Concept",

@@ -14,7 +14,7 @@ return [
     "UPDATE_ARTICLE" => "Update article",
     "EDIT_YOUR_ARTICLES" => "Edit your articles",
     "GREAT" => "Great",
-    "ARTICLE_UPDATE_SUCCESS" => "The article was saved successfully!",
+    "ARTICLE_UPDATED_SUCCESS" => "The article was saved successfully!",
     "PUBLISHED" => "Published",
     "SCHEDULED" => "Scheduled",
     "DRAFT" => "Draft",
