@@ -6,6 +6,8 @@
 
     {!! Form::model($article, ['route' => ['articles.update', $article->slug], 'method' => 'put']) !!}
 
+    {!! Form::hidden('file_type', $article->fileType()) !!}
+
     {!! Form::hidden('original_slug', $article->slug()) !!}
     {!! Form::label('slug', 'URL', ['class' => 'label']) !!}
     {!! Form::text('slug', $article->slug(), ['class' => 'text-field', 'placeholder' => _translate('EXAMPLE_URL_PLACEHOLDER')]) !!}

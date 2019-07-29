@@ -28,6 +28,7 @@ class UpdateArticleRequest extends FormRequest
     public function rules()
     {
         return [
+            'file_type' => 'required',
             'original_slug' => 'required',
             'slug' => 'required',
             'content' => 'required',
