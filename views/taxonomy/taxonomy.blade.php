@@ -19,8 +19,8 @@
 
                     {{ csrf_field() }}
 
-                    <button type="submit" class="underline">
-                        {{_translate('DELETE')}}
+                    <button type="submit" class="border border-red-600 text-red-600 hover:border-red-800 hover:text-red-800 rounded p-2 bg-white">
+                        {{_translate_dynamic('DELETE_ITEM', $category['category_name'])}}
                     </button>
 
                 </form>
