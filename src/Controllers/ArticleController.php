@@ -20,7 +20,7 @@ class ArticleController extends Controller
      */
     public function index(): ViewResponse
     {
-        $this->setTitle("Manage articles");
+        $this->setTitle(_translate("EDIT_YOUR_ARTICLES"));
 
         return View::make('flatfilecmsgui::articles.index', [
             'articles' => Article::all()
@@ -46,7 +46,7 @@ class ArticleController extends Controller
      */
     public function create(): ViewResponse
     {
-        $this->setTitle("Create an article");
+        $this->setTitle(_translate("CREATE_ARTICLE"));
 
         return View::make('flatfilecmsgui::articles.create');
     }
@@ -70,12 +70,13 @@ class ArticleController extends Controller
      *
      * @param string $slug
      * @return ViewResponse
+     * @throws \Exception
      */
     public function edit(string $slug): ViewResponse
     {
-        $this->setTitle("Edit an article");
-
         $article = Article::forSlug($slug);
+
+        $this->setTitle(_translate_dynamic('EDIT_ARTICLE', $article->title()));
 
         return View::make('flatfilecmsgui::articles.edit', [
             'article' => $article

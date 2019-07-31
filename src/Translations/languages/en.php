@@ -64,4 +64,11 @@ return [
     "HOMEPAGE" => "Homepage",
     "EDIT_YOUR_PAGES" => "Edit your pages",
     "PAGE_SAVED" => "The page was saved successfully!",
+    "MANAGE_TAXONOMY" => "Manage the taxonomy",
+    "CATEGORY_NAME" => "Category name",
+    "CATEGORY_URL_PREFIX" => "Taxonomy URL",
+    "ADD_CATEGORY" => "Add category",
+    "UPDATE_CATEGORY" => "Update category",
+    "ADD_SUB_CATEGORY_TO" => "Add a sub category to \"%s\"",
+    "SUB_CATEGORIES" => "Sub categories",
 ];

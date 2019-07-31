@@ -23,7 +23,7 @@ class ContentBlocksController extends Controller
      */
     public function index(): ViewResponse
     {
-        $this->setTitle("Manage content blocks");
+        $this->setTitle(_translate("MANAGE_CONTENT_BLOCKS"));
 
         return View::make('flatfilecmsgui::content-blocks.index', [
             'blocks' => $this->getContentFiles()
@@ -60,7 +60,7 @@ class ContentBlocksController extends Controller
      */
     public function create(): ViewResponse
     {
-        $this->setTitle("Create a content block");
+        $this->setTitle(_translate("CREATE_CONTENT_BLOCK"));
 
         $request = Request::capture();
 
@@ -95,7 +95,7 @@ class ContentBlocksController extends Controller
      */
     public function edit(string $name): ViewResponse
     {
-        $this->setTitle("Edit a content block");
+        $this->setTitle(_translate_dynamic('EDIT_CONTENT_BLOCK', $name));
 
         $file_path = $this->getContentFiles()
             ->filter(function(array $file) use ($name) {

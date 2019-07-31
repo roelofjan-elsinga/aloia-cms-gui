@@ -64,4 +64,11 @@ return [
     "HOMEPAGE" => "Homepage",
     "EDIT_YOUR_PAGES" => "Pagina's aanpassen",
     "PAGE_SAVED" => "De pagina is opgeslagen!",
+    "MANAGE_TAXONOMY" => "Beheer de taxonomie",
+    "CATEGORY_NAME" => "Naam van de categorie",
+    "CATEGORY_URL_PREFIX" => "Taxonomie URL",
+    "ADD_CATEGORY" => "Categorie toevoegen",
+    "UPDATE_CATEGORY" => "Categorie bijwerken",
+    "ADD_SUB_CATEGORY_TO" => "Voeg een subcategorie toe aan \"%s\"",
+    "SUB_CATEGORIES" => "Subcategorieën",
 ];

@@ -21,7 +21,7 @@ class PagesController extends Controller
      */
     public function index(): ViewResponse
     {
-        $this->setTitle("Manage pages");
+        $this->setTitle(_translate("EDIT_YOUR_PAGES"));
 
         return View::make('flatfilecmsgui::pages.index', [
             'articles' => Page::all()
@@ -46,7 +46,7 @@ class PagesController extends Controller
      */
     public function create(): ViewResponse
     {
-        $this->setTitle("Create a new page");
+        $this->setTitle(_translate("CREATE_NEW_PAGE"));
 
         $request = Request::capture();
 
@@ -75,12 +75,13 @@ class PagesController extends Controller
      *
      * @param string $slug
      * @return ViewResponse
+     * @throws \Exception
      */
     public function edit(string $slug): ViewResponse
     {
-        $this->setTitle("Edit a page");
-
         $page = Page::forSlug($slug);
+
+        $this->setTitle(_translate_dynamic('EDIT_ARTICLE', $page->title()));
 
         return View::make('flatfilecmsgui::pages.edit', [
             'page_resource' => $page,

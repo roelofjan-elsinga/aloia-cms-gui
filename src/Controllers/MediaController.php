@@ -20,7 +20,7 @@ class MediaController extends Controller
      */
     public function index(Media $media): ViewResponse
     {
-        $this->setTitle("Manage media files");
+        $this->setTitle(_translate("MANAGE_IMAGES"));
 
         return View::make('flatfilecmsgui::media.index', [
             'images' => $media->allFiles()->onlyFullSize()
@@ -34,7 +34,7 @@ class MediaController extends Controller
      */
     public function create(): ViewResponse
     {
-        $this->setTitle("Create a new media object");
+        $this->setTitle(_translate("UPLOAD_IMAGE"));
 
         return View::make('flatfilecmsgui::media.create');
     }
