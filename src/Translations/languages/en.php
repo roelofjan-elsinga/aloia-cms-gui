@@ -69,6 +69,9 @@ return [
     "CATEGORY_URL_PREFIX" => "Taxonomy URL",
     "ADD_CATEGORY" => "Add category",
     "UPDATE_CATEGORY" => "Update category",
+    "DELETE_CATEGORY" => "Delete category",
     "ADD_SUB_CATEGORY_TO" => "Add a sub category to \"%s\"",
     "SUB_CATEGORIES" => "Sub categories",
+    "TAXONOMY_SAVED" => "The taxonomy has been saved!",
+    "TAXONOMY_DELETED" => "The taxonomy has been deleted!",
 ];

@@ -12,7 +12,13 @@
 
             @if(session()->has('created') || session()->has('updated'))
                 <div class="bg-green-600 text-white p-4 rounded mb-4">
-                    <strong>{{_translate('GREAT')}}!</strong> The taxonomy has been saved!
+                    <strong>{{_translate('GREAT')}}!</strong> {{_translate('TAXONOMY_SAVED')}}
+                </div>
+            @endif
+
+            @if(session()->has('deleted'))
+                <div class="bg-green-600 text-white p-4 rounded mb-4">
+                    <strong>{{_translate('GREAT')}}!</strong> {{_translate('TAXONOMY_DELETED')}}
                 </div>
             @endif
 

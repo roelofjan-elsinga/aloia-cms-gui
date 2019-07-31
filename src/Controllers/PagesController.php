@@ -5,6 +5,7 @@ namespace FlatFileCms\GUI\Controllers;
 use FlatFileCms\GUI\Requests\CreatePageRequest;
 use FlatFileCms\GUI\Requests\UpdatePageRequest;
 use FlatFileCms\Page;
+use FlatFileCms\Taxonomy\Taxonomy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Redirect;
@@ -53,6 +54,7 @@ class PagesController extends Controller
         return View::make('flatfilecmsgui::pages.create', [
             'template_name' => 'flatfilecmsgui::templates.default',
             'file_type' => $request->has('file_type') ? $request->get('file_type') : 'html',
+            'categories' => Taxonomy::list()
         ]);
     }
 

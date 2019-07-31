@@ -69,6 +69,9 @@ return [
     "CATEGORY_URL_PREFIX" => "Taxonomie URL",
     "ADD_CATEGORY" => "Categorie toevoegen",
     "UPDATE_CATEGORY" => "Categorie bijwerken",
+    "DELETE_CATEGORY" => "Categorie verwijderen",
     "ADD_SUB_CATEGORY_TO" => "Voeg een subcategorie toe aan \"%s\"",
     "SUB_CATEGORIES" => "Subcategorieën",
+    "TAXONOMY_SAVED" => "De taxonomie is opgeslagen!",
+    "TAXONOMY_DELETED" => "De taxonomie is verwijderd!",
 ];

@@ -59,5 +59,12 @@ class TaxonomyController extends Controller
 
         return Redirect::route('taxonomy.index')->with('updated', true);
     }
+
+    public function destroy(string $category_name): RedirectResponse
+    {
+        Taxonomy::destroy($category_name);
+
+        return Redirect::route('taxonomy.index')->with('deleted', true);
+    }
     
 }

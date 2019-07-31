@@ -8,4 +8,4 @@ Route::resource('articles', 'ArticleController', ['except' => ['show', 'destroy'
 Route::resource('pages', 'PagesController', ['except' => ['show', 'destroy']]);
 Route::resource('media', 'MediaController', ['except' => ['show', 'edit', 'update']]);
 Route::resource('content-blocks', 'ContentBlocksController');
-Route::resource('taxonomy', 'TaxonomyController', ['only' => ['index', 'store', 'update']]);
+Route::resource('taxonomy', 'TaxonomyController', ['except' => ['show', 'edit', 'create']]);

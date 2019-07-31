@@ -8,6 +8,18 @@
 
         <p>{{_translate('CATEGORY_URL_PREFIX')}}: {{$category['category_url_prefix']}}</p>
 
+        <form action="{{route('taxonomy.destroy', $category['category_name'])}}" method="POST">
+
+            <input type="hidden" name="_method" value="DELETE" />
+
+            {{ csrf_field() }}
+
+            <button type="submit" class="bg-red-600 hover:bg-red-700 text-white rounded p-2 mt-4">
+                {{_translate('DELETE_CATEGORY')}}
+            </button>
+
+        </form>
+
         <form action="{{route('taxonomy.update', $category['category_url_prefix'])}}" method="POST">
 
             <input type="hidden" name="_method" value="PUT" />
@@ -35,7 +47,9 @@
 
         <div class="ml-2 mt-4">
 
+            @if(count($category['children']) > 0)
             <h3>{{_translate('SUB_CATEGORIES')}}</h3>
+            @endif
 
             @include('flatfilecmsgui::taxonomy.taxonomy', ['taxonomy' => $category['children'], 'current_index' => $current_index + 1])
 
