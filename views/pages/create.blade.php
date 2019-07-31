@@ -107,6 +107,15 @@
             {{--{!! Form::label('canonical', 'Canonical link (if this is content is posted elsewhere, submit that URL)', ['class' => 'label']) !!}--}}
             {{--{!! Form::text('canonical', null, ['class' => 'text-field']) !!}--}}
 
+            <label for="category" class="label">{{_translate('PAGE_CATEGORY')}}</label>
+            <select name="category" class="text-field">
+
+                @include('flatfilecmsgui::taxonomy.nested-categories', ['taxonomies' => $categories, 'selected' => null])
+
+            </select>
+
+            <a href="{{route('taxonomy.index')}}" class="underline" target="_blank">{{_translate('MANAGE_TAXONOMY')}}</a>
+
             {!! Form::label('image', _translate('IMAGE_FOR_SOCIAL_MEDIA'), ['class' => 'label']) !!}
             {!! Form::text('image', null, ['class' => 'text-field']) !!}
 

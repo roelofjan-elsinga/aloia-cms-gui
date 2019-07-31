@@ -1,24 +1,32 @@
 @foreach($taxonomy as $category)
 
-    <div class="bg-gray-{{$current_index * 100 + 100}} p-2 mb-4">
+    <div class="bg-gray-{{$current_index * 100 + 100}} p-2 mb-4 rounded">
 
-        <p>
-            <strong>{{_translate('CATEGORY_NAME')}}: "{{$category['category_name']}}"</strong>
-        </p>
+        <div class="flex">
 
-        <p>{{_translate('CATEGORY_URL_PREFIX')}}: {{$category['category_url_prefix']}}</p>
+            <div class="flex-1">
+                <p>
+                    <strong>{{_translate('CATEGORY_NAME')}}: "{{$category['category_name']}}"</strong>
+                </p>
 
-        <form action="{{route('taxonomy.destroy', $category['category_name'])}}" method="POST">
+                <p>{{_translate('CATEGORY_URL_PREFIX')}}: {{$category['category_url_prefix']}}</p>
+            </div>
 
-            <input type="hidden" name="_method" value="DELETE" />
+            <div>
+                <form action="{{route('taxonomy.destroy', $category['category_name'])}}" method="POST">
 
-            {{ csrf_field() }}
+                    <input type="hidden" name="_method" value="DELETE" />
 
-            <button type="submit" class="bg-red-600 hover:bg-red-700 text-white rounded p-2 mt-4">
-                {{_translate('DELETE_CATEGORY')}}
-            </button>
+                    {{ csrf_field() }}
 
-        </form>
+                    <button type="submit" class="bg-red-600 hover:bg-red-700 text-white rounded p-1">
+                        {{_translate_dynamic('DELETE_ITEM', $category['category_name'])}}
+                    </button>
+
+                </form>
+            </div>
+
+        </div>
 
         <form action="{{route('taxonomy.update', $category['category_url_prefix'])}}" method="POST">
 

@@ -62,6 +62,9 @@ class TaxonomyController extends Controller
 
     public function destroy(string $category_name): RedirectResponse
     {
+        // todo: 1. Change pages for this category to a parent category. If this is the highest item, remove category from page
+        // todo: 2. Move all child categories to the parent category. If this is the highest item, make children main categories
+
         Taxonomy::destroy($category_name);
 
         return Redirect::route('taxonomy.index')->with('deleted', true);

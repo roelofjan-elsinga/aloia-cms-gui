@@ -54,7 +54,7 @@ class PagesController extends Controller
         return View::make('flatfilecmsgui::pages.create', [
             'template_name' => 'flatfilecmsgui::templates.default',
             'file_type' => $request->has('file_type') ? $request->get('file_type') : 'html',
-            'categories' => Taxonomy::list()
+            'categories' => Taxonomy::get()
         ]);
     }
 
@@ -87,7 +87,8 @@ class PagesController extends Controller
 
         return View::make('flatfilecmsgui::pages.edit', [
             'page_resource' => $page,
-            'file_type' => pathinfo($page->filename(), PATHINFO_EXTENSION)
+            'file_type' => pathinfo($page->filename(), PATHINFO_EXTENSION),
+            'categories' => Taxonomy::get()
         ]);
     }
 

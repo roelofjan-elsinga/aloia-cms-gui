@@ -68,6 +68,7 @@ class UpdatePageRequest extends FormRequest
             'in_menu' => $this->get('in_menu') === "1",
             'is_homepage' => $this->get('is_homepage') === "1",
             'keywords' => $this->get('keywords'),
+            'category' => $this->get('category'),
             'image' => $this->get('image'),
             'postDate' => $this->get('post_date'),
             'isPublished' => $this->get('published') === "1",
