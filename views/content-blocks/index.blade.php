@@ -36,7 +36,7 @@
                     <div class="mb-2 pb-2 border-b border-gray-300">
                         <h4>{{$block['name']}} ({{$block['extension']}})</h4>
                         <a href="{{route('content-blocks.edit', $block['name'])}}" class="inline-block underline">{{_translate('EDIT')}}</a>
-                        <form action="{{route('content-blocks.destroy', $block['name'])}}" onsubmit="confirm('Are you sure?')" method="post" class="inline-block">
+                        <form action="{{route('content-blocks.destroy', $block['name'])}}" onsubmit="return confirm('Are you sure?')" method="post" class="inline-block">
                             {!! csrf_field() !!}
                             <input type="hidden" name="_method" value="DELETE" />
 

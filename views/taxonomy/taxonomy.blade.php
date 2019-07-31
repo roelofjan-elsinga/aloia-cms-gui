@@ -13,14 +13,14 @@
             </div>
 
             <div>
-                <form action="{{route('taxonomy.destroy', $category['category_name'])}}" method="POST">
+                <form action="{{route('taxonomy.destroy', $category['category_name'])}}" onsubmit="return confirm('Are you sure?')" method="POST">
 
                     <input type="hidden" name="_method" value="DELETE" />
 
                     {{ csrf_field() }}
 
-                    <button type="submit" class="bg-red-600 hover:bg-red-700 text-white rounded p-1">
-                        {{_translate_dynamic('DELETE_ITEM', $category['category_name'])}}
+                    <button type="submit" class="underline">
+                        {{_translate('DELETE')}}
                     </button>
 
                 </form>
@@ -46,7 +46,7 @@
                        placeholder="{{_translate('CATEGORY_URL_PREFIX')}}"
                        value="{{$category['category_url_prefix']}}"
                        class="border border-gray-400 rounded p-2" />
-                <button type="submit" class="bg-green-600 hover:bg-green-700 text-white rounded p-2 my-4">
+                <button type="submit" class="border border-blue-600 text-blue-600 hover:border-blue-800 hover:text-blue-800 rounded p-2 my-4 bg-white">
                     {{_translate('UPDATE_CATEGORY')}}
                 </button>
             </div>
@@ -72,7 +72,7 @@
                 <div>
                     <input type="text" name="category_name" placeholder="{{_translate('CATEGORY_NAME')}}" class="border border-gray-400 rounded p-2" />
                     <input type="text" name="category_url_prefix" placeholder="{{_translate('CATEGORY_URL_PREFIX')}}" class="border border-gray-400 rounded p-2" />
-                    <button type="submit" class="bg-green-600 hover:bg-green-700 text-white rounded p-2 my-4">
+                    <button type="submit" class="border border-green-600 text-green-600 hover:border-green-800 hover:text-green-800 rounded p-2 my-4 bg-white">
                         {{_translate('ADD_CATEGORY')}}
                     </button>
                 </div>
