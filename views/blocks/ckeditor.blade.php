@@ -1,4 +1,4 @@
-<script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
+<script src="{{ asset('vendor/flatfilecmsgui/ckeditor.js') }}"></script>
 
 <textarea name="{{$name}}" id="editor" rows="10">{{$value}}</textarea>
 
