@@ -37,6 +37,7 @@ class TaxonomyController extends Controller
         Taxonomy::addChildToCategoryWithName($request->get('parent_category'), [
             'category_name' => $request->get('category_name'),
             'category_url_prefix' => $request->get('category_url_prefix'),
+            'parent_category' => $request->get('parent_category'),
             'children' => []
         ]);
 
