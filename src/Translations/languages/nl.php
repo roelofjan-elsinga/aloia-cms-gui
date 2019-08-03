@@ -75,4 +75,6 @@ return [
     "SUB_CATEGORIES" => "Subcategorieën",
     "TAXONOMY_SAVED" => "De taxonomie is opgeslagen!",
     "TAXONOMY_DELETED" => "De taxonomie is verwijderd!",
+    "IS_IN_MENU" => "Is in het hoofdmenu",
+    "MENU_NAME" => "Naam in het menu",
 ];

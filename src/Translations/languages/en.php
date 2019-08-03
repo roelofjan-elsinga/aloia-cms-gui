@@ -75,4 +75,6 @@ return [
     "SUB_CATEGORIES" => "Sub categories",
     "TAXONOMY_SAVED" => "The taxonomy has been saved!",
     "TAXONOMY_DELETED" => "The taxonomy has been deleted!",
+    "IS_IN_MENU" => "Is in menu",
+    "MENU_NAME" => "Name in menu",
 ];
