@@ -25,16 +25,7 @@ class PagesController extends Controller
         $this->setTitle(_translate("EDIT_YOUR_PAGES"));
 
         return View::make('flatfilecmsgui::pages.index', [
-            'articles' => Page::all()
-                ->map(function (Page $page) {
-                    return [
-                        'title' => $page->title(),
-                        'image' => $page->thumbnail(),
-                        'slug' => $page->slug(),
-                        'isPublished' => $page->isPublished(),
-                        'isHomepage' => $page->isHomepage(),
-                    ];
-                })
+            'pages' => Page::all()
                 ->sortByDesc('title')
                 ->values()
         ]);

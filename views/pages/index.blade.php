@@ -16,27 +16,31 @@
                 </div>
             @endif
 
-            @foreach($articles as $article)
+            @foreach($pages as $page)
 
-                <a href="{{route('pages.edit', $article['slug'])}}" class="flex mb-2 text-blue-900 no-underline">
+                <a href="{{route('pages.edit', $page->slug())}}" class="flex mb-2 text-blue-900 no-underline">
                     <div class="w-32">
-                        @if(!empty($article['image']))
-                            <img src="{{asset($article['image'])}}" alt="{{$article['title']}}" style="max-height: 75px;"/>
+                        @if(!empty($page->image()))
+                            <img src="{{asset($page->image())}}" alt="{{$page->title()}}" style="max-height: 75px;"/>
                         @endif
                     </div>
                     <div class="px-4 py-2">
-                        <h4 class="flex-1 font-bold">{{$article['title']}}</h4>
+                        <h4 class="flex-1 font-bold">{{$page->title()}}</h4>
 
-                        @if($article['isPublished'])
+                        @if($page->isPublished())
                             <p class="status green">{{_translate('PUBLISHED')}}</p>
                         @endif
 
-                        @if(!$article['isPublished'])
+                        @if(!$page->isPublished())
                             <p class="status">{{_translate('DRAFT')}}</p>
                         @endif
 
-                        @if($article['isHomepage'])
+                        @if($page->isHomepage())
                             <p class="status orange">{{_translate('HOMEPAGE')}}</p>
+                        @endif
+
+                        @if($page->isInMenu())
+                            <p class="status blue">{{_translate('IS_IN_MENU')}}</p>
                         @endif
                     </div>
                 </a>
