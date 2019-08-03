@@ -2,6 +2,7 @@
 
 namespace FlatFileCms\GUI\Controllers;
 
+use FlatFileCms\Page;
 use FlatFileCms\Taxonomy\Taxonomy;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class TaxonomyController extends Controller
         $this->setTitle(_translate("MANAGE_TAXONOMY"));
 
         return View::make('flatfilecmsgui::taxonomy.index', [
-            'taxonomy' => Taxonomy::get()
+            'taxonomy' => Taxonomy::get()->asNestedList()
         ]);
     }
 
@@ -61,14 +62,17 @@ class TaxonomyController extends Controller
         return Redirect::route('taxonomy.index')->with('updated', true);
     }
 
+    /**
+     * Delete the taxonomy item for the given name
+     *
+     * @param string $category_name
+     * @return RedirectResponse
+     */
     public function destroy(string $category_name): RedirectResponse
     {
-        // todo: 1. Change pages for this category to a parent category. If this is the highest item, remove category from page
-        // todo: 2. Move all child categories to the parent category. If this is the highest item, make children main categories
-
         Taxonomy::destroy($category_name);
 
         return Redirect::route('taxonomy.index')->with('deleted', true);
     }
-    
+
 }

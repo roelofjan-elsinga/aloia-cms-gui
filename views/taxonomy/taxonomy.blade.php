@@ -6,21 +6,21 @@
 
             <div class="flex-1">
                 <p>
-                    <strong>{{_translate('CATEGORY_NAME')}}: "{{$category['category_name']}}"</strong>
+                    <strong>{{_translate('CATEGORY_NAME')}}: "{{$category->name()}}"</strong>
                 </p>
 
-                <p>{{_translate('CATEGORY_URL_PREFIX')}}: {{$category['category_url_prefix']}}</p>
+                <p>{{_translate('CATEGORY_URL_PREFIX')}}: {{$category->url()}}</p>
             </div>
 
             <div>
-                <form action="{{route('taxonomy.destroy', $category['category_name'])}}" onsubmit="return confirm('Are you sure?')" method="POST">
+                <form action="{{route('taxonomy.destroy', $category->name())}}" onsubmit="return confirm('Are you sure?')" method="POST">
 
                     <input type="hidden" name="_method" value="DELETE" />
 
                     {{ csrf_field() }}
 
                     <button type="submit" class="border border-red-600 text-red-600 hover:border-red-800 hover:text-red-800 rounded p-2 bg-white">
-                        {{_translate_dynamic('DELETE_ITEM', $category['category_name'])}}
+                        {{_translate_dynamic('DELETE_ITEM', $category->name())}}
                     </button>
 
                 </form>
@@ -28,23 +28,23 @@
 
         </div>
 
-        <form action="{{route('taxonomy.update', $category['category_url_prefix'])}}" method="POST">
+        <form action="{{route('taxonomy.update', $category->url())}}" method="POST">
 
             <input type="hidden" name="_method" value="PUT" />
 
             {{ csrf_field() }}
 
-            <input type="hidden" name="parent_category" value="{{$category['category_url_prefix']}}" />
+            <input type="hidden" name="parent_category" value="{{$category->url()}}" />
 
             <div>
                 <input type="text" name="category_name"
                        placeholder="{{_translate('CATEGORY_NAME')}}"
-                       value="{{$category['category_name']}}"
+                       value="{{$category->name()}}"
                        class="border border-gray-400 rounded p-2" />
 
                 <input type="text" name="category_url_prefix"
                        placeholder="{{_translate('CATEGORY_URL_PREFIX')}}"
-                       value="{{$category['category_url_prefix']}}"
+                       value="{{$category->url()}}"
                        class="border border-gray-400 rounded p-2" />
                 <button type="submit" class="border border-blue-600 text-blue-600 hover:border-blue-800 hover:text-blue-800 rounded p-2 my-4 bg-white">
                     {{_translate('UPDATE_CATEGORY')}}
@@ -55,19 +55,19 @@
 
         <div class="ml-2 mt-4">
 
-            @if(count($category['children']) > 0)
+            @if($category->children()->count() > 0)
             <h3>{{_translate('SUB_CATEGORIES')}}</h3>
             @endif
 
-            @include('flatfilecmsgui::taxonomy.taxonomy', ['taxonomy' => $category['children'], 'current_index' => $current_index + 1])
+            @include('flatfilecmsgui::taxonomy.taxonomy', ['taxonomy' => $category->children(), 'current_index' => $current_index + 1])
 
             <form action="{{route('taxonomy.store')}}" method="POST">
 
-                <h4>{{_translate_dynamic('ADD_SUB_CATEGORY_TO', $category['category_name'])}}</h4>
+                <h4>{{_translate_dynamic('ADD_SUB_CATEGORY_TO', $category->name())}}</h4>
 
                 {{ csrf_field() }}
 
-                <input type="hidden" name="parent_category" value="{{$category['category_name']}}" />
+                <input type="hidden" name="parent_category" value="{{$category->name()}}" />
 
                 <div>
                     <input type="text" name="category_name" placeholder="{{_translate('CATEGORY_NAME')}}" class="border border-gray-400 rounded p-2" />
