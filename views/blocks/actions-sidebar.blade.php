@@ -19,4 +19,8 @@
        class="text-blue-800 mb-2 block">
         {{_translate('MANAGE_CONTENT_BLOCKS')}}
     </a>
+    <a href="{{route('taxonomy.index')}}"
+       class="text-blue-800 mb-2 block">
+        {{_translate('MANAGE_TAXONOMY')}}
+    </a>
 </div>

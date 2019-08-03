@@ -51,6 +51,24 @@
                 {!! Form::checkbox('in_menu', "1", $page_resource->isInMenu()) !!}
 
                 {!! Form::label('in_menu', _translate('PAGE_IS_IN_MENU')) !!}
+
+                <div id="menu_name" style="display: {{ $page_resource->isInMenu() ? 'block' : 'none'}};">
+                    {!! Form::label('menu_name', _translate('MENU_NAME'), ['class' => 'label']) !!}
+                    {!! Form::text('menu_name', $page_resource->menuName(), ['class' => 'text-field', 'placeholder' => _translate('MENU_NAME')]) !!}
+                </div>
+
+                <script>
+                    function triggerMenuNameField(event) {
+
+                        document.getElementById('menu_name').style.display = 'none';
+
+                        if(event.checked) {
+
+                            document.getElementById('menu_name').style.display = 'block';
+
+                        }
+                    }
+                </script>
             </div>
 
             <div class="my-4">
@@ -88,6 +106,15 @@
 
             {{--{!! Form::label('canonical', 'Canonical link (if this is content is posted elsewhere, submit that URL)', ['class' => 'label']) !!}--}}
             {{--{!! Form::text('canonical', $page_resource->canonicalLink(), ['class' => 'text-field']) !!}--}}
+
+            <label for="category" class="label">{{_translate('PAGE_CATEGORY')}}</label>
+            <select name="category" class="text-field">
+
+                @include('flatfilecmsgui::taxonomy.nested-categories', ['taxonomies' => $categories, 'selected' => $page_resource->category()])
+
+            </select>
+
+            <a href="{{route('taxonomy.index')}}" class="underline" target="_blank">{{_translate('MANAGE_TAXONOMY')}}</a>
 
             {!! Form::label('image', _translate('IMAGE_FOR_SOCIAL_MEDIA'), ['class' => 'label']) !!}
             {!! Form::text('image', $page_resource->image(), ['class' => 'text-field']) !!}

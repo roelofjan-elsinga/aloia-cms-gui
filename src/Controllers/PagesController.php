@@ -5,6 +5,7 @@ namespace FlatFileCms\GUI\Controllers;
 use FlatFileCms\GUI\Requests\CreatePageRequest;
 use FlatFileCms\GUI\Requests\UpdatePageRequest;
 use FlatFileCms\Page;
+use FlatFileCms\Taxonomy\Taxonomy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Redirect;
@@ -21,19 +22,10 @@ class PagesController extends Controller
      */
     public function index(): ViewResponse
     {
-        $this->setTitle("Manage pages");
+        $this->setTitle(_translate("EDIT_YOUR_PAGES"));
 
         return View::make('flatfilecmsgui::pages.index', [
-            'articles' => Page::all()
-                ->map(function (Page $page) {
-                    return [
-                        'title' => $page->title(),
-                        'image' => $page->thumbnail(),
-                        'slug' => $page->slug(),
-                        'isPublished' => $page->isPublished(),
-                        'isHomepage' => $page->isHomepage(),
-                    ];
-                })
+            'pages' => Page::all()
                 ->sortByDesc('title')
                 ->values()
         ]);
@@ -46,13 +38,14 @@ class PagesController extends Controller
      */
     public function create(): ViewResponse
     {
-        $this->setTitle("Create a new page");
+        $this->setTitle(_translate("CREATE_NEW_PAGE"));
 
         $request = Request::capture();
 
         return View::make('flatfilecmsgui::pages.create', [
             'template_name' => 'flatfilecmsgui::templates.default',
             'file_type' => $request->has('file_type') ? $request->get('file_type') : 'html',
+            'categories' => Taxonomy::get()
         ]);
     }
 
@@ -75,16 +68,18 @@ class PagesController extends Controller
      *
      * @param string $slug
      * @return ViewResponse
+     * @throws \Exception
      */
     public function edit(string $slug): ViewResponse
     {
-        $this->setTitle("Edit a page");
-
         $page = Page::forSlug($slug);
+
+        $this->setTitle(_translate_dynamic('EDIT_ARTICLE', $page->title()));
 
         return View::make('flatfilecmsgui::pages.edit', [
             'page_resource' => $page,
-            'file_type' => pathinfo($page->filename(), PATHINFO_EXTENSION)
+            'file_type' => pathinfo($page->filename(), PATHINFO_EXTENSION),
+            'categories' => Taxonomy::get()
         ]);
     }
 
