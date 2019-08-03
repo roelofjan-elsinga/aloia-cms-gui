@@ -70,6 +70,7 @@ class CreatePageRequest extends FormRequest
             'isPublished' => $this->get('published') === "1",
             'isScheduled' => $this->get('scheduled') === "1",
             'template_name' => $this->get('template_name'),
+            'menu_name' => $this->get('menu_name'),
         ]);
     }
 
