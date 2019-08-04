@@ -18,14 +18,19 @@
 
             @foreach($pages as $page)
 
-                <a href="{{route('pages.edit', $page->slug())}}" class="flex mb-2 text-blue-900 no-underline">
+                <div class="flex mb-2 text-blue-900 no-underline">
                     <div class="w-32">
                         @if(!empty($page->image()))
                             <img src="{{asset($page->image())}}" alt="{{$page->title()}}" style="max-height: 75px;"/>
                         @endif
                     </div>
                     <div class="px-4 py-2">
-                        <h4 class="flex-1 font-bold">{{$page->title()}}</h4>
+                        <h4 class="flex-1 font-bold">
+                            <a href="{{route('pages.edit', $page->slug())}}">{{$page->title()}}</a>
+                            <small class="inline-block text-blue-600">
+                                <a href="/{{$page->slug(true)}}" target="_blank" class="underline">({{_translate("VIEW_PAGE")}})</a>
+                            </small>
+                        </h4>
 
                         @if($page->isPublished())
                             <p class="status green">{{_translate('PUBLISHED')}}</p>
@@ -43,7 +48,7 @@
                             <p class="status blue">{{_translate('IS_IN_MENU')}}</p>
                         @endif
                     </div>
-                </a>
+                </div>
 
             @endforeach
 

@@ -27,6 +27,7 @@ return [
     "ARTICLES" => "Articles",
     "MEDIA" => "Media",
     "VIEW_WEBSITE" => "View website",
+    "VIEW_PAGE" => "View page",
     "CREATE_CONTENT_BLOCK" => "Create a content block",
     "PAGE_TYPE" => "Page type",
     "CURRENTLY_USING" => "Currently you're using",

@@ -27,6 +27,7 @@ return [
     "ARTICLES" => "Artikelen",
     "MEDIA" => "Media",
     "VIEW_WEBSITE" => "Bekijk site",
+    "VIEW_PAGE" => "Bekijk pagina",
     "CREATE_CONTENT_BLOCK" => "Maak een content block aan",
     "PAGE_TYPE" => "Pagina type",
     "CURRENTLY_USING" => "Je gebruikt nu",
