@@ -72,4 +72,24 @@ return [
     */
     'language' => 'en',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Flat File CMS GUI User Accounts Folder Path
+    |--------------------------------------------------------------------------
+    |
+    | This is the folder path where the system will save any user accounts.
+    |
+    */
+    'user_accounts_folder_path' => storage_path('app/accounts'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Flat File CMS GUI Authentication Token Folder Path
+    |--------------------------------------------------------------------------
+    |
+    | This is the folder path where the system will save any authentication tokens.
+    |
+    */
+    'authentication_tokens_folder_path' => storage_path('app/authentication'),
+
 ];
