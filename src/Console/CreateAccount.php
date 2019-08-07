@@ -3,6 +3,7 @@
 namespace FlatFileCms\GUI\Console;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Storage;
 
 class CreateAccount extends Command
@@ -28,21 +29,26 @@ class CreateAccount extends Command
      */
     public function handle()
     {
+        if(empty($this->option('username')) || empty($this->option('password'))) {
+            $this->error('You need to supply a username and password.');
+            exit(0);
+        }
+
         $user = [
             'username' => $this->option('username'),
             'password' => bcrypt($this->option('password')),
             'role' => $this->option('role')
         ];
 
-        $file_path = "accounts/{$this->option('username')}.json";
+        $file_path = Config::get('flatfilecmsgui.user_accounts_folder_path');
 
-        if (Storage::exists($file_path)) {
+        if (file_exists("{$file_path}/{$this->option('username')}.json")) {
             $this->warn("User account already exists!");
             return;
         }
 
-        Storage::put(
-            $file_path,
+        file_put_contents(
+            "{$file_path}/{$this->option('username')}.json",
             json_encode($user, JSON_PRETTY_PRINT)
         );
 
