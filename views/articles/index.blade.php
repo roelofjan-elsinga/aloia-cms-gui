@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <main class="flex">
+    <main class="flex flex-col md:flex-row">
 
         <section class="flex-1 mr-4">
 
@@ -45,7 +45,7 @@
 
         </section>
 
-        <section class="w-1/4">
+        <section class="md:w-1/4">
 
             @include('flatfilecmsgui::blocks.actions-sidebar')
 

@@ -78,4 +78,5 @@ return [
     "TAXONOMY_DELETED" => "The taxonomy has been deleted!",
     "IS_IN_MENU" => "Is in menu",
     "MENU_NAME" => "Name in menu",
+    "LOGOUT" => "Log out",
 ];

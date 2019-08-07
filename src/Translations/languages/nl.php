@@ -78,4 +78,5 @@ return [
     "TAXONOMY_DELETED" => "De taxonomie is verwijderd!",
     "IS_IN_MENU" => "Is in het hoofdmenu",
     "MENU_NAME" => "Naam in het menu",
+    "LOGOUT" => "Uitloggen",
 ];
