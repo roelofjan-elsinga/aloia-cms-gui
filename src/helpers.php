@@ -1,6 +1,7 @@
 <?php
 
 use FlatFileCms\GUI\Translations\Translator;
+use FlatFileCms\GUI\User;
 
 /**
  * Return the translation for the given identifier
@@ -25,4 +26,9 @@ function _translate_dynamic(string $identifier, string $replacer): string
     $translation = Translator::forIdentifier($identifier)->translate();
 
     return sprintf($translation, $replacer);
+}
+
+function user(): ?User
+{
+    return User::fromRequest(request());
 }

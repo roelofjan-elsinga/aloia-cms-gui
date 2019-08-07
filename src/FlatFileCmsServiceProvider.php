@@ -2,6 +2,8 @@
 
 namespace FlatFileCms\GUI;
 
+use FlatFileCms\GUI\Middleware\Authenticated;
+use FlatFileCms\GUI\Middleware\Guest;
 use FlatFileCms\GUI\Translations\Translator;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -29,13 +31,15 @@ class FlatFileCmsServiceProvider extends ServiceProvider
             __DIR__.'/../config/flatfilecmsgui.php', 'flatfilecmsgui'
         );
 
-        require "Translations/helpers.php";
+        require "helpers.php";
 
         if ($this->app->runningInConsole()) {
             $this->commands([
                 Console\AssetsCommand::class,
                 Console\ConfigCommand::class,
                 Console\ViewsCommand::class,
+                Console\AppSecretGenerator::class,
+                Console\CreateAccount::class,
             ]);
         }
     }
@@ -71,6 +75,9 @@ class FlatFileCmsServiceProvider extends ServiceProvider
      */
     protected function registerRoutes()
     {
+        $this->app['router']->aliasMiddleware('fileAuth', Authenticated::class);
+        $this->app['router']->aliasMiddleware('fileGuest', Guest::class);
+
         Route::group([
             'domain' => config('flatfilecmsgui.domain', null),
             'prefix' => config('flatfilecmsgui.path'),

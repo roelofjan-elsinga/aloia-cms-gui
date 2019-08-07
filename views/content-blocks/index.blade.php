@@ -4,7 +4,7 @@
 
     <h1 class="font-semibold text-2xl mb-4">{{_translate('CONTENT_BLOCKS')}}</h1>
 
-    <main class="flex">
+    <main class="flex flex-col md:flex-row">
 
         <section class="flex-1 mr-4">
 
@@ -50,7 +50,7 @@
 
         </section>
 
-        <section>
+        <section class="md:w-1/4">
 
             @include('flatfilecmsgui::blocks.actions-sidebar')
 

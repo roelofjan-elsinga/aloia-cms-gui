@@ -1,4 +1,4 @@
-<div class="bg-gray-200 p-4 rounded-lg">
+<div class="bg-gray-200 p-4 rounded-lg mb-4 md:mb-0">
     <h3 class="mb-4 block">{{_translate('WHAT_DO_YOU_WANT')}}</h3>
 
     <a href="{{route('pages.create')}}"
