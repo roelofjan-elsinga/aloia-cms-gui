@@ -4,7 +4,6 @@ namespace FlatFileCms\GUI\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Storage;
 
 class CreateAccount extends Command
 {
@@ -29,29 +28,40 @@ class CreateAccount extends Command
      */
     public function handle()
     {
-        if(empty($this->option('username')) || empty($this->option('password'))) {
+        $user_name = $this->option('username');
+        $password = $this->option('password');
+
+        if(empty($user_name)) {
+            $user_name = $this->ask("Which username should the user have?");
+        }
+
+        if(empty($password)) {
+            $password = $this->ask("Which password should the user have?");
+        }
+
+        if(empty($user_name) || empty($password)) {
             $this->error('You need to supply a username and password.');
-            exit(0);
+            return;
         }
 
         $user = [
-            'username' => $this->option('username'),
-            'password' => bcrypt($this->option('password')),
+            'username' => $user_name,
+            'password' => bcrypt($password),
             'role' => $this->option('role')
         ];
 
         $file_path = Config::get('flatfilecmsgui.user_accounts_folder_path');
 
-        if (file_exists("{$file_path}/{$this->option('username')}.json")) {
+        if (file_exists("{$file_path}/{$user_name}.json")) {
             $this->warn("User account already exists!");
             return;
         }
 
         file_put_contents(
-            "{$file_path}/{$this->option('username')}.json",
+            "{$file_path}/{$user_name}.json",
             json_encode($user, JSON_PRETTY_PRINT)
         );
 
-        $this->info("Created new user account: {$this->option('username')}");
+        $this->info("Created new user account: {$user_name}");
     }
 }
