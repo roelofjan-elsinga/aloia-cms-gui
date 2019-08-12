@@ -3,7 +3,7 @@
 @section('content')
     <div class="section text-center">
         @if (session()->has('errors'))
-            <div class="bg-red-dark md:w-1/2 mx-auto text-white p-4 rounded mb-8">
+            <div class="bg-red-600 md:w-1/2 mx-auto text-white p-4 rounded mb-8">
                 <strong>Whoops!</strong> There were some problems with your input.
             </div>
         @endif
