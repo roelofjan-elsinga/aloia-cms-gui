@@ -40,6 +40,7 @@ class FlatFileCmsServiceProvider extends ServiceProvider
                 Console\ViewsCommand::class,
                 Console\AppSecretGenerator::class,
                 Console\CreateAccount::class,
+                Console\SelfUpgradeCommand::class,
             ]);
         }
     }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "37e5b9808126527cefa17d2d5be18e84",
+    "content-hash": "1f1b2dfe0d5f126391d4ee8f8558452a",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1198,16 +1198,16 @@
         },
         {
             "name": "roelofjan-elsinga/flat-file-cms",
-            "version": "0.9.2",
+            "version": "0.9.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roelofjan-elsinga/flat-file-cms.git",
-                "reference": "ff185daf43a7e38b85f74d15e42340b198fdc848"
+                "reference": "947083e27d4557d4f042db19b7ca562f15876a27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roelofjan-elsinga/flat-file-cms/zipball/ff185daf43a7e38b85f74d15e42340b198fdc848",
-                "reference": "ff185daf43a7e38b85f74d15e42340b198fdc848",
+                "url": "https://api.github.com/repos/roelofjan-elsinga/flat-file-cms/zipball/947083e27d4557d4f042db19b7ca562f15876a27",
+                "reference": "947083e27d4557d4f042db19b7ca562f15876a27",
                 "shasum": ""
             },
             "require": {
@@ -1216,6 +1216,11 @@
                 "illuminate/console": "^5.7",
                 "illuminate/support": "^5.7",
                 "roelofjan-elsinga/content-to-html-parser": "^0.1.0"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "^1.6",
+                "orchestra/testbench": "^3.8",
+                "phpunit/phpunit": "^8.3"
             },
             "type": "library",
             "extra": {
@@ -1227,7 +1232,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "FlatFileCms\\": "src/"
+                    "FlatFileCms\\": "src/",
+                    "FlatFileCms\\Tests\\": "tests/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1246,7 +1252,7 @@
                 "file",
                 "laravel"
             ],
-            "time": "2019-08-07T08:39:33+00:00"
+            "time": "2019-08-12T16:17:42+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
