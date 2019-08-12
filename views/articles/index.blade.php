@@ -18,13 +18,13 @@
 
             @foreach($articles as $article)
 
-                <a href="{{route('articles.edit', $article['slug'])}}" class="flex mb-2 text-blue-900 no-underline">
-                    <div class="w-32">
+                <a href="{{route('articles.edit', $article['slug'])}}" class="flex mb-4 text-blue-900 no-underline">
+                    <div class="w-1/4 md:w-32">
                         @if(!empty($article['image']))
                             <img src="{{asset($article['image'])}}" alt="{{$article['title']}}" style="max-height: 75px;"/>
                         @endif
                     </div>
-                    <div class="px-4 py-2">
+                    <div class="w-3/4 px-4">
                         <h4 class="flex-1 font-bold">{{$article['title']}}</h4>
 
                         @if($article['isPublished'])
