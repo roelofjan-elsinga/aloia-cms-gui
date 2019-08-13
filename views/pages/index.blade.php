@@ -7,8 +7,13 @@
         <section class="flex-1 mr-4">
 
             <h1 class="mb-4">
-                {{_translate('EDIT_YOUR_PAGES')}}
+                {{_translate('MANAGE_PAGES')}}
             </h1>
+
+            <a href="{{route('pages.create')}}"
+               class="text-blue-800 mb-2 block underline">
+                {{_translate('CREATE_NEW_PAGE')}}
+            </a>
 
             @if(session()->has('updated_article') || session()->has('create_article'))
                 <div class="bg-green-600 text-white p-4 rounded mb-4">

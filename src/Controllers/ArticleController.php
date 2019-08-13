@@ -20,7 +20,7 @@ class ArticleController extends Controller
      */
     public function index(): ViewResponse
     {
-        $this->setTitle(_translate("EDIT_YOUR_ARTICLES"));
+        $this->setTitle(_translate("MANAGE_ARTICLES"));
 
         return View::make('flatfilecmsgui::articles.index', [
             'articles' => Article::all()

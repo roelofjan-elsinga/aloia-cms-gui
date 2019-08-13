@@ -22,7 +22,7 @@ class PagesController extends Controller
      */
     public function index(): ViewResponse
     {
-        $this->setTitle(_translate("EDIT_YOUR_PAGES"));
+        $this->setTitle(_translate("MANAGE_PAGES"));
 
         return View::make('flatfilecmsgui::pages.index', [
             'pages' => Page::all()
