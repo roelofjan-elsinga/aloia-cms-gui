@@ -79,4 +79,9 @@ return [
     "IS_IN_MENU" => "Is in het hoofdmenu",
     "MENU_NAME" => "Naam in het menu",
     "LOGOUT" => "Uitloggen",
+    "MANAGE_UPLOADED_FILES" => "Beheer geüploade bestanden",
+    "UPLOAD_A_NEW_FILE" => "Upload een nieuw bestand",
+    "UPLOAD_FILE" => "Upload bestand",
+    "FILE_UPLOADED" => "Het bestand is opgeslagen!",
+    "FILE_DELETED" => "Het bestand is verwijderd!",
 ];

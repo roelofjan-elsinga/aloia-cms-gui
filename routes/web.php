@@ -19,5 +19,6 @@ Route::group(['middleware' => 'fileAuth'], function() {
     Route::resource('media', 'MediaController', ['except' => ['show', 'edit', 'update']]);
     Route::resource('content-blocks', 'ContentBlocksController');
     Route::resource('taxonomy', 'TaxonomyController', ['except' => ['show', 'edit', 'create']]);
+    Route::resource('files', 'FileManagerController', ['except' => ['show', 'edit', 'update']]);
 
 });

@@ -79,4 +79,9 @@ return [
     "IS_IN_MENU" => "Is in menu",
     "MENU_NAME" => "Name in menu",
     "LOGOUT" => "Log out",
+    "MANAGE_UPLOADED_FILES" => "Manage uploaded files",
+    "UPLOAD_A_NEW_FILE" => "Upload a new file",
+    "UPLOAD_FILE" => "Upload file",
+    "FILE_UPLOADED" => "The file was uploaded successfully!",
+    "FILE_DELETED" => "The file was deleted successfully!",
 ];

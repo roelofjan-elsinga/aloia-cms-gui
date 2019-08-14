@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 
-class UpdatePageRequest extends FormRequest
+class UpdatePageRequest extends FormRequest implements PersistableFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -44,7 +44,7 @@ class UpdatePageRequest extends FormRequest
     /**
      * Update the article in the config and content files
      */
-    public function save()
+    public function save(): void
     {
         File::put(
             Config::get('flatfilecms.pages.folder_path') . "/{$this->get('original_slug')}.{$this->get('file_type')}",

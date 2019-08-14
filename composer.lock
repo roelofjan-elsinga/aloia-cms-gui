@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1f1b2dfe0d5f126391d4ee8f8558452a",
+    "content-hash": "264fd85fd5fc1a962ce4c8d31b06c7e4",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1198,16 +1198,16 @@
         },
         {
             "name": "roelofjan-elsinga/flat-file-cms",
-            "version": "0.9.5",
+            "version": "0.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roelofjan-elsinga/flat-file-cms.git",
-                "reference": "947083e27d4557d4f042db19b7ca562f15876a27"
+                "reference": "cdd3dffb0193f6e05a6bae1cfe1e7d753e206f15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roelofjan-elsinga/flat-file-cms/zipball/947083e27d4557d4f042db19b7ca562f15876a27",
-                "reference": "947083e27d4557d4f042db19b7ca562f15876a27",
+                "url": "https://api.github.com/repos/roelofjan-elsinga/flat-file-cms/zipball/cdd3dffb0193f6e05a6bae1cfe1e7d753e206f15",
+                "reference": "cdd3dffb0193f6e05a6bae1cfe1e7d753e206f15",
                 "shasum": ""
             },
             "require": {
@@ -1220,7 +1220,8 @@
             "require-dev": {
                 "mikey179/vfsstream": "^1.6",
                 "orchestra/testbench": "^3.8",
-                "phpunit/phpunit": "^8.3"
+                "phpunit/phpunit": "^8.3",
+                "spatie/phpunit-watcher": "^1.11"
             },
             "type": "library",
             "extra": {
@@ -1252,7 +1253,7 @@
                 "file",
                 "laravel"
             ],
-            "time": "2019-08-12T16:17:42+00:00"
+            "time": "2019-08-14T06:33:46+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

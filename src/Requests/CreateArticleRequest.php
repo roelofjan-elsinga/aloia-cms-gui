@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Config;
 use FlatFileCms\Article;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateArticleRequest extends FormRequest
+class CreateArticleRequest extends FormRequest implements PersistableFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -39,7 +39,7 @@ class CreateArticleRequest extends FormRequest
     /**
      * Update the article in the config and content files
      */
-    public function save()
+    public function save(): void
     {
         $folder_path = Config::get('flatfilecms.articles.folder_path');
 
