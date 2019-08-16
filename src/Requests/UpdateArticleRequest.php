@@ -3,6 +3,7 @@
 namespace FlatFileCms\GUI\Requests;
 
 use Carbon\Carbon;
+use FlatFileCms\GUI\Publish\PostPublisher;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 use FlatFileCms\Article;
@@ -53,6 +54,8 @@ class UpdateArticleRequest extends FormRequest implements PersistableFormRequest
             $this->renameFile("{$this->get('original_slug')}.md", "{$this->get('slug')}.md");
         }
 
+        $isPublished = $this->isAlreadyPublished($this->get('original_slug'));
+
         $this->updatePostAttributesForSlug($this->get('original_slug'), [
             'filename' => "{$this->get('slug')}.md",
             'description' => $this->get('description'),
@@ -61,6 +64,10 @@ class UpdateArticleRequest extends FormRequest implements PersistableFormRequest
             'isPublished' => $this->get('published') === "1",
             'isScheduled' => $this->get('scheduled') === "1",
         ]);
+
+        if(! $isPublished && $this->get('published') === "1") {
+            PostPublisher::forSlug($this->get('slug'))->publish();
+        }
     }
 
     /**
@@ -97,5 +104,22 @@ class UpdateArticleRequest extends FormRequest implements PersistableFormRequest
 
 
         Article::update($articles);
+    }
+
+    /**
+     * Determine whether the article is already published
+     *
+     * @param string $article_slug
+     * @return bool
+     */
+    private function isAlreadyPublished(string $article_slug): bool
+    {
+        $article = Article::all()
+            ->filter(function(Article $article) use ($article_slug) {
+                return $article->slug() === $article_slug;
+            })
+            ->first();
+
+        return $article->isPublished() ?? false;
     }
 }

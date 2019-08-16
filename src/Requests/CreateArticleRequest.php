@@ -2,6 +2,7 @@
 
 namespace FlatFileCms\GUI\Requests;
 
+use FlatFileCms\GUI\Publish\PostPublisher;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Config;
 use FlatFileCms\Article;
@@ -59,6 +60,10 @@ class CreateArticleRequest extends FormRequest implements PersistableFormRequest
             'isPublished' => $this->get('published') === "1",
             'isScheduled' => $this->get('scheduled') === "1",
         ]);
+
+        if($this->get('published') === "1") {
+            PostPublisher::forSlug($this->get('slug'))->publish();
+        }
     }
 
     /**
