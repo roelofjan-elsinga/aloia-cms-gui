@@ -76,6 +76,7 @@ class UpdatePageRequest extends FormRequest implements PersistableFormRequest
             'template_name' => $this->get('template_name'),
             'menu_name' => $this->get('menu_name'),
             'updateDate' => Carbon::now()->toDateTimeString(),
+            'sidebar' => $this->get('sidebar'),
         ]);
     }
 

@@ -137,6 +137,9 @@
             {!! Form::label('image', _translate('IMAGE_FOR_SOCIAL_MEDIA'), ['class' => 'label']) !!}
             {!! Form::text('image', null, ['class' => 'text-field']) !!}
 
+            {!! Form::label('sidebar', _translate('SIDEBAR_BLOCKS'), ['class' => 'label']) !!}
+            {!! Form::textarea('sidebar', null, ['class' => 'text-field', 'rows' => 5]) !!}
+
         </section>
 
     </div>

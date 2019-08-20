@@ -71,6 +71,7 @@ class CreatePageRequest extends FormRequest implements PersistableFormRequest
             'isScheduled' => $this->get('scheduled') === "1",
             'template_name' => $this->get('template_name'),
             'menu_name' => $this->get('menu_name'),
+            'sidebar' => $this->get('sidebar'),
         ]);
     }
 

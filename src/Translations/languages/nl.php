@@ -84,4 +84,6 @@ return [
     "UPLOAD_FILE" => "Upload bestand",
     "FILE_UPLOADED" => "Het bestand is opgeslagen!",
     "FILE_DELETED" => "Het bestand is verwijderd!",
+    "LINK" => "Link",
+    "SIDEBAR_BLOCKS" => "Blokken in de sidebar"
 ];

@@ -84,4 +84,6 @@ return [
     "UPLOAD_FILE" => "Upload file",
     "FILE_UPLOADED" => "The file was uploaded successfully!",
     "FILE_DELETED" => "The file was deleted successfully!",
+    "LINK" => "Link",
+    "SIDEBAR_BLOCKS" => "Sidebar blocks"
 ];

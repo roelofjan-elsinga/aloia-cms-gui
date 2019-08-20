@@ -29,22 +29,28 @@
 
             @foreach($files as $file)
 
-                <div class="flex bg-blue-100 p-2 rounded mb-2">
+                <div class="bg-blue-100 p-2 rounded mb-2">
 
-                    <span class="flex-1 font-bold text-blue-900">
-                        {{$file->basename()}}
-                    </span>
+                    <div class="flex">
+                        <div class="flex-1 font-bold text-blue-900 inline-block break-words">
+                            {{$file->basename()}}
+                        </div>
 
-                    <form action="{{route('files.destroy', $file->basename())}}" method="POST">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <form action="{{route('files.destroy', $file->basename())}}" method="POST">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">
 
-                        <button type="submit" class="bg-red-600 p-2 text-white rounded font-bold">
+                            <button type="submit" class="bg-red-600 p-2 text-white rounded font-bold">
 
-                            Delete
+                                Delete
 
-                        </button>
-                    </form>
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="text-sm text-blue-800 break-words">
+                        <strong>{{_translate('LINK')}}:</strong> {{url('files/' . $file->basename())}}
+                    </div>
 
                 </div>
 
