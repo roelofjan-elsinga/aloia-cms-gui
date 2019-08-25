@@ -37,6 +37,10 @@
                             </small>
                         </h4>
 
+                        <div>
+                            Published date: {{$article['postDate']->format('F jS, Y')}}
+                        </div>
+
                         @if($article['isPublished'])
                             <p class="status green">{{_translate('PUBLISHED')}}</p>
                         @endif
