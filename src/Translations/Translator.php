@@ -3,7 +3,6 @@
 
 namespace FlatFileCms\GUI\Translations;
 
-
 use Illuminate\Support\Facades\Config;
 
 class Translator
@@ -68,5 +67,4 @@ class Translator
     {
         return Config::get('flatfilecmsgui.language');
     }
-
 }

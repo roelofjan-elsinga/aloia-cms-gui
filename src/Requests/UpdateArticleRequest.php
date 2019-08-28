@@ -65,7 +65,7 @@ class UpdateArticleRequest extends FormRequest implements PersistableFormRequest
             'isScheduled' => $this->get('scheduled') === "1",
         ]);
 
-        if(! $isPublished && $this->get('published') === "1") {
+        if (! $isPublished && $this->get('published') === "1") {
             PostPublisher::forSlug($this->get('slug'))->publish();
         }
     }
@@ -95,7 +95,6 @@ class UpdateArticleRequest extends FormRequest implements PersistableFormRequest
         $articles = Article::raw()
             ->map(function ($article) use ($old_slug, $new_article_attributes) {
                 if (strpos($article['filename'], $old_slug) !== false) {
-
                     return array_merge($article, $new_article_attributes);
                 }
 
@@ -115,7 +114,7 @@ class UpdateArticleRequest extends FormRequest implements PersistableFormRequest
     private function isAlreadyPublished(string $article_slug): bool
     {
         $article = Article::all()
-            ->filter(function(Article $article) use ($article_slug) {
+            ->filter(function (Article $article) use ($article_slug) {
                 return $article->slug() === $article_slug;
             })
             ->first();

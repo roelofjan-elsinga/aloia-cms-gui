@@ -42,14 +42,12 @@ class ContentBlocksController extends Controller
                 Config::get('flatfilecms.content_blocks.folder_path')
             )
         )
-            ->map(function(string $file_path) {
-
+            ->map(function (string $file_path) {
                 return [
                     'name' => pathinfo($file_path, PATHINFO_FILENAME),
                     'extension' => pathinfo($file_path, PATHINFO_EXTENSION),
                     'path' => $file_path
                 ];
-
             });
     }
 
@@ -98,12 +96,12 @@ class ContentBlocksController extends Controller
         $this->setTitle(_translate_dynamic('EDIT_CONTENT_BLOCK', $name));
 
         $file_path = $this->getContentFiles()
-            ->filter(function(array $file) use ($name) {
+            ->filter(function (array $file) use ($name) {
                 return $file['name'] === $name;
             })
             ->first();
 
-        if(is_null($file_path)) {
+        if (is_null($file_path)) {
             App::abort(404);
         }
 
@@ -139,12 +137,12 @@ class ContentBlocksController extends Controller
     public function destroy(string $name): RedirectResponse
     {
         $file_path = $this->getContentFiles()
-            ->filter(function(array $file) use ($name) {
+            ->filter(function (array $file) use ($name) {
                 return $file['name'] === $name;
             })
             ->first();
 
-        if(is_null($file_path)) {
+        if (is_null($file_path)) {
             return Redirect::back()->with('error', 'not_found');
         }
 
@@ -152,5 +150,4 @@ class ContentBlocksController extends Controller
 
         return Redirect::route('content-blocks.index')->with('success', 'deleted');
     }
-
 }

@@ -28,7 +28,8 @@ class FlatFileCmsServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/flatfilecmsgui.php', 'flatfilecmsgui'
+            __DIR__.'/../config/flatfilecmsgui.php',
+            'flatfilecmsgui'
         );
 
         require "helpers.php";
@@ -88,5 +89,4 @@ class FlatFileCmsServiceProvider extends ServiceProvider
             $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
         });
     }
-
 }

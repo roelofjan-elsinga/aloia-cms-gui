@@ -3,7 +3,6 @@
 
 namespace FlatFileCms\GUI\Publish;
 
-
 use FlatFileCms\Article;
 use Illuminate\Support\Facades\Artisan;
 
@@ -51,5 +50,4 @@ class PostPublisher
 
         Artisan::call('flatfilecms:publish:posts');
     }
-
 }

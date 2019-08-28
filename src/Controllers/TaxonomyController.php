@@ -74,5 +74,4 @@ class TaxonomyController extends Controller
 
         return Redirect::route('taxonomy.index')->with('deleted', true);
     }
-
 }

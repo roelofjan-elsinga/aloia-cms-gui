@@ -96,5 +96,4 @@ class PagesController extends Controller
         return Redirect::route('pages.index')
             ->with('updated_article', true);
     }
-
 }

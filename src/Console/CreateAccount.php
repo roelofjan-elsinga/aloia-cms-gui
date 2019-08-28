@@ -31,15 +31,15 @@ class CreateAccount extends Command
         $user_name = $this->option('username');
         $password = $this->option('password');
 
-        if(empty($user_name)) {
+        if (empty($user_name)) {
             $user_name = $this->ask("Which username should the user have?");
         }
 
-        if(empty($password)) {
+        if (empty($password)) {
             $password = $this->ask("Which password should the user have?");
         }
 
-        if(empty($user_name) || empty($password)) {
+        if (empty($user_name) || empty($password)) {
             $this->error('You need to supply a username and password.');
             return;
         }

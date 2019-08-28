@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\View;
 
 class Controller
 {
-
     public function __construct()
     {
         View::share('title', 'Flat File CMS');
@@ -24,7 +23,7 @@ class Controller
      */
     protected function setTitle(string $title, bool $include_suffix = true): void
     {
-        if($include_suffix) {
+        if ($include_suffix) {
             $site_name = Config::get('app.name');
 
             $title .= " - {$site_name}";
@@ -32,5 +31,4 @@ class Controller
 
         View::share('title', $title);
     }
-
 }

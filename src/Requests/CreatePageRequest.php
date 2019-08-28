@@ -86,9 +86,7 @@ class CreatePageRequest extends FormRequest implements PersistableFormRequest
             ->push(\FlatFileCms\DataSource\Page::create($new_article_attributes)->toArray());
 
         if ($new_article_attributes['is_homepage']) {
-
             $articles = $this->markOtherPagesAsNotHomepage($articles, $new_article_attributes);
-
         }
 
         Page::update($articles);
@@ -105,7 +103,6 @@ class CreatePageRequest extends FormRequest implements PersistableFormRequest
     {
         $articles
             ->map(function (array $page) use ($new_article) {
-
                 if ($page['filename'] !== $new_article['filename']) {
                     $page['is_homepage'] = false;
                 }

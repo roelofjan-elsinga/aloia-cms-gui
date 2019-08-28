@@ -2,7 +2,6 @@
 
 namespace FlatFileCms\GUI\Requests;
 
-
 use Carbon\Carbon;
 use FlatFileCms\Page;
 use Illuminate\Foundation\Http\FormRequest;
@@ -105,7 +104,6 @@ class UpdatePageRequest extends FormRequest implements PersistableFormRequest
         $articles = Page::raw()
             ->map(function ($article) use ($old_slug, $new_article_attributes) {
                 if (strpos($article['filename'], $old_slug) !== false) {
-
                     return array_merge($article, $new_article_attributes);
                 }
 
@@ -113,9 +111,7 @@ class UpdatePageRequest extends FormRequest implements PersistableFormRequest
             });
 
         if ($new_article_attributes['is_homepage']) {
-
             $articles = $this->markOtherPagesAsNotHomepage($articles, $new_article_attributes);
-
         }
 
         Page::update($articles);
@@ -132,7 +128,6 @@ class UpdatePageRequest extends FormRequest implements PersistableFormRequest
     {
         $articles
             ->map(function (array $page) use ($new_article) {
-
                 if ($page['filename'] !== $new_article['filename']) {
                     $page['is_homepage'] = false;
                 }

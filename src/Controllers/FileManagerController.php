@@ -64,5 +64,4 @@ class FileManagerController extends Controller
 
         return Redirect::route('files.index')->with('delete_success', true);
     }
-
 }

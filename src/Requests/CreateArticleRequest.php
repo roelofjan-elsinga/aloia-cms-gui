@@ -44,7 +44,7 @@ class CreateArticleRequest extends FormRequest implements PersistableFormRequest
     {
         $folder_path = Config::get('flatfilecms.articles.folder_path');
 
-        if(! file_exists($folder_path)) {
+        if (! file_exists($folder_path)) {
             mkdir($folder_path);
         }
 
@@ -61,7 +61,7 @@ class CreateArticleRequest extends FormRequest implements PersistableFormRequest
             'isScheduled' => $this->get('scheduled') === "1",
         ]);
 
-        if($this->get('published') === "1") {
+        if ($this->get('published') === "1") {
             PostPublisher::forSlug($this->get('slug'))->publish();
         }
     }

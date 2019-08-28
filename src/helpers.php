@@ -3,8 +3,7 @@
 use FlatFileCms\GUI\Translations\Translator;
 use FlatFileCms\GUI\User;
 
-
-if(!function_exists('_translate')) {
+if (!function_exists('_translate')) {
 
     /**
      * Return the translation for the given identifier
@@ -16,10 +15,9 @@ if(!function_exists('_translate')) {
     {
         return Translator::forIdentifier($identifier)->translate();
     }
-
 }
 
-if(!function_exists('_translate_dynamic')) {
+if (!function_exists('_translate_dynamic')) {
 
     /**
      * Return the translation for the given identifier and replace the dnynamic aspect
@@ -34,10 +32,9 @@ if(!function_exists('_translate_dynamic')) {
 
         return sprintf($translation, $replacer);
     }
-
 }
 
-if(!function_exists('user')) {
+if (!function_exists('user')) {
 
     /**
      * Get the user from the current request
@@ -48,5 +45,4 @@ if(!function_exists('user')) {
     {
         return User::fromRequest(request());
     }
-
 }
