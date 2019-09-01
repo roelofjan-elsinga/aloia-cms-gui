@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5106b6852061fdc2514faacd93ddbad2",
+    "content-hash": "5ded4fa0e11a862cd1569ef15f8172c0",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1349,16 +1349,16 @@
         },
         {
             "name": "roelofjan-elsinga/flat-file-cms",
-            "version": "0.11.0",
+            "version": "0.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roelofjan-elsinga/flat-file-cms.git",
-                "reference": "ee3adc8da669d70895c09290d2e89654c79c0c65"
+                "reference": "69aefa52096c8df7ba9571b2e4645a1a58426d47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roelofjan-elsinga/flat-file-cms/zipball/ee3adc8da669d70895c09290d2e89654c79c0c65",
-                "reference": "ee3adc8da669d70895c09290d2e89654c79c0c65",
+                "url": "https://api.github.com/repos/roelofjan-elsinga/flat-file-cms/zipball/69aefa52096c8df7ba9571b2e4645a1a58426d47",
+                "reference": "69aefa52096c8df7ba9571b2e4645a1a58426d47",
                 "shasum": ""
             },
             "require": {
@@ -1369,6 +1369,8 @@
                 "roelofjan-elsinga/content-to-html-parser": "^0.1.0"
             },
             "require-dev": {
+                "brainmaestro/composer-git-hooks": "^2.7",
+                "friendsofphp/php-cs-fixer": "^2.15",
                 "mikey179/vfsstream": "^1.6",
                 "orchestra/testbench": "^3.8",
                 "phpunit/phpunit": "^8.3",
@@ -1376,6 +1378,16 @@
             },
             "type": "library",
             "extra": {
+                "hooks": {
+                    "pre-commit": [
+                        "echo committing as $(git config user.name)",
+                        "./vendor/bin/php-cs-fixer fix . --rules=@PSR2"
+                    ],
+                    "pre-push": [
+                        "./vendor/bin/php-cs-fixer fix --dry-run . --rules=@PSR2"
+                    ],
+                    "post-merge": "composer install"
+                },
                 "laravel": {
                     "providers": [
                         "FlatFileCms\\FlatFileCmsServiceProvider"
@@ -1404,7 +1416,7 @@
                 "file",
                 "laravel"
             ],
-            "time": "2019-08-28T08:19:56+00:00"
+            "time": "2019-09-01T09:11:48+00:00"
         },
         {
             "name": "roelofjan-elsinga/flat-file-cms-publish",

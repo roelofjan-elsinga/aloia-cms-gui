@@ -27,6 +27,8 @@
                     <div class="w-1/4 md:w-32">
                         @if(!empty($article['image']))
                             <img src="{{asset($article['image'])}}" alt="{{$article['title']}}" style="max-height: 75px;"/>
+                        @else
+                            <img src="https://via.placeholder.com/115x75?text=Featured%20image" alt="Placeholder featured image" style="max-height: 75px;"/>
                         @endif
                     </div>
                     <div class="w-3/4 px-4">
@@ -38,7 +40,7 @@
                         </h4>
 
                         <div>
-                            Published date: {{$article['postDate']->format('F jS, Y')}}
+                            Publish date: {{$article['postDate']->format('F jS, Y')}}
                         </div>
 
                         @if($article['isPublished'])
