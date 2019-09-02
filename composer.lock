@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5ded4fa0e11a862cd1569ef15f8172c0",
+    "content-hash": "102759b6bb28d0d99d04ed8f94cc7f05",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1349,16 +1349,16 @@
         },
         {
             "name": "roelofjan-elsinga/flat-file-cms",
-            "version": "0.11.1",
+            "version": "0.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roelofjan-elsinga/flat-file-cms.git",
-                "reference": "69aefa52096c8df7ba9571b2e4645a1a58426d47"
+                "reference": "73d1392bed9067193afff19b1afa2ad07c3a0728"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roelofjan-elsinga/flat-file-cms/zipball/69aefa52096c8df7ba9571b2e4645a1a58426d47",
-                "reference": "69aefa52096c8df7ba9571b2e4645a1a58426d47",
+                "url": "https://api.github.com/repos/roelofjan-elsinga/flat-file-cms/zipball/73d1392bed9067193afff19b1afa2ad07c3a0728",
+                "reference": "73d1392bed9067193afff19b1afa2ad07c3a0728",
                 "shasum": ""
             },
             "require": {
@@ -1416,29 +1416,31 @@
                 "file",
                 "laravel"
             ],
-            "time": "2019-09-01T09:11:48+00:00"
+            "time": "2019-09-02T18:55:58+00:00"
         },
         {
             "name": "roelofjan-elsinga/flat-file-cms-publish",
-            "version": "0.2.3",
+            "version": "0.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roelofjan-elsinga/flat-file-cms-publish.git",
-                "reference": "720efc6c3110abfc6cacdd1e26613cba6dc38e35"
+                "reference": "b982fbf4fc7a9a36f5cc4c824427ecb7eaec7005"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roelofjan-elsinga/flat-file-cms-publish/zipball/720efc6c3110abfc6cacdd1e26613cba6dc38e35",
-                "reference": "720efc6c3110abfc6cacdd1e26613cba6dc38e35",
+                "url": "https://api.github.com/repos/roelofjan-elsinga/flat-file-cms-publish/zipball/b982fbf4fc7a9a36f5cc4c824427ecb7eaec7005",
+                "reference": "b982fbf4fc7a9a36f5cc4c824427ecb7eaec7005",
                 "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*",
                 "roelofjan-elsinga/atom-feed-generator": "^0.1.0",
-                "roelofjan-elsinga/flat-file-cms": "^0.11.0",
+                "roelofjan-elsinga/flat-file-cms": "^0.12.0",
                 "roelofjan-elsinga/sitemap-generator": "^0.3.0"
             },
             "require-dev": {
+                "brainmaestro/composer-git-hooks": "^2.7",
+                "friendsofphp/php-cs-fixer": "^2.15",
                 "mikey179/vfsstream": "^1.6",
                 "orchestra/testbench": "^3.8",
                 "phpunit/phpunit": "^8.3",
@@ -1446,6 +1448,16 @@
             },
             "type": "library",
             "extra": {
+                "hooks": {
+                    "pre-commit": [
+                        "echo committing as $(git config user.name)",
+                        "./vendor/bin/php-cs-fixer fix . --rules=@PSR2"
+                    ],
+                    "pre-push": [
+                        "./vendor/bin/php-cs-fixer fix --dry-run . --rules=@PSR2"
+                    ],
+                    "post-merge": "composer install"
+                },
                 "laravel": {
                     "providers": [
                         "FlatFileCms\\Publish\\ServiceProvider"
@@ -1474,7 +1486,7 @@
                 "file",
                 "laravel"
             ],
-            "time": "2019-08-28T08:25:01+00:00"
+            "time": "2019-09-02T19:02:21+00:00"
         },
         {
             "name": "roelofjan-elsinga/sitemap-generator",
