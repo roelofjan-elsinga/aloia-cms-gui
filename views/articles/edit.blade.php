@@ -63,4 +63,12 @@
 
     {!! Form::close() !!}
 
+    <div class="">
+        {!! Form::open(['route' => ['articles.destroy', $article->slug], 'method' => 'delete']) !!}
+
+        <button type="submit" class="link text-red-500" onclick="return confirm('Are you sure you want to delete this item?');">Delete this article</button>
+
+        {!! Form::close() !!}
+    </div>
+
 @endsection

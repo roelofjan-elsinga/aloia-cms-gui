@@ -60,7 +60,7 @@ class PagesController extends Controller
         $request->save();
 
         return Redirect::route('pages.index')
-            ->with('create_article', true);
+            ->with('created_page', true);
     }
 
     /**
@@ -94,6 +94,20 @@ class PagesController extends Controller
         $request->save();
 
         return Redirect::route('pages.index')
-            ->with('updated_article', true);
+            ->with('updated_page', true);
+    }
+
+    /**
+     * Delete an article for the given slug
+     *
+     * @param string $slug
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy(string $slug)
+    {
+        Page::deleteBySlug($slug);
+
+        return Redirect::route('pages.index')
+            ->with('deleted_page', true);
     }
 }

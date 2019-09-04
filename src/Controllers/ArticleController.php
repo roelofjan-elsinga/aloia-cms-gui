@@ -62,7 +62,7 @@ class ArticleController extends Controller
         $request->save();
 
         return Redirect::route('articles.index')
-            ->with('create_article', true);
+            ->with('created_article', true);
     }
 
     /**
@@ -96,5 +96,19 @@ class ArticleController extends Controller
 
         return Redirect::route('articles.index')
             ->with('updated_article', true);
+    }
+
+    /**
+     * Delete an article for the given slug
+     *
+     * @param string $slug
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy(string $slug)
+    {
+        Article::deleteBySlug($slug);
+
+        return Redirect::route('articles.index')
+            ->with('deleted_article', true);
     }
 }

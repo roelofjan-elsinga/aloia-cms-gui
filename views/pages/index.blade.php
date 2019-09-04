@@ -15,7 +15,7 @@
                 {{_translate('CREATE_NEW_PAGE')}}
             </a>
 
-            @if(session()->has('updated_article') || session()->has('create_article'))
+            @if(session()->has('updated_page') || session()->has('created_page') || session()->has('deleted_page'))
                 <div class="bg-green-600 text-white p-4 rounded mb-4">
                     <strong>{{_translate('GREAT')}}!</strong> {{_translate('PAGE_SAVED')}}
                 </div>

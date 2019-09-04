@@ -128,4 +128,12 @@
 
     {!! Form::close() !!}
 
+    <div class="">
+        {!! Form::open(['route' => ['pages.destroy', $page_resource->slug()], 'method' => 'delete']) !!}
+
+        <button type="submit" class="link text-red-500" onclick="return confirm('Are you sure you want to delete this item?');">Delete this page</button>
+
+        {!! Form::close() !!}
+    </div>
+
 @endsection()

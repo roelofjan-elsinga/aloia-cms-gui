@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "102759b6bb28d0d99d04ed8f94cc7f05",
+    "content-hash": "0e8b842adf5d4759baed23f11a2a7010",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -454,16 +454,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.8.34",
+            "version": "v5.8.35",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "c3a870b96c7afe5174f486af74768ccfddeec77b"
+                "reference": "5a9e4d241a8b815e16c9d2151e908992c38db197"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/c3a870b96c7afe5174f486af74768ccfddeec77b",
-                "reference": "c3a870b96c7afe5174f486af74768ccfddeec77b",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/5a9e4d241a8b815e16c9d2151e908992c38db197",
+                "reference": "5a9e4d241a8b815e16c9d2151e908992c38db197",
                 "shasum": ""
             },
             "require": {
@@ -546,6 +546,7 @@
             "suggest": {
                 "aws/aws-sdk-php": "Required to use the SQS queue driver and SES mail driver (^3.0).",
                 "doctrine/dbal": "Required to rename columns and drop SQLite columns (^2.6).",
+                "ext-gd": "Required to use Illuminate\\Http\\Testing\\FileFactory::image().",
                 "ext-pcntl": "Required to use all features of the queue worker.",
                 "ext-posix": "Required to use all features of the queue worker.",
                 "filp/whoops": "Required for friendly error pages in development (^2.1.4).",
@@ -597,7 +598,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2019-08-27T14:35:59+00:00"
+            "time": "2019-09-03T16:44:30+00:00"
         },
         {
             "name": "league/flysystem",
@@ -763,16 +764,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.23.1",
+            "version": "2.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "767617a047e5b8b8b3b0b6023a2650847ed7df02"
+                "reference": "934459c5ac0658bc765ad1e53512c7c77adcac29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/767617a047e5b8b8b3b0b6023a2650847ed7df02",
-                "reference": "767617a047e5b8b8b3b0b6023a2650847ed7df02",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/934459c5ac0658bc765ad1e53512c7c77adcac29",
+                "reference": "934459c5ac0658bc765ad1e53512c7c77adcac29",
                 "shasum": ""
             },
             "require": {
@@ -826,20 +827,20 @@
                 "datetime",
                 "time"
             ],
-            "time": "2019-08-17T13:57:34+00:00"
+            "time": "2019-08-31T16:37:55+00:00"
         },
         {
             "name": "opis/closure",
-            "version": "3.3.1",
+            "version": "3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opis/closure.git",
-                "reference": "92927e26d7fc3f271efe1f55bdbb073fbb2f0722"
+                "reference": "60a97fff133b1669a5b1776aa8ab06db3f3962b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opis/closure/zipball/92927e26d7fc3f271efe1f55bdbb073fbb2f0722",
-                "reference": "92927e26d7fc3f271efe1f55bdbb073fbb2f0722",
+                "url": "https://api.github.com/repos/opis/closure/zipball/60a97fff133b1669a5b1776aa8ab06db3f3962b7",
+                "reference": "60a97fff133b1669a5b1776aa8ab06db3f3962b7",
                 "shasum": ""
             },
             "require": {
@@ -887,7 +888,7 @@
                 "serialization",
                 "serialize"
             ],
-            "time": "2019-07-09T21:58:11+00:00"
+            "time": "2019-09-02T21:07:33+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -1349,16 +1350,16 @@
         },
         {
             "name": "roelofjan-elsinga/flat-file-cms",
-            "version": "0.12.0",
+            "version": "0.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roelofjan-elsinga/flat-file-cms.git",
-                "reference": "73d1392bed9067193afff19b1afa2ad07c3a0728"
+                "reference": "26a12f07db36d847b77e03acfb31146b74b343ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roelofjan-elsinga/flat-file-cms/zipball/73d1392bed9067193afff19b1afa2ad07c3a0728",
-                "reference": "73d1392bed9067193afff19b1afa2ad07c3a0728",
+                "url": "https://api.github.com/repos/roelofjan-elsinga/flat-file-cms/zipball/26a12f07db36d847b77e03acfb31146b74b343ea",
+                "reference": "26a12f07db36d847b77e03acfb31146b74b343ea",
                 "shasum": ""
             },
             "require": {
@@ -1416,26 +1417,26 @@
                 "file",
                 "laravel"
             ],
-            "time": "2019-09-02T18:55:58+00:00"
+            "time": "2019-09-04T18:05:56+00:00"
         },
         {
             "name": "roelofjan-elsinga/flat-file-cms-publish",
-            "version": "0.2.4",
+            "version": "0.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roelofjan-elsinga/flat-file-cms-publish.git",
-                "reference": "b982fbf4fc7a9a36f5cc4c824427ecb7eaec7005"
+                "reference": "e5883b3c1c8fcb9acdf9cbaed818d9137cb6f551"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roelofjan-elsinga/flat-file-cms-publish/zipball/b982fbf4fc7a9a36f5cc4c824427ecb7eaec7005",
-                "reference": "b982fbf4fc7a9a36f5cc4c824427ecb7eaec7005",
+                "url": "https://api.github.com/repos/roelofjan-elsinga/flat-file-cms-publish/zipball/e5883b3c1c8fcb9acdf9cbaed818d9137cb6f551",
+                "reference": "e5883b3c1c8fcb9acdf9cbaed818d9137cb6f551",
                 "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*",
                 "roelofjan-elsinga/atom-feed-generator": "^0.1.0",
-                "roelofjan-elsinga/flat-file-cms": "^0.12.0",
+                "roelofjan-elsinga/flat-file-cms": "~0.12",
                 "roelofjan-elsinga/sitemap-generator": "^0.3.0"
             },
             "require-dev": {
@@ -1486,7 +1487,7 @@
                 "file",
                 "laravel"
             ],
-            "time": "2019-09-02T19:02:21+00:00"
+            "time": "2019-09-04T18:15:48+00:00"
         },
         {
             "name": "roelofjan-elsinga/sitemap-generator",
@@ -3007,16 +3008,16 @@
     "packages-dev": [
         {
             "name": "brainmaestro/composer-git-hooks",
-            "version": "v2.7.1",
+            "version": "v2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/BrainMaestro/composer-git-hooks.git",
-                "reference": "daf8ab1ad2d80255a8bd77dc266b481f0ac24334"
+                "reference": "02f95c83bf87a593899789c6ad5bb12bb66f67b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BrainMaestro/composer-git-hooks/zipball/daf8ab1ad2d80255a8bd77dc266b481f0ac24334",
-                "reference": "daf8ab1ad2d80255a8bd77dc266b481f0ac24334",
+                "url": "https://api.github.com/repos/BrainMaestro/composer-git-hooks/zipball/02f95c83bf87a593899789c6ad5bb12bb66f67b2",
+                "reference": "02f95c83bf87a593899789c6ad5bb12bb66f67b2",
                 "shasum": ""
             },
             "require": {
@@ -3024,8 +3025,9 @@
                 "symfony/console": "^3.2 || ^4.0"
             },
             "require-dev": {
+                "ext-json": "*",
                 "friendsofphp/php-cs-fixer": "^2.9",
-                "phpunit/phpunit": "^5.7|^7.0"
+                "phpunit/phpunit": "^5.7 || ^7.0"
             },
             "bin": [
                 "cghooks"
@@ -3036,10 +3038,11 @@
                     "pre-commit": "composer check-style",
                     "pre-push": [
                         "composer test",
-                        "appver=$(grep -o -P '\\d.\\d.\\d' cghooks)",
-                        "tag=$(git tag --sort=-v:refname | head -n 1 | tr -d v)",
-                        "if [ \"$tag\" != \"$appver\" ]; then",
-                        "echo \"The most recent tag v$tag does not match the application version $appver\n\"",
+                        "appver=$(grep -o -E '\\d.\\d.\\d' cghooks)",
+                        "tag=$(git describe --tags --abbrev=0)",
+                        "if [ \"$tag\" != \"v$appver\" ]; then",
+                        "echo \"The most recent tag $tag does not match the application version $appver\\n\"",
+                        "tag=${tag#v}",
                         "sed -i -E \"s/$appver/$tag/\" cghooks",
                         "exit 1",
                         "fi"
@@ -3070,7 +3073,7 @@
                 "composer",
                 "git"
             ],
-            "time": "2019-07-01T07:40:44+00:00"
+            "time": "2019-09-02T15:42:37+00:00"
         },
         {
             "name": "composer/semver",
@@ -3304,16 +3307,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v2.15.2",
+            "version": "v2.15.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "c9d30fddfa3feb8b82663104864224f2ce7a3675"
+                "reference": "705490b0f282f21017d73561e9498d2b622ee34c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/c9d30fddfa3feb8b82663104864224f2ce7a3675",
-                "reference": "c9d30fddfa3feb8b82663104864224f2ce7a3675",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/705490b0f282f21017d73561e9498d2b622ee34c",
+                "reference": "705490b0f282f21017d73561e9498d2b622ee34c",
                 "shasum": ""
             },
             "require": {
@@ -3343,9 +3346,10 @@
                 "php-cs-fixer/accessible-object": "^1.0",
                 "php-cs-fixer/phpunit-constraint-isidenticalstring": "^1.1",
                 "php-cs-fixer/phpunit-constraint-xmlmatchesxsd": "^1.1",
-                "phpunit/phpunit": "^5.7.27 || ^6.5.8 || ^7.1",
+                "phpunit/phpunit": "^5.7.27 || ^6.5.14 || ^7.1",
                 "phpunitgoodpractices/traits": "^1.8",
-                "symfony/phpunit-bridge": "^4.3"
+                "symfony/phpunit-bridge": "^4.3",
+                "symfony/yaml": "^3.0 || ^4.0"
             },
             "suggest": {
                 "ext-mbstring": "For handling non-UTF8 characters in cache signature.",
@@ -3388,7 +3392,7 @@
                 }
             ],
             "description": "A tool to automatically fix PHP code style",
-            "time": "2019-08-27T16:03:01+00:00"
+            "time": "2019-08-31T12:51:54+00:00"
         },
         {
             "name": "fzaninotto/faker",

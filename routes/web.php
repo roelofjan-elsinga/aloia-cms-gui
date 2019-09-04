@@ -11,8 +11,8 @@ Route::group(['middleware' => 'fileAuth'], function () {
     Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@index']);
     Route::post('logout', ['as' => 'authenticate.logout', 'uses' => 'AuthenticationController@logout']);
 
-    Route::resource('articles', 'ArticleController', ['except' => ['show', 'destroy']]);
-    Route::resource('pages', 'PagesController', ['except' => ['show', 'destroy']]);
+    Route::resource('articles', 'ArticleController', ['except' => ['show']]);
+    Route::resource('pages', 'PagesController', ['except' => ['show']]);
     Route::resource('media', 'MediaController', ['except' => ['show', 'edit', 'update']]);
     Route::resource('content-blocks', 'ContentBlocksController');
     Route::resource('taxonomy', 'TaxonomyController', ['except' => ['show', 'edit', 'create']]);

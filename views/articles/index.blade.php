@@ -15,7 +15,7 @@
                 {{_translate('CREATE_NEW_ARTICLE')}}
             </a>
 
-            @if(session()->has('updated_article') || session()->has('create_article'))
+            @if(session()->has('updated_article') || session()->has('created_article') || session()->has('deleted_article'))
                 <div class="bg-green-600 text-white p-4 rounded mb-4">
                     <strong>{{_translate('GREAT')}}!</strong> {{_translate('ARTICLE_UPDATED_SUCCESS')}}
                 </div>
