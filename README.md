@@ -1,11 +1,10 @@
-<p align="center">
+# Flat File CMS GUI
+
 <a href="https://travis-ci.com/roelofjan-elsinga/flat-file-cms-gui"><img src="https://travis-ci.com/roelofjan-elsinga/flat-file-cms-gui.svg" alt="Build Status"></a>
+<img src="https://github.styleci.io/repos/193145501/shield" alt="StyleCI Status">
 <a href="https://packagist.org/packages/roelofjan-elsinga/flat-file-cms-gui"><img src="https://poser.pugx.org/roelofjan-elsinga/flat-file-cms-gui/downloads" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/roelofjan-elsinga/flat-file-cms-gui"><img src="https://poser.pugx.org/roelofjan-elsinga/flat-file-cms-gui/v/stable" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/roelofjan-elsinga/flat-file-cms-gui"><img src="https://poser.pugx.org/roelofjan-elsinga/flat-file-cms-gui/license" alt="License"></a>
-</p>
-
-# Flat File CMS GUI
 
 This is the official Graphical User Interface (GUI) for the Flat File CMS package. 
 This package includes the latest version of the Flat File CMS, Authentication, User creation, 
