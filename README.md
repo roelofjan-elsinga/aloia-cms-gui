@@ -1,11 +1,11 @@
-<p align="center">
-<a href="https://travis-ci.com/roelofjan-elsinga/flat-file-cms-gui"><img src="https://travis-ci.com/roelofjan-elsinga/flat-file-cms-gui.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/roelofjan-elsinga/flat-file-cms-gui"><img src="https://poser.pugx.org/roelofjan-elsinga/flat-file-cms-gui/downloads" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/roelofjan-elsinga/flat-file-cms-gui"><img src="https://poser.pugx.org/roelofjan-elsinga/flat-file-cms-gui/v/stable" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/roelofjan-elsinga/flat-file-cms-gui"><img src="https://poser.pugx.org/roelofjan-elsinga/flat-file-cms-gui/license" alt="License"></a>
-</p>
-
 # Flat File CMS GUI
+
+[![Build status](https://travis-ci.com/roelofjan-elsinga/flat-file-cms-gui.svg)](https://travis-ci.com/roelofjan-elsinga/flat-file-cms-gui)
+[![StyleCI Status](https://github.styleci.io/repos/193145501/shield)](https://github.styleci.io/repos/193145501)
+[![Code coverage](https://codecov.io/gh/roelofjan-elsinga/flat-file-cms-gui/branch/master/graph/badge.svg)](https://codecov.io/gh/roelofjan-elsinga/flat-file-cms-gui)
+[![Total Downloads](https://poser.pugx.org/roelofjan-elsinga/flat-file-cms-gui/downloads)](https://packagist.org/packages/roelofjan-elsinga/flat-file-cms-gui)
+[![Latest Stable Version](https://poser.pugx.org/roelofjan-elsinga/flat-file-cms-gui/v/stable)](https://packagist.org/packages/roelofjan-elsinga/flat-file-cms-gui)
+[![License](https://poser.pugx.org/roelofjan-elsinga/flat-file-cms-gui/license)](https://packagist.org/packages/roelofjan-elsinga/flat-file-cms-gui)
 
 This is the official Graphical User Interface (GUI) for the Flat File CMS package. 
 This package includes the latest version of the Flat File CMS, Authentication, User creation, 
