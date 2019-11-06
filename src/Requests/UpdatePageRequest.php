@@ -57,6 +57,12 @@ class UpdatePageRequest extends FormRequest implements PersistableFormRequest
             );
         }
 
+        $meta_data = !is_null($this->get('meta_data')) ? json_decode($this->get('meta_data'), true) : [];
+
+        if ($this->get('sidebar')) {
+            $meta_data['sidebar'] = $this->get('sidebar');
+        }
+
         $this->updatePostAttributesForSlug($this->get('original_slug'), [
             'title' => $this->get('title'),
             'filename' => "{$this->get('slug')}.{$this->get('file_type')}",
@@ -75,7 +81,7 @@ class UpdatePageRequest extends FormRequest implements PersistableFormRequest
             'template_name' => $this->get('template_name'),
             'menu_name' => $this->get('menu_name'),
             'updateDate' => Carbon::now()->toDateTimeString(),
-            'sidebar' => $this->get('sidebar'),
+            'meta_data' => $meta_data,
         ]);
     }
 
@@ -103,7 +109,7 @@ class UpdatePageRequest extends FormRequest implements PersistableFormRequest
     {
         $articles = Page::raw()
             ->map(function ($article) use ($old_slug, $new_article_attributes) {
-                preg_match("/{$old_slug}\.([a-z]{2,4})/", $article['filename'], $matches);
+                preg_match("/^{$old_slug}\.([a-z]{2,4})/", $article['filename'], $matches);
 
                 if (count($matches) > 0) {
                     return array_merge($article, $new_article_attributes);

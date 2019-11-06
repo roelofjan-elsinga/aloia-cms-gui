@@ -54,6 +54,14 @@ class CreatePageRequest extends FormRequest implements PersistableFormRequest
             trim($this->get('content'))
         );
 
+        $meta_data = [];
+
+        if ($this->get('sidebar')) {
+            $meta_data = [
+                'sidebar' => $this->get('sidebar')
+            ];
+        }
+
         $this->savePostAttributes([
             'title' => $this->get('title'),
             'filename' => "{$this->get('slug')}.{$this->get('file_type')}",
@@ -71,7 +79,7 @@ class CreatePageRequest extends FormRequest implements PersistableFormRequest
             'isScheduled' => $this->get('scheduled') === "1",
             'template_name' => $this->get('template_name'),
             'menu_name' => $this->get('menu_name'),
-            'sidebar' => $this->get('sidebar'),
+            'meta_data' => $meta_data,
         ]);
     }
 

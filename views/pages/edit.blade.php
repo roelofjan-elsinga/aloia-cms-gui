@@ -14,6 +14,7 @@
             {!! Form::hidden('thumbnail', null) !!}
             {!! Form::hidden('post_date', null) !!}
             {!! Form::hidden('template_name', $page_resource->templateName()) !!}
+            {!! Form::hidden('meta_data', !is_null($page_resource->metaData()) ? json_encode($page_resource->metaData()) : null) !!}
 
             {!! Form::label('title', _translate('PAGE_TITLE') . ' *', ['class' => 'label']) !!}
             {!! Form::text('title', $page_resource->title(), ['class' => 'text-field']) !!}
