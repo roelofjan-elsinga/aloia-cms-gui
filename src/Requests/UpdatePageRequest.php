@@ -103,7 +103,9 @@ class UpdatePageRequest extends FormRequest implements PersistableFormRequest
     {
         $articles = Page::raw()
             ->map(function ($article) use ($old_slug, $new_article_attributes) {
-                if (strpos($article['filename'], $old_slug) !== false) {
+                preg_match("/{$old_slug}\.([a-z]{2,4})/", $article['filename'], $matches);
+
+                if (count($matches) > 0) {
                     return array_merge($article, $new_article_attributes);
                 }
 
