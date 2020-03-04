@@ -4,7 +4,9 @@
 
     <h1 class="mb-8 text-xl font-semibold">{{_translate_dynamic('EDIT_ARTICLE', $page_resource->title())}}</h1>
 
-    {!! Form::open(['route' => ['pages.update', $page_resource->slug()], 'method' => 'put']) !!}
+    @include("flatfilecmsgui::blocks.error-message")
+
+    {!! Form::open(['route' => ['pages.update', $page_resource->url()], 'method' => 'put']) !!}
 
     <div class="flex">
         <section class="w-2/3 pr-4">
@@ -28,22 +30,22 @@
 
             <div class="mb-4">
                 @if($file_type === 'html')
-                    @include('flatfilecmsgui::blocks.ckeditor', ['name' => 'content', 'value' => $page_resource->rawContent()])
+                    @include('flatfilecmsgui::blocks.ckeditor', ['name' => 'content', 'value' => $page_resource->rawBody()])
                 @else
-                    @include('flatfilecmsgui::blocks.simplemde', ['name' => 'content', 'value' => $page_resource->rawContent()])
+                    @include('flatfilecmsgui::blocks.simplemde', ['name' => 'content', 'value' => $page_resource->rawBody()])
                 @endif
             </div>
 
-            {!! Form::hidden('original_slug', $page_resource->slug()) !!}
-            {!! Form::label('slug', 'URL *', ['class' => 'label', 'placeholder' => 'example-url']) !!}
-            {!! Form::text('slug', $page_resource->slug(), ['class' => 'text-field', 'placeholder' => _translate('EXAMPLE_URL_PLACEHOLDER')]) !!}
+            {!! Form::hidden('original_url', $page_resource->url()) !!}
+            {!! Form::label('url', 'URL *', ['class' => 'label', 'placeholder' => 'example-url']) !!}
+            {!! Form::text('url', $page_resource->url(), ['class' => 'text-field', 'placeholder' => _translate('EXAMPLE_URL_PLACEHOLDER')]) !!}
 
             <div class="my-4">
-                {!! Form::hidden('published', "0") !!}
+                {!! Form::hidden('is_published', "0") !!}
 
-                {!! Form::checkbox('published', "1", $page_resource->isPublished()) !!}
+                {!! Form::checkbox('is_published', "1", $page_resource->isPublished()) !!}
 
-                {!! Form::label('published', _translate('PAGE_IS_PUBLISHED')) !!}
+                {!! Form::label('is_published', _translate('PAGE_IS_PUBLISHED')) !!}
             </div>
 
             <div class="my-4">
@@ -90,39 +92,20 @@
 
         <section class="w-1/3 bg-gray-200 p-4 rounded-lg mb-8">
 
-            {{--{!! Form::label('template_name', 'Page Template *', ['class' => 'label']) !!}--}}
-            {{--{!! Form::text('template_name', $page_resource->templateName(), ['class' => 'text-field']) !!}--}}
-
             {!! Form::label('description', _translate('SEO_DESCRIPTION') . ' *', ['class' => 'label']) !!}
             {!! Form::textarea('description', $page_resource->description(), ['class' => 'text-field', 'rows' => 5]) !!}
 
             {!! Form::label('summary', _translate('SEO_SUMMARY') . ' *', ['class' => 'label']) !!}
             {!! Form::textarea('summary', $page_resource->summary(), ['class' => 'text-field', 'rows' => 3]) !!}
 
-            {{--{!! Form::label('keywords', 'Keywords', ['class' => 'label']) !!}--}}
-            {{--{!! Form::text('keywords', $page_resource->keywords(), ['class' => 'text-field']) !!}--}}
-
-            {{--{!! Form::label('author', 'Author', ['class' => 'label']) !!}--}}
-            {{--{!! Form::text('author', $page_resource->author(), ['class' => 'text-field']) !!}--}}
-
-            {{--{!! Form::label('canonical', 'Canonical link (if this is content is posted elsewhere, submit that URL)', ['class' => 'label']) !!}--}}
-            {{--{!! Form::text('canonical', $page_resource->canonicalLink(), ['class' => 'text-field']) !!}--}}
-
-            <label for="category" class="label">{{_translate('PAGE_CATEGORY')}}</label>
-            <select name="category" class="text-field">
-
-                @include('flatfilecmsgui::taxonomy.nested-categories', ['taxonomies' => $categories, 'selected' => $page_resource->category()])
-
-            </select>
-
-            <a href="{{route('taxonomy.index')}}" class="underline" target="_blank">{{_translate('MANAGE_TAXONOMY')}}</a>
+            {!! Form::label('canonical', 'Canonical link (if this is content is posted elsewhere, submit that URL)', ['class' => 'label']) !!}
+            {!! Form::text('canonical', $page_resource->canonicalLink(), ['class' => 'text-field']) !!}
 
             {!! Form::label('image', _translate('IMAGE_FOR_SOCIAL_MEDIA'), ['class' => 'label']) !!}
             {!! Form::text('image', $page_resource->image(), ['class' => 'text-field']) !!}
 
             {!! Form::label('sidebar', _translate('SIDEBAR_BLOCKS'), ['class' => 'label']) !!}
-            {!! Form::textarea('sidebar', $page_resource->rawSidebar(), ['class' => 'text-field', 'rows' => 5]) !!}
-
+            {!! Form::textarea('sidebar', $page_resource->metaData()['sidebar'] ?? "", ['class' => 'text-field', 'rows' => 5]) !!}
         </section>
 
     </div>
@@ -130,7 +113,7 @@
     {!! Form::close() !!}
 
     <div class="">
-        {!! Form::open(['route' => ['pages.destroy', $page_resource->slug()], 'method' => 'delete']) !!}
+        {!! Form::open(['route' => ['pages.destroy', $page_resource->url()], 'method' => 'delete']) !!}
 
         <button type="submit" class="link text-red-500" onclick="return confirm('Are you sure you want to delete this item?');">Delete this page</button>
 

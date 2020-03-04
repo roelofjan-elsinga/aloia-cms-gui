@@ -3,7 +3,7 @@
 namespace FlatFileCms\GUI\Requests;
 
 use Carbon\Carbon;
-use FlatFileCms\Page;
+use AloiaCms\Models\Page;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
@@ -29,12 +29,12 @@ class UpdatePageRequest extends FormRequest implements PersistableFormRequest
     public function rules()
     {
         return [
-            'original_slug' => 'required',
+            'original_url' => 'required',
             'title' => 'required',
-            'slug' => 'required',
+            'url' => 'required',
             'content' => 'required',
             'description' => 'required',
-            'published' => 'required|boolean',
+            'is_published' => 'required|boolean',
             'summary' => 'required',
             'template_name' => 'required',
         ];
@@ -45,104 +45,43 @@ class UpdatePageRequest extends FormRequest implements PersistableFormRequest
      */
     public function save(): void
     {
-        File::put(
-            Config::get('flatfilecms.pages.folder_path') . "/{$this->get('original_slug')}.{$this->get('file_type')}",
-            $this->get('content')
-        );
-
-        if ($this->get('original_slug') !== $this->get('slug')) {
-            $this->renameFile(
-                "{$this->get('original_slug')}.{$this->get('file_type')}",
-                "{$this->get('slug')}.{$this->get('file_type')}"
-            );
-        }
-
-        $meta_data = !is_null($this->get('meta_data')) ? json_decode($this->get('meta_data'), true) : [];
+        $meta_data = !is_null($this->get('meta_data')) ? json_decode($this->get('meta_data'), true) : null;
 
         if ($this->get('sidebar')) {
-            $meta_data['sidebar'] = $this->get('sidebar');
+            $meta_data = [
+                'sidebar' => $this->get('sidebar')
+            ];
         }
 
-        $this->updatePostAttributesForSlug($this->get('original_slug'), [
-            'title' => $this->get('title'),
-            'filename' => "{$this->get('slug')}.{$this->get('file_type')}",
-            'description' => $this->get('description'),
-            'summary' => $this->get('summary'),
-            'author' => $this->get('author'),
-            'canonical' => $this->get('canonical'),
-            'in_menu' => $this->get('in_menu') === "1",
-            'is_homepage' => $this->get('is_homepage') === "1",
-            'keywords' => $this->get('keywords'),
-            'category' => $this->get('category'),
-            'image' => $this->get('image'),
-            'postDate' => $this->get('post_date'),
-            'isPublished' => $this->get('published') === "1",
-            'isScheduled' => $this->get('scheduled') === "1",
-            'template_name' => $this->get('template_name'),
-            'menu_name' => $this->get('menu_name'),
-            'updateDate' => Carbon::now()->toDateTimeString(),
-            'meta_data' => $meta_data,
-        ]);
-    }
+        $old_slug = basename($this->get('original_url'));
+        $new_slug = basename($this->get('url'));
+        $full_url = $this->get('url');
 
-    /**
-     * Rename the file from the given old filename to the new filename
-     *
-     * @param string $old_filename
-     * @param string $new_filename
-     */
-    private function renameFile(string $old_filename, string $new_filename): void
-    {
-        File::move(
-            Config::get('flatfilecms.pages.folder_path') . "/{$old_filename}",
-            Config::get('flatfilecms.pages.folder_path') . "/{$new_filename}"
-        );
-    }
+        $page = Page::find($old_slug);
 
-    /**
-     * Write the changes to the article to file
-     *
-     * @param string $old_slug
-     * @param array $new_article_attributes
-     */
-    private function updatePostAttributesForSlug(string $old_slug, array $new_article_attributes): void
-    {
-        $articles = Page::raw()
-            ->map(function ($article) use ($old_slug, $new_article_attributes) {
-                preg_match("/^{$old_slug}\.([a-z]{2,4})/", $article['filename'], $matches);
-
-                if (count($matches) > 0) {
-                    return array_merge($article, $new_article_attributes);
-                }
-
-                return \FlatFileCms\DataSource\Page::create($article)->toArray();
-            });
-
-        if ($new_article_attributes['is_homepage']) {
-            $articles = $this->markOtherPagesAsNotHomepage($articles, $new_article_attributes);
+        if ($old_slug !== $new_slug) {
+            $page = $page->rename($new_slug);
         }
 
-        Page::update($articles);
-    }
-
-    /**
-     * Mark other pages not matching $new_article as not being the homepage
-     *
-     * @param Collection $articles
-     * @param array $new_article
-     * @return Collection
-     */
-    private function markOtherPagesAsNotHomepage(Collection $articles, array $new_article): Collection
-    {
-        $articles
-            ->map(function (array $page) use ($new_article) {
-                if ($page['filename'] !== $new_article['filename']) {
-                    $page['is_homepage'] = false;
-                }
-
-                return $page;
-            });
-
-        return $articles;
+        $page
+            ->setExtension($this->get('file_type'))
+            ->addMatter('title', $this->get('title'))
+            ->addMatter('description', $this->get('description'))
+            ->addMatter('post_date', $this->get('post_date'))
+            ->addMatter('is_published', $this->get('is_published') === "1")
+            ->addMatter('summary', $this->get('summary'))
+            ->addMatter('template_name', $this->get('template_name'))
+            ->addMatter('menu_name', $this->get('menu_name'))
+            ->addMatter('meta_data', $meta_data)
+            ->addMatter('in_menu', $this->get('in_menu') === "1")
+            ->addMatter('author', $this->get('author'))
+            ->addMatter('image', $this->get('image'))
+            ->addMatter('canonical', $this->get('canonical'))
+            ->addMatter('is_homepage', $this->get('is_homepage') === "1")
+            ->addMatter('keywords', $this->get('keywords'))
+            ->addMatter('url', $full_url)
+            ->setUpdateDate(Carbon::now())
+            ->setBody($this->get('content'))
+            ->save();
     }
 }
