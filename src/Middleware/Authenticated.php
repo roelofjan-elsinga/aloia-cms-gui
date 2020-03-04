@@ -19,7 +19,7 @@ class Authenticated
     {
         if (is_null(User::fromRequest($request))) {
             User::logout($request);
-            return Redirect::route('authenticate.login');
+            return Redirect::guest(route('authenticate.login'));
         }
 
         return $next($request);

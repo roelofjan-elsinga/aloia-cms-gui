@@ -4,7 +4,6 @@ namespace FlatFileCms\GUI;
 
 use FlatFileCms\GUI\Middleware\Authenticated;
 use FlatFileCms\GUI\Middleware\Guest;
-use FlatFileCms\GUI\Translations\Translator;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 

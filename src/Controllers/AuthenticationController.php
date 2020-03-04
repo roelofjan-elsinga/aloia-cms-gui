@@ -32,19 +32,17 @@ class AuthenticationController extends Controller
      */
     public function login(Request $request)
     {
-        if ($this->userExists($request->get('username')) && $this->passwordMatches($request)) {
-            $user = $this->getUserFor($request->get('username'));
+        $username = $request->get('username');
+        $password = $request->get('password');
 
-            $token = Token::create(
-                $user['username'],
-                Config::get('app.secret'),
-                Carbon::now()->addHours(8)->timestamp,
-                url('/')
-            );
+        if (User::exists($username) && User::passwordMatches($username, $password)) {
+            $token = User::getTokenForUsername($username);
+
+            $user = User::getUserFor($username);
 
             session()->put('Authorization', "Bearer {$token}");
 
-            $this->storeUser($token, $user);
+            User::store($token, $user);
 
             return Redirect::route('dashboard');
         }
@@ -66,77 +64,5 @@ class AuthenticationController extends Controller
         Session::remove('Authorization');
 
         return Redirect::route('authenticate.loginPage');
-    }
-
-    /**
-     * Determine whether the user exists
-     *
-     * @param null|string $username
-     * @return bool
-     */
-    private function userExists(?string $username): bool
-    {
-        if (is_null($username)) {
-            return false;
-        }
-
-        $accounts_folder_path = Config::get('flatfilecmsgui.user_accounts_folder_path');
-
-        return file_exists("{$accounts_folder_path}/{$username}.json");
-    }
-
-    /**
-     * Determine whether the password matches
-     *
-     * @param Request $request
-     * @return bool
-     */
-    private function passwordMatches(Request $request): bool
-    {
-        $user = $this->getUserFor($request->get('username'));
-
-        return password_verify($request->get('password'), $user['password']);
-    }
-
-    /**
-     * Get the User for the given username
-     *
-     * @param string $username
-     * @return array
-     */
-    private function getUserFor(string $username): array
-    {
-        $accounts_folder_path = Config::get('flatfilecmsgui.user_accounts_folder_path');
-
-        $user_json = file_get_contents("{$accounts_folder_path}/{$username}.json");
-
-        return json_decode($user_json, true);
-    }
-
-    /**
-     * Store the authentication for the given token and user
-     *
-     * @param string $token
-     * @param array $user
-     */
-    private function storeUser(string $token, array $user)
-    {
-        file_put_contents(
-            $this->getTokenFilePathForToken($token),
-            json_encode($user)
-        );
-    }
-
-    /**
-     * Get the token file path
-     *
-     * @param string $token
-     * @return string
-     */
-    private function getTokenFilePathForToken(string $token)
-    {
-        $path = Config::get('flatfilecmsgui.authentication_tokens_folder_path');
-
-        return "{$path}/{$token}";
     }
 }

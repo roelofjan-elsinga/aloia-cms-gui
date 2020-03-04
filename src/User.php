@@ -2,6 +2,7 @@
 
 namespace FlatFileCms\GUI;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
@@ -46,11 +47,13 @@ class User
             return null;
         }
 
-        if (! Storage::exists("authentication/{$token}")) {
+        $token_path = Config::get('flatfilecmsgui.authentication_tokens_folder_path');
+
+        if (! file_exists("{$token_path}/{$token}")) {
             return null;
         }
 
-        $user = json_decode(Storage::get("authentication/{$token}"), true);
+        $user = json_decode(file_get_contents("{$token_path}/{$token}"), true);
 
         return new static($user);
     }
@@ -63,7 +66,7 @@ class User
      */
     private static function hasAuthorizationHeaders(Request $request): bool
     {
-        return $request->session()->has('Authorization');
+        return $request->session()->has('Authorization') || $request->header('Authorization', false);
     }
 
     /**
@@ -74,11 +77,9 @@ class User
      */
     private static function getTokenFromHeaders(Request $request): string
     {
-        $headers = $request->session()->get('Authorization');
+        $headers = $request->session()->get('Authorization') ?? $request->header('Authorization');
 
-        $token = str_replace('Bearer ', '', $headers);
-
-        return $token;
+        return str_replace('Bearer ', '', $headers);
     }
 
     /**
@@ -98,6 +99,109 @@ class User
     public function username(): string
     {
         return $this->user['username'];
+    }
+
+    /**
+     * Get the authentication token for the user with the given username
+     *
+     * @param string $username
+     * @return string
+     */
+    public static function getTokenForUsername(string $username): ?string
+    {
+        if (!self::exists($username)) {
+            return null;
+        }
+
+        $user = static::getUserFor($username);
+
+        return Token::create(
+            $user['username'],
+            Config::get('app.secret'),
+            Carbon::now()->addHours(8)->timestamp,
+            url('/')
+        );
+    }
+
+    /**
+     * Determine whether the password matches
+     *
+     * @param string $username
+     * @param string $password
+     * @return bool
+     */
+    public static function passwordMatches(string $username, string $password): bool
+    {
+        if (!self::exists($username)) {
+            return false;
+        }
+
+        $user = self::getUserFor($username);
+
+        return password_verify($password, $user['password']);
+    }
+
+    /**
+     * Get the User for the given username
+     *
+     * @param string $username
+     * @return array
+     */
+    public static function getUserFor(string $username): ?array
+    {
+        if (!self::exists($username)) {
+            return null;
+        }
+
+        $accounts_folder_path = Config::get('flatfilecmsgui.user_accounts_folder_path');
+
+        $user_json = file_get_contents("{$accounts_folder_path}/{$username}.json");
+
+        return json_decode($user_json, true);
+    }
+
+    /**
+     * Determine whether the user exists
+     *
+     * @param null|string $username
+     * @return bool
+     */
+    public static function exists(?string $username): bool
+    {
+        if (is_null($username)) {
+            return false;
+        }
+
+        $accounts_folder_path = Config::get('flatfilecmsgui.user_accounts_folder_path');
+
+        return file_exists("{$accounts_folder_path}/{$username}.json");
+    }
+
+    /**
+     * Store the authentication for the given token and user
+     *
+     * @param string $token
+     * @param array $user
+     */
+    public static function store(string $token, array $user)
+    {
+        file_put_contents(
+            self::getTokenFilePathForToken($token),
+            json_encode($user)
+        );
+    }
+
+    /**
+     * Get the token file path
+     *
+     * @param string $token
+     * @return string
+     */
+    private static function getTokenFilePathForToken(string $token)
+    {
+        $path = Config::get('flatfilecmsgui.authentication_tokens_folder_path');
+
+        return "{$path}/{$token}";
     }
 
     /**
