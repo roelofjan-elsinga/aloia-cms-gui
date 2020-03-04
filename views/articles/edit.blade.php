@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1 class="mb-8 text-xl font-semibold">{{_translate_dynamic('EDIT_ARTICLE', $article->title)}}</h1>
+    <h1 class="mb-8 text-xl font-semibold">{{_translate_dynamic('EDIT_ARTICLE', $article->title())}}</h1>
 
     @if ($errors->any())
         <div class="bg-red-600 text-white p-4 rounded mb-8">
@@ -14,9 +14,9 @@
         </div>
     @endif
 
-    {!! Form::model($article, ['route' => ['articles.update', $article->slug], 'method' => 'put']) !!}
+    {!! Form::model($article, ['route' => ['articles.update', $article->slug()], 'method' => 'put']) !!}
 
-    {!! Form::hidden('file_type', $article->fileType()) !!}
+    {!! Form::hidden('file_type', $article->extension()) !!}
 
     {!! Form::hidden('original_slug', $article->slug()) !!}
     {!! Form::label('slug', 'URL *', ['class' => 'label']) !!}
@@ -30,29 +30,33 @@
     </div>
 
     <div class="mb-4">
-        @include('flatfilecmsgui::blocks.simplemde', ['name' => 'content', 'value' => $article->rawContent()])
+        @if($file_type === 'html')
+            @include('flatfilecmsgui::blocks.ckeditor', ['name' => 'content', 'value' => $article->rawBody()])
+        @else
+            @include('flatfilecmsgui::blocks.simplemde', ['name' => 'content', 'value' => $article->rawBody()])
+        @endif
     </div>
 
     {!! Form::label('description', _translate('DESCRIPTION') . ' *', ['class' => 'label']) !!}
     {!! Form::textarea('description', $article->description(), ['class' => 'text-field', 'rows' => 5, 'required' => 'required']) !!}
 
     {!! Form::label('post_date', _translate('POST_DATE') . ' *', ['class' => 'label']) !!}
-    {!! Form::date('post_date', $article->rawPostDate, ['class' => 'text-field']) !!}
+    {!! Form::date('post_date', $article->getPostDate(), ['class' => 'text-field']) !!}
 
     <div class="my-4">
-        {!! Form::hidden('published', "0") !!}
+        {!! Form::hidden('is_published', "0") !!}
 
-        {!! Form::checkbox('published', "1", $article->isPublished) !!}
+        {!! Form::checkbox('is_published', "1", $article->isPublished()) !!}
 
-        {!! Form::label('published', _translate('ARTICLE_IS_PUBLISHED')) !!}
+        {!! Form::label('is_published', _translate('ARTICLE_IS_PUBLISHED')) !!}
     </div>
 
     <div class="my-4">
-        {!! Form::hidden('scheduled', "0") !!}
+        {!! Form::hidden('is_scheduled', "0") !!}
 
-        {!! Form::checkbox('scheduled', "1", $article->isScheduled) !!}
+        {!! Form::checkbox('is_scheduled', "1", $article->isScheduled()) !!}
 
-        {!! Form::label('scheduled', _translate('ARTICLE_IS_SCHEDULED')) !!}
+        {!! Form::label('is_scheduled', _translate('ARTICLE_IS_SCHEDULED')) !!}
     </div>
 
     * = {{_translate('REQUIRED')}}
@@ -64,7 +68,7 @@
     {!! Form::close() !!}
 
     <div class="">
-        {!! Form::open(['route' => ['articles.destroy', $article->slug], 'method' => 'delete']) !!}
+        {!! Form::open(['route' => ['articles.destroy', $article->slug()], 'method' => 'delete']) !!}
 
         <button type="submit" class="link text-red-500" onclick="return confirm('Are you sure you want to delete this item?');">Delete this article</button>
 

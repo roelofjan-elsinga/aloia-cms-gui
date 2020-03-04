@@ -2,10 +2,9 @@
 
 namespace FlatFileCms\GUI\Requests;
 
+use Carbon\Carbon;
 use FlatFileCms\GUI\Publish\PostPublisher;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Config;
-use FlatFileCms\Article;
+use AloiaCms\Models\Article;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateArticleRequest extends FormRequest implements PersistableFormRequest
@@ -29,11 +28,12 @@ class CreateArticleRequest extends FormRequest implements PersistableFormRequest
     {
         return [
             'slug' => 'required',
+            'file_type' => 'required',
             'content' => 'required',
             'description' => 'required',
             'post_date' => 'required',
-            'published' => 'required|boolean',
-            'scheduled' => 'required|boolean',
+            'is_published' => 'required|boolean',
+            'is_scheduled' => 'required|boolean',
         ];
     }
 
@@ -42,40 +42,20 @@ class CreateArticleRequest extends FormRequest implements PersistableFormRequest
      */
     public function save(): void
     {
-        $folder_path = Config::get('flatfilecms.articles.folder_path');
+        Article::find($this->get('slug'))
+            ->setExtension($this->get('file_type'))
+            ->setMatter([
+                'description' => $this->get('description'),
+                'post_date' => $this->get('post_date'),
+                'is_published' => $this->get('is_published') === "1",
+                'is_scheduled' => $this->get('is_scheduled') === "1"
+            ])
+            ->setUpdateDate(Carbon::now())
+            ->setBody($this->get('content'))
+            ->save();
 
-        if (! file_exists($folder_path)) {
-            mkdir($folder_path);
-        }
-
-        File::put(
-            "{$folder_path}/{$this->get('slug')}.md",
-            trim($this->get('content'))
-        );
-
-        $this->savePostAttributes([
-            'filename' => "{$this->get('slug')}.md",
-            'description' => $this->get('description'),
-            'postDate' => $this->get('post_date'),
-            'isPublished' => $this->get('published') === "1",
-            'isScheduled' => $this->get('scheduled') === "1",
-        ]);
-
-        if ($this->get('published') === "1") {
+        if ($this->get('is_published') === "1") {
             PostPublisher::forSlug($this->get('slug'))->publish();
         }
-    }
-
-    /**
-     * Write the changes to the article to file
-     *
-     * @param array $new_article_attributes
-     */
-    private function savePostAttributes(array $new_article_attributes): void
-    {
-        $articles = Article::raw()
-            ->push($new_article_attributes);
-
-        Article::update($articles);
     }
 }
