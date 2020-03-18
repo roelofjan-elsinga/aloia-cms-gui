@@ -1,7 +1,7 @@
 <?php
 
 
-namespace FlatFileCms\GUI\Translations;
+namespace AloiaCms\GUI\Translations;
 
 use Illuminate\Support\Facades\Config;
 
@@ -65,6 +65,6 @@ class Translator
      */
     private function getSelectedLanguage(): string
     {
-        return Config::get('flatfilecmsgui.language');
+        return Config::get('aloiacmsgui.language');
     }
 }

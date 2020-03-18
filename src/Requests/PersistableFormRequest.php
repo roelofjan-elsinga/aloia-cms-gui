@@ -1,7 +1,7 @@
 <?php
 
 
-namespace FlatFileCms\GUI\Requests;
+namespace AloiaCms\GUI\Requests;
 
 interface PersistableFormRequest
 {

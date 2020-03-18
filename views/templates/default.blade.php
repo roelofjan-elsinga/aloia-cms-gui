@@ -74,7 +74,7 @@
 
 @section('navigation')
 
-    @include('flatfilecmsgui::templates.header')
+    @include('aloiacmsgui::templates.header')
 
 @show
 
@@ -82,7 +82,7 @@
 
 @section('footer')
 
-    @include('flatfilecmsgui::templates.footer')
+    @include('aloiacmsgui::templates.footer')
 
 @show
 </body>

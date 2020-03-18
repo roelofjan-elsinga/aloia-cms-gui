@@ -20,8 +20,8 @@
     },
     "autoload": {
         "psr-4": {
-            "FlatFileCms\\GUI\\": "src/",
-            "FlatFileCms\\GUI\\Tests\\": "tests/"
+            "AloiaCms\\GUI\\": "src/",
+            "AloiaCms\\GUI\\Tests\\": "tests/"
         }
     },
     "autoload-dev": {
@@ -43,7 +43,7 @@
         },
         "laravel": {
             "providers": [
-                "FlatFileCms\\GUI\\FlatFileCmsServiceProvider"
+                "AloiaCms\\GUI\\ServiceProvider"
             ]
         }
     },

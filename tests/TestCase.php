@@ -1,14 +1,14 @@
 <?php
 
-namespace FlatFileCms\GUI\Tests;
+namespace AloiaCms\GUI\Tests;
 
 use Collective\Html\FormBuilder;
 use Collective\Html\FormFacade;
 use Collective\Html\HtmlServiceProvider;
-use FlatFileCms\GUI\AloiaCmsServiceProvider;
-use FlatFileCms\GUI\FlatFileCmsServiceProvider;
-use FlatFileCms\GUI\Tests\Mocks\MockMix;
-use FlatFileCms\GUI\User;
+use AloiaCms\GUI\AloiaCmsServiceProvider;
+use AloiaCms\GUI\ServiceProvider;
+use AloiaCms\GUI\Tests\Mocks\MockMix;
+use AloiaCms\GUI\User;
 use Illuminate\Foundation\Mix;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Config;
@@ -49,8 +49,8 @@ class TestCase extends \Orchestra\Testbench\TestCase
         ]);
 
         Config::set('app.secret', env('APP_SECRET'));
-        Config::set('flatfilecmsgui.user_accounts_folder_path', "{$this->fs->url()}/app/accounts");
-        Config::set('flatfilecmsgui.authentication_tokens_folder_path', "{$this->fs->url()}/app/authentication");
+        Config::set('aloiacmsgui.user_accounts_folder_path', "{$this->fs->url()}/app/accounts");
+        Config::set('aloiacmsgui.authentication_tokens_folder_path', "{$this->fs->url()}/app/authentication");
         Config::set('aloiacms.collections_path', "{$this->fs->url()}/collections");
     }
 
@@ -73,7 +73,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageProviders($app)
     {
         return [
-            FlatFileCmsServiceProvider::class
+            ServiceProvider::class
         ];
     }
 }

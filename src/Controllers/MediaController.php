@@ -1,10 +1,10 @@
 <?php
 
-namespace FlatFileCms\GUI\Controllers;
+namespace AloiaCms\GUI\Controllers;
 
 use Gumlet\ImageResize;
 use AloiaCms\Media;
-use FlatFileCms\GUI\Requests\UploadImageRequest;
+use AloiaCms\GUI\Requests\UploadImageRequest;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
@@ -22,7 +22,7 @@ class MediaController extends Controller
     {
         $this->setTitle(_translate("MANAGE_IMAGES"));
 
-        return View::make('flatfilecmsgui::media.index', [
+        return View::make('aloiacmsgui::media.index', [
             'images' => $media->allFiles()->onlyFullSize()
         ]);
     }
@@ -36,7 +36,7 @@ class MediaController extends Controller
     {
         $this->setTitle(_translate("UPLOAD_IMAGE"));
 
-        return View::make('flatfilecmsgui::media.create');
+        return View::make('aloiacmsgui::media.create');
     }
 
     /**

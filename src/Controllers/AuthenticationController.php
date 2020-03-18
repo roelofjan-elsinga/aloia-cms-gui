@@ -1,9 +1,9 @@
 <?php
 
-namespace FlatFileCms\GUI\Controllers;
+namespace AloiaCms\GUI\Controllers;
 
 use Carbon\Carbon;
-use FlatFileCms\GUI\User;
+use AloiaCms\GUI\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Redirect;
@@ -21,7 +21,7 @@ class AuthenticationController extends Controller
      */
     public function loginPage()
     {
-        return view('flatfilecmsgui::authentication.login');
+        return view('aloiacmsgui::authentication.login');
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace FlatFileCms\GUI\Console;
+namespace AloiaCms\GUI\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Console\ConfirmableTrait;
@@ -16,7 +16,7 @@ class AppSecretGenerator extends Command
      *
      * @var string
      */
-    protected $signature = 'flatfilecmsgui:secret:generate
+    protected $signature = 'aloiacmsgui:secret:generate
                     {--show : Display the key instead of modifying files}
                     {--force : Force the operation to run when in production}';
 

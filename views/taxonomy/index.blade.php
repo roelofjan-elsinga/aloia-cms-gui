@@ -1,4 +1,4 @@
-@extends('flatfilecmsgui::template')
+@extends('aloiacmsgui::template')
 
 @section('content')
 
@@ -22,13 +22,13 @@
                 </div>
             @endif
 
-            @include('flatfilecmsgui::taxonomy.taxonomy', ['taxonomy' => $taxonomy, 'current_index' => 0])
+            @include('aloiacmsgui::taxonomy.taxonomy', ['taxonomy' => $taxonomy, 'current_index' => 0])
 
         </section>
 
         <section class="md:w-1/4">
 
-            @include('flatfilecmsgui::blocks.actions-sidebar')
+            @include('aloiacmsgui::blocks.actions-sidebar')
 
         </section>
 

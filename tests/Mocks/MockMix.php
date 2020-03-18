@@ -1,6 +1,6 @@
 <?php
 
-namespace FlatFileCms\GUI\Tests\Mocks;
+namespace AloiaCms\GUI\Tests\Mocks;
 
 class MockMix
 {

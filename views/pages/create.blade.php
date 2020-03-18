@@ -1,10 +1,10 @@
-@extends('flatfilecmsgui::template')
+@extends('aloiacmsgui::template')
 
 @section('content')
 
     <h1 class="mb-8 text-xl font-semibold">{{_translate('CREATE_NEW_PAGE')}}</h1>
 
-    @include("flatfilecmsgui::blocks.error-message")
+    @include("aloiacmsgui::blocks.error-message")
 
     {!! Form::open(['route' => 'pages.store', 'method' => 'post']) !!}
 
@@ -30,9 +30,9 @@
 
             <div class="mb-4">
                 @if($file_type === 'html')
-                    @include('flatfilecmsgui::blocks.ckeditor', ['name' => 'content', 'value' => null])
+                    @include('aloiacmsgui::blocks.ckeditor', ['name' => 'content', 'value' => null])
                 @else
-                    @include('flatfilecmsgui::blocks.simplemde', ['name' => 'content', 'value' => null])
+                    @include('aloiacmsgui::blocks.simplemde', ['name' => 'content', 'value' => null])
                 @endif
             </div>
 

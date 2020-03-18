@@ -1,9 +1,9 @@
 <?php
 
-namespace FlatFileCms\GUI\Requests;
+namespace AloiaCms\GUI\Requests;
 
 use Carbon\Carbon;
-use FlatFileCms\GUI\Publish\PostPublisher;
+use AloiaCms\GUI\Publish\PostPublisher;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 use AloiaCms\Models\Article;

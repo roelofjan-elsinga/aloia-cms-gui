@@ -1,6 +1,6 @@
 <?php
 
-namespace FlatFileCms\GUI\Console;
+namespace AloiaCms\GUI\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Config;
@@ -12,7 +12,7 @@ class CreateAccount extends Command
      *
      * @var string
      */
-    protected $signature = 'flatfilecmsgui:create:account {--username=} {--password=} {--role=user}';
+    protected $signature = 'aloiacmsgui:create:account {--username=} {--password=} {--role=user}';
 
     /**
      * The console command description.
@@ -50,7 +50,7 @@ class CreateAccount extends Command
             'role' => $this->option('role')
         ];
 
-        $file_path = Config::get('flatfilecmsgui.user_accounts_folder_path');
+        $file_path = Config::get('aloiacmsgui.user_accounts_folder_path');
 
         if (file_exists("{$file_path}/{$user_name}.json")) {
             $this->warn("User account already exists!");

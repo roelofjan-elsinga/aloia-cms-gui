@@ -1,9 +1,9 @@
 <?php
 
 
-namespace FlatFileCms\GUI\Tests\Controllers;
+namespace AloiaCms\GUI\Tests\Controllers;
 
-use FlatFileCms\GUI\Tests\TestCase;
+use AloiaCms\GUI\Tests\TestCase;
 
 class ArticleControllerTest extends TestCase
 {
@@ -21,7 +21,7 @@ class ArticleControllerTest extends TestCase
 //        $this
 //            ->get(route('articles.index'))
 //            ->assertOk()
-//            ->assertViewIs('flatfilecmsgui::articles.index');
+//            ->assertViewIs('aloiacmsgui::articles.index');
 //    }
 //
 //    public function testUserCanViewArticleCreationPage()
@@ -31,6 +31,6 @@ class ArticleControllerTest extends TestCase
 //        $this
 //            ->get(route('articles.create'))
 //            ->assertOk()
-//            ->assertViewIs('flatfilecmsgui::articles.create');
+//            ->assertViewIs('aloiacmsgui::articles.create');
 //    }
 }

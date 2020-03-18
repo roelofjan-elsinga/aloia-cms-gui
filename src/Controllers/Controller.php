@@ -1,8 +1,8 @@
 <?php
 
-namespace FlatFileCms\GUI\Controllers;
+namespace AloiaCms\GUI\Controllers;
 
-use FlatFileCms\TagsParser;
+use AloiaCms\TagsParser;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\View;
 
@@ -11,8 +11,8 @@ class Controller
     public function __construct()
     {
         View::share('title', 'Flat File CMS');
-        View::share('dashboard_url', Config::get('flatfilecmsgui.dashboard_url'));
-        View::share('website_url', Config::get('flatfilecmsgui.website_url'));
+        View::share('dashboard_url', Config::get('aloiacmsgui.dashboard_url'));
+        View::share('website_url', Config::get('aloiacmsgui.website_url'));
     }
 
     /**

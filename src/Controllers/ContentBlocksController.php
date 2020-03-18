@@ -1,6 +1,6 @@
 <?php
 
-namespace FlatFileCms\GUI\Controllers;
+namespace AloiaCms\GUI\Controllers;
 
 use AloiaCms\Models\ContentBlock;
 use Illuminate\Http\RedirectResponse;
@@ -22,7 +22,7 @@ class ContentBlocksController extends Controller
     {
         $this->setTitle(_translate("MANAGE_CONTENT_BLOCKS"));
 
-        return View::make('flatfilecmsgui::content-blocks.index', [
+        return View::make('aloiacmsgui::content-blocks.index', [
             'blocks' => ContentBlock::all()
                 ->map(function (ContentBlock $block) {
                     return [
@@ -44,7 +44,7 @@ class ContentBlocksController extends Controller
 
         $request = Request::capture();
 
-        return View::make('flatfilecmsgui::content-blocks.create', [
+        return View::make('aloiacmsgui::content-blocks.create', [
             'file_type' => $request->has('file_type') ? $request->get('file_type') : 'html'
         ]);
     }
@@ -81,7 +81,7 @@ class ContentBlocksController extends Controller
             App::abort(404);
         }
 
-        return View::make('flatfilecmsgui::content-blocks.edit', [
+        return View::make('aloiacmsgui::content-blocks.edit', [
             'name' => $file_path->filename(),
             'extension' => $file_path->extension(),
             'content' => $file_path->rawBody()

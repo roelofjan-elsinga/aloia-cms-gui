@@ -23,25 +23,25 @@ composer require roelofjan-elsinga/flat-file-cms-gui
 and if you want to customize any of the default settings used by this package, you can publish the configuration: 
 
 ```bash
-php artisan vendor:publish --provider="FlatFileCms\\GUI\\FlatFileCmsServiceProvider"
+php artisan vendor:publish --provider="AloiaCms\\GUI\\ServiceProvider"
 ```
 
-This will create a ``flatfilecmsgui.php`` in your config folder.
+This will create a ``aloiacmsgui.php`` in your config folder.
 
 After this, you'll need to publish the assets for this package, by running:
 
 ```bash
-php artisan flatfilecmsgui:publish:assets
+php artisan aloiacmsgui:publish:assets
 ```
 
-This places the assets for the dashboard in ``public/vendor/flatfilecmsgui``.
+This places the assets for the dashboard in ``public/vendor/aloiacmsgui``.
 
 ## Creating a user
 
 You can create a user by running:
 
 ```bash
-php artisan flatfilecmsgui:create:account --username=yourusername --password=yourpassword
+php artisan aloiacmsgui:create:account --username=yourusername --password=yourpassword
 ```
 
 After this, you'll be able to log in using the credentials.

@@ -1,4 +1,4 @@
-@extends('flatfilecmsgui::template')
+@extends('aloiacmsgui::template')
 
 @section('content')
 
@@ -31,9 +31,9 @@
 
     <div class="mb-4">
         @if($file_type === 'html')
-            @include('flatfilecmsgui::blocks.ckeditor', ['name' => 'content', 'value' => $article->rawBody()])
+            @include('aloiacmsgui::blocks.ckeditor', ['name' => 'content', 'value' => $article->rawBody()])
         @else
-            @include('flatfilecmsgui::blocks.simplemde', ['name' => 'content', 'value' => $article->rawBody()])
+            @include('aloiacmsgui::blocks.simplemde', ['name' => 'content', 'value' => $article->rawBody()])
         @endif
     </div>
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace FlatFileCms\GUI\Console;
+namespace AloiaCms\GUI\Console;
 
 use Illuminate\Console\Command;
 
@@ -11,7 +11,7 @@ class ViewsCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'flatfilecmsgui:publish:views';
+    protected $signature = 'aloiacmsgui:publish:views';
     /**
      * The console command description.
      *

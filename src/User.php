@@ -1,6 +1,6 @@
 <?php
 
-namespace FlatFileCms\GUI;
+namespace AloiaCms\GUI;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -47,7 +47,7 @@ class User
             return null;
         }
 
-        $token_path = Config::get('flatfilecmsgui.authentication_tokens_folder_path');
+        $token_path = Config::get('aloiacmsgui.authentication_tokens_folder_path');
 
         if (! file_exists("{$token_path}/{$token}")) {
             return null;
@@ -153,7 +153,7 @@ class User
             return null;
         }
 
-        $accounts_folder_path = Config::get('flatfilecmsgui.user_accounts_folder_path');
+        $accounts_folder_path = Config::get('aloiacmsgui.user_accounts_folder_path');
 
         $user_json = file_get_contents("{$accounts_folder_path}/{$username}.json");
 
@@ -172,7 +172,7 @@ class User
             return false;
         }
 
-        $accounts_folder_path = Config::get('flatfilecmsgui.user_accounts_folder_path');
+        $accounts_folder_path = Config::get('aloiacmsgui.user_accounts_folder_path');
 
         return file_exists("{$accounts_folder_path}/{$username}.json");
     }
@@ -199,7 +199,7 @@ class User
      */
     private static function getTokenFilePathForToken(string $token)
     {
-        $path = Config::get('flatfilecmsgui.authentication_tokens_folder_path');
+        $path = Config::get('aloiacmsgui.authentication_tokens_folder_path');
 
         return "{$path}/{$token}";
     }
@@ -223,7 +223,7 @@ class User
         }
 
         try {
-            $token_path = Config::get('flatfilecmsgui.authentication_tokens_folder_path');
+            $token_path = Config::get('aloiacmsgui.authentication_tokens_folder_path');
 
             File::delete("{$token_path}/{$token}");
         } catch (\Exception $exception) {

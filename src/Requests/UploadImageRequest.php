@@ -1,6 +1,6 @@
 <?php
 
-namespace FlatFileCms\GUI\Requests;
+namespace AloiaCms\GUI\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

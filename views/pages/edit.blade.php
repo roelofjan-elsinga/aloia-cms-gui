@@ -1,10 +1,10 @@
-@extends('flatfilecmsgui::template')
+@extends('aloiacmsgui::template')
 
 @section('content')
 
     <h1 class="mb-8 text-xl font-semibold">{{_translate_dynamic('EDIT_ARTICLE', $page_resource->title())}}</h1>
 
-    @include("flatfilecmsgui::blocks.error-message")
+    @include("aloiacmsgui::blocks.error-message")
 
     {!! Form::open(['route' => ['pages.update', $page_resource->url()], 'method' => 'put']) !!}
 
@@ -30,9 +30,9 @@
 
             <div class="mb-4">
                 @if($file_type === 'html')
-                    @include('flatfilecmsgui::blocks.ckeditor', ['name' => 'content', 'value' => $page_resource->rawBody()])
+                    @include('aloiacmsgui::blocks.ckeditor', ['name' => 'content', 'value' => $page_resource->rawBody()])
                 @else
-                    @include('flatfilecmsgui::blocks.simplemde', ['name' => 'content', 'value' => $page_resource->rawBody()])
+                    @include('aloiacmsgui::blocks.simplemde', ['name' => 'content', 'value' => $page_resource->rawBody()])
                 @endif
             </div>
 

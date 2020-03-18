@@ -1,7 +1,7 @@
 <?php
 
 
-namespace FlatFileCms\GUI\Publish;
+namespace AloiaCms\GUI\Publish;
 
 use AloiaCms\Models\Article;
 use Illuminate\Support\Carbon;
