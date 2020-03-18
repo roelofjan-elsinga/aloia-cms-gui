@@ -2,10 +2,10 @@
 
 [![Build status](https://travis-ci.com/roelofjan-elsinga/flat-file-cms-gui.svg)](https://travis-ci.com/roelofjan-elsinga/flat-file-cms-gui)
 [![StyleCI Status](https://github.styleci.io/repos/193145501/shield)](https://github.styleci.io/repos/193145501)
-[![Code coverage](https://codecov.io/gh/roelofjan-elsinga/flat-file-cms-gui/branch/master/graph/badge.svg)](https://codecov.io/gh/roelofjan-elsinga/flat-file-cms-gui)
-[![Total Downloads](https://poser.pugx.org/roelofjan-elsinga/flat-file-cms-gui/downloads)](https://packagist.org/packages/roelofjan-elsinga/flat-file-cms-gui)
-[![Latest Stable Version](https://poser.pugx.org/roelofjan-elsinga/flat-file-cms-gui/v/stable)](https://packagist.org/packages/roelofjan-elsinga/flat-file-cms-gui)
-[![License](https://poser.pugx.org/roelofjan-elsinga/flat-file-cms-gui/license)](https://packagist.org/packages/roelofjan-elsinga/flat-file-cms-gui)
+[![Code coverage](https://codecov.io/gh/roelofjan-elsinga/aloia-cms-gui/branch/master/graph/badge.svg)](https://codecov.io/gh/roelofjan-elsinga/aloia-cms-gui)
+[![Total Downloads](https://poser.pugx.org/roelofjan-elsinga/aloia-cms-gui/downloads)](https://packagist.org/packages/roelofjan-elsinga/aloia-cms-gui)
+[![Latest Stable Version](https://poser.pugx.org/roelofjan-elsinga/aloia-cms-gui/v/stable)](https://packagist.org/packages/roelofjan-elsinga/aloia-cms-gui)
+[![License](https://poser.pugx.org/roelofjan-elsinga/aloia-cms-gui/license)](https://packagist.org/packages/roelofjan-elsinga/aloia-cms-gui)
 
 This is the official Graphical User Interface (GUI) for the Flat File CMS package. 
 This package includes the latest version of the Flat File CMS, Authentication, User creation, 
@@ -17,7 +17,7 @@ and visual web environment.
 You can include this package through Composer using:
 
 ```bash
-composer require roelofjan-elsinga/flat-file-cms-gui
+composer require roelofjan-elsinga/aloia-cms-gui
 ```
 
 and if you want to customize any of the default settings used by this package, you can publish the configuration: 
