@@ -1,4 +1,4 @@
-@extends('flatfilecmsgui::template')
+@extends('aloiacmsgui::template')
 
 @section('content')
 
@@ -63,7 +63,7 @@
 
         <section class="md:w-1/4">
 
-            @include('flatfilecmsgui::blocks.actions-sidebar')
+            @include('aloiacmsgui::blocks.actions-sidebar')
 
         </section>
 

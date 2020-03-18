@@ -1,13 +1,11 @@
 <?php
 
-namespace FlatFileCms\GUI\Controllers;
+namespace AloiaCms\GUI\Controllers;
 
-use FlatFileCms\GUI\Requests\CreatePageRequest;
-use FlatFileCms\GUI\Requests\UpdatePageRequest;
-use FlatFileCms\Page;
-use FlatFileCms\Taxonomy\Taxonomy;
+use AloiaCms\GUI\Requests\CreatePageRequest;
+use AloiaCms\GUI\Requests\UpdatePageRequest;
+use AloiaCms\Models\Page;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 use Illuminate\Contracts\View\View as ViewResponse;
@@ -24,7 +22,7 @@ class PagesController extends Controller
     {
         $this->setTitle(_translate("MANAGE_PAGES"));
 
-        return View::make('flatfilecmsgui::pages.index', [
+        return View::make('aloiacmsgui::pages.index', [
             'pages' => Page::all()
                 ->sortByDesc('title')
                 ->values()
@@ -42,10 +40,9 @@ class PagesController extends Controller
 
         $request = Request::capture();
 
-        return View::make('flatfilecmsgui::pages.create', [
-            'template_name' => 'flatfilecmsgui::templates.default',
-            'file_type' => $request->has('file_type') ? $request->get('file_type') : 'html',
-            'categories' => Taxonomy::get()
+        return View::make('aloiacmsgui::pages.create', [
+            'template_name' => 'aloiacmsgui::templates.default',
+            'file_type' => $request->has('file_type') ? $request->get('file_type') : 'html'
         ]);
     }
 
@@ -72,14 +69,13 @@ class PagesController extends Controller
      */
     public function edit(string $slug): ViewResponse
     {
-        $page = Page::forSlug($slug);
+        $page = Page::find($slug);
 
         $this->setTitle(_translate_dynamic('EDIT_ARTICLE', $page->title()));
 
-        return View::make('flatfilecmsgui::pages.edit', [
+        return View::make('aloiacmsgui::pages.edit', [
             'page_resource' => $page,
-            'file_type' => pathinfo($page->filename(), PATHINFO_EXTENSION),
-            'categories' => Taxonomy::get()
+            'file_type' => $page->extension()
         ]);
     }
 
@@ -105,7 +101,7 @@ class PagesController extends Controller
      */
     public function destroy(string $slug)
     {
-        Page::deleteBySlug($slug);
+        Page::find($slug)->delete();
 
         return Redirect::route('pages.index')
             ->with('deleted_page', true);

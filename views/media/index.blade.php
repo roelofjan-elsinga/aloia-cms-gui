@@ -1,4 +1,4 @@
-@extends('flatfilecmsgui::template')
+@extends('aloiacmsgui::template')
 
 @section('content')
 
@@ -34,7 +34,7 @@
 
                     <div class="w-5/6">
                         <h4>Markdown</h4>
-                        <p class="text-sm bg-gray-400 block p-2">!["{{\FlatFileCms\Media::filenameToTitle($image->getFilename())}}"](/{{$image->getPathname()}})</p>
+                        <p class="text-sm bg-gray-400 block p-2">!["{{\AloiaCms\Media::filenameToTitle($image->getFilename())}}"](/{{$image->getPathname()}})</p>
 
                         <h4 class="mt-2">{{_translate('AS_URL')}}</h4>
 
@@ -49,7 +49,7 @@
 
         <section class="md:w-1/4">
 
-            @include('flatfilecmsgui::blocks.actions-sidebar')
+            @include('aloiacmsgui::blocks.actions-sidebar')
 
         </section>
 

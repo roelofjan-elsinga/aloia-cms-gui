@@ -1,10 +1,11 @@
 <?php
 
-namespace FlatFileCms\GUI\Controllers;
+namespace AloiaCms\GUI\Controllers;
 
-use FlatFileCms\GUI\Requests\CreateArticleRequest;
-use FlatFileCms\GUI\Requests\UpdateArticleRequest;
-use FlatFileCms\Article;
+use AloiaCms\Models\Article;
+use AloiaCms\GUI\Requests\CreateArticleRequest;
+use AloiaCms\GUI\Requests\UpdateArticleRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
@@ -22,7 +23,7 @@ class ArticleController extends Controller
     {
         $this->setTitle(_translate("MANAGE_ARTICLES"));
 
-        return View::make('flatfilecmsgui::articles.index', [
+        return View::make('aloiacmsgui::articles.index', [
             'articles' => Article::all()
                 ->map(function (Article $article) {
                     return [
@@ -31,7 +32,7 @@ class ArticleController extends Controller
                         'slug' => $article->slug(),
                         'isPublished' => $article->isPublished(),
                         'isScheduled' => $article->isScheduled(),
-                        'postDate' => $article->rawPostDate()
+                        'postDate' => $article->getPostDate()
                     ];
                 })
                 ->sortByDesc('postDate')
@@ -48,7 +49,11 @@ class ArticleController extends Controller
     {
         $this->setTitle(_translate("CREATE_ARTICLE"));
 
-        return View::make('flatfilecmsgui::articles.create');
+        $request = Request::capture();
+
+        return View::make('aloiacmsgui::articles.create', [
+            'file_type' => $request->has('file_type') ? $request->get('file_type') : 'md'
+        ]);
     }
 
     /**
@@ -74,12 +79,15 @@ class ArticleController extends Controller
      */
     public function edit(string $slug): ViewResponse
     {
-        $article = Article::forSlug($slug);
+        $article = Article::find($slug);
 
         $this->setTitle(_translate_dynamic('EDIT_ARTICLE', $article->title()));
 
-        return View::make('flatfilecmsgui::articles.edit', [
-            'article' => $article
+        $request = Request::capture();
+
+        return View::make('aloiacmsgui::articles.edit', [
+            'article' => $article,
+            'file_type' => $article->extension()
         ]);
     }
 
@@ -106,7 +114,7 @@ class ArticleController extends Controller
      */
     public function destroy(string $slug)
     {
-        Article::deleteBySlug($slug);
+        Article::find($slug)->delete();
 
         return Redirect::route('articles.index')
             ->with('deleted_article', true);

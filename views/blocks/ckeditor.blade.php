@@ -1,4 +1,4 @@
-<script src="{{ asset('vendor/flatfilecmsgui/ckeditor.js') }}"></script>
+<script src="{{ asset('vendor/aloiacmsgui/ckeditor.js') }}"></script>
 
 <textarea name="{{$name}}" id="editor" rows="10">{{$value}}</textarea>
 

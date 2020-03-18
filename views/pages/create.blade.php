@@ -1,8 +1,10 @@
-@extends('flatfilecmsgui::template')
+@extends('aloiacmsgui::template')
 
 @section('content')
 
     <h1 class="mb-8 text-xl font-semibold">{{_translate('CREATE_NEW_PAGE')}}</h1>
+
+    @include("aloiacmsgui::blocks.error-message")
 
     {!! Form::open(['route' => 'pages.store', 'method' => 'post']) !!}
 
@@ -28,21 +30,21 @@
 
             <div class="mb-4">
                 @if($file_type === 'html')
-                    @include('flatfilecmsgui::blocks.ckeditor', ['name' => 'content', 'value' => null])
+                    @include('aloiacmsgui::blocks.ckeditor', ['name' => 'content', 'value' => null])
                 @else
-                    @include('flatfilecmsgui::blocks.simplemde', ['name' => 'content', 'value' => null])
+                    @include('aloiacmsgui::blocks.simplemde', ['name' => 'content', 'value' => null])
                 @endif
             </div>
 
-            {!! Form::label('slug', 'URL *', ['class' => 'label']) !!}
-            {!! Form::text('slug', null, ['class' => 'text-field', 'placeholder' => _translate('EXAMPLE_URL_PLACEHOLDER')]) !!}
+            {!! Form::label('url', 'URL *', ['class' => 'label']) !!}
+            {!! Form::text('url', null, ['class' => 'text-field', 'placeholder' => _translate('EXAMPLE_URL_PLACEHOLDER')]) !!}
 
             <div class="my-4">
-                {!! Form::hidden('published', "0") !!}
+                {!! Form::hidden('is_published', "0") !!}
 
-                {!! Form::checkbox('published', "1", false) !!}
+                {!! Form::checkbox('is_published', "1", false) !!}
 
-                {!! Form::label('published', _translate('PAGE_IS_PUBLISHED')) !!}
+                {!! Form::label('is_published', _translate('PAGE_IS_PUBLISHED')) !!}
             </div>
 
             <div class="my-4">
@@ -107,32 +109,14 @@
                 <a href="{{route(Route::currentRouteName(), ['file_type' => 'html'])}}" class="text-blue-800 underline">HTML</a>
             @endif
 
-            {{--{!! Form::label('template_name', 'Page Template *', ['class' => 'label']) !!}--}}
-            {{--{!! Form::text('template_name', $template_name, ['class' => 'text-field']) !!}--}}
-
             {!! Form::label('description', _translate('SEO_DESCRIPTION') . ' *', ['class' => 'label']) !!}
             {!! Form::textarea('description', null, ['class' => 'text-field', 'rows' => 5]) !!}
 
             {!! Form::label('summary', _translate('SEO_SUMMARY') . ' *', ['class' => 'label']) !!}
             {!! Form::textarea('summary', null, ['class' => 'text-field', 'rows' => 3]) !!}
 
-            {{--{!! Form::label('keywords', 'Keywords', ['class' => 'label']) !!}--}}
-            {{--{!! Form::text('keywords', null, ['class' => 'text-field']) !!}--}}
-
-            {{--{!! Form::label('author', 'Author', ['class' => 'label']) !!}--}}
-            {{--{!! Form::text('author', null, ['class' => 'text-field']) !!}--}}
-
-            {{--{!! Form::label('canonical', 'Canonical link (if this is content is posted elsewhere, submit that URL)', ['class' => 'label']) !!}--}}
-            {{--{!! Form::text('canonical', null, ['class' => 'text-field']) !!}--}}
-
-            <label for="category" class="label">{{_translate('PAGE_CATEGORY')}}</label>
-            <select name="category" class="text-field">
-
-                @include('flatfilecmsgui::taxonomy.nested-categories', ['taxonomies' => $categories, 'selected' => null])
-
-            </select>
-
-            <a href="{{route('taxonomy.index')}}" class="underline" target="_blank">{{_translate('MANAGE_TAXONOMY')}}</a>
+            {!! Form::label('canonical', 'Canonical link (if this is content is posted elsewhere, submit that URL)', ['class' => 'label']) !!}
+            {!! Form::text('canonical', null, ['class' => 'text-field']) !!}
 
             {!! Form::label('image', _translate('IMAGE_FOR_SOCIAL_MEDIA'), ['class' => 'label']) !!}
             {!! Form::text('image', null, ['class' => 'text-field']) !!}

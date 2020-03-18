@@ -1,9 +1,9 @@
 <?php
 
-namespace FlatFileCms\GUI\Controllers;
+namespace AloiaCms\GUI\Controllers;
 
-use FlatFileCms\Page;
-use FlatFileCms\Taxonomy\Taxonomy;
+use AloiaCms\Page;
+use AloiaCms\Taxonomy\Taxonomy;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -22,7 +22,7 @@ class TaxonomyController extends Controller
     {
         $this->setTitle(_translate("MANAGE_TAXONOMY"));
 
-        return View::make('flatfilecmsgui::taxonomy.index', [
+        return View::make('aloiacmsgui::taxonomy.index', [
             'taxonomy' => Taxonomy::get()->asNestedList()
         ]);
     }

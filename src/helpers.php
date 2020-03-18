@@ -1,7 +1,7 @@
 <?php
 
-use FlatFileCms\GUI\Translations\Translator;
-use FlatFileCms\GUI\User;
+use AloiaCms\GUI\Translations\Translator;
+use AloiaCms\GUI\User;
 
 if (!function_exists('_translate')) {
 

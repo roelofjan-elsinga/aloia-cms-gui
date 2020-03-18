@@ -1,9 +1,9 @@
 <?php
 
-namespace FlatFileCms\GUI\Middleware;
+namespace AloiaCms\GUI\Middleware;
 
 use Closure;
-use FlatFileCms\GUI\User;
+use AloiaCms\GUI\User;
 use Illuminate\Support\Facades\Redirect;
 
 class Guest

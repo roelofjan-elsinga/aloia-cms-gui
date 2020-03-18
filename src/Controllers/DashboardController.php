@@ -1,6 +1,6 @@
 <?php
 
-namespace FlatFileCms\GUI\Controllers;
+namespace AloiaCms\GUI\Controllers;
 
 use Illuminate\Support\Facades\View;
 use Illuminate\Contracts\View\View as ViewResponse;
@@ -16,6 +16,6 @@ class DashboardController extends Controller
     {
         $this->setTitle("Dashboard");
 
-        return View::make('flatfilecmsgui::index');
+        return View::make('aloiacmsgui::index');
     }
 }

@@ -1,14 +1,14 @@
 <?php
 
-namespace FlatFileCms\GUI;
+namespace AloiaCms\GUI;
 
-use FlatFileCms\GUI\Middleware\Authenticated;
-use FlatFileCms\GUI\Middleware\Guest;
-use FlatFileCms\GUI\Translations\Translator;
+use Collective\Html\HtmlServiceProvider;
+use AloiaCms\GUI\Middleware\Authenticated;
+use AloiaCms\GUI\Middleware\Guest;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
-class FlatFileCmsServiceProvider extends ServiceProvider
+class ServiceProvider extends BaseServiceProvider
 {
 
     /**
@@ -18,7 +18,7 @@ class FlatFileCmsServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'FlatFileCms\GUI\Controllers';
+    protected $namespace = 'AloiaCms\GUI\Controllers';
 
     /**
      * Register any application services.
@@ -27,9 +27,11 @@ class FlatFileCmsServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->register(HtmlServiceProvider::class);
+
         $this->mergeConfigFrom(
-            __DIR__.'/../config/flatfilecmsgui.php',
-            'flatfilecmsgui'
+            __DIR__.'/../config/aloiacmsgui.php',
+            'aloiacmsgui'
         );
 
         require "helpers.php";
@@ -54,17 +56,17 @@ class FlatFileCmsServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/flatfilecmsgui.php' => config_path('flatfilecmsgui.php'),
+            __DIR__.'/../config/aloiacmsgui.php' => config_path('aloiacmsgui.php'),
         ], 'config');
 
         $this->publishes([
-            __DIR__ . '/../public' => public_path('vendor/flatfilecmsgui'),
+            __DIR__ . '/../public' => public_path('vendor/aloiacmsgui'),
         ], 'public');
 
-        $this->loadViewsFrom(__DIR__.'/../views', 'flatfilecmsgui');
+        $this->loadViewsFrom(__DIR__.'/../views', 'aloiacmsgui');
 
         $this->publishes([
-            __DIR__.'/../views/templates' => resource_path('views/vendor/flatfilecmsgui/templates'),
+            __DIR__.'/../views/templates' => resource_path('views/vendor/aloiacmsgui/templates'),
         ], 'views');
 
         $this->registerRoutes();
@@ -81,10 +83,10 @@ class FlatFileCmsServiceProvider extends ServiceProvider
         $this->app['router']->aliasMiddleware('fileGuest', Guest::class);
 
         Route::group([
-            'domain' => config('flatfilecmsgui.domain', null),
-            'prefix' => config('flatfilecmsgui.path'),
+            'domain' => config('aloiacmsgui.domain', null),
+            'prefix' => config('aloiacmsgui.path'),
             'namespace' => $this->namespace,
-            'middleware' => config('flatfilecmsgui.middleware', 'web'),
+            'middleware' => config('aloiacmsgui.middleware', 'web'),
         ], function () {
             $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
         });

@@ -1,10 +1,10 @@
 <?php
 
 
-namespace FlatFileCms\GUI\Controllers;
+namespace AloiaCms\GUI\Controllers;
 
-use FlatFileCms\FileManager;
-use FlatFileCms\GUI\Requests\UploadFileRequest;
+use AloiaCms\FileManager;
+use AloiaCms\GUI\Requests\UploadFileRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
@@ -22,7 +22,7 @@ class FileManagerController extends Controller
     {
         $this->setTitle(_translate('MANAGE_UPLOADED_FILES'));
 
-        return View::make('flatfilecmsgui::file-manager.index', [
+        return View::make('aloiacmsgui::file-manager.index', [
             'files' => FileManager::all()
         ]);
     }
@@ -36,7 +36,7 @@ class FileManagerController extends Controller
     {
         $this->setTitle(_translate('UPLOAD_A_NEW_FILE'));
 
-        return View::make('flatfilecmsgui::file-manager.create');
+        return View::make('aloiacmsgui::file-manager.create');
     }
 
     /**

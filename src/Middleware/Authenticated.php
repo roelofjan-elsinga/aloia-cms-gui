@@ -1,9 +1,9 @@
 <?php
 
-namespace FlatFileCms\GUI\Middleware;
+namespace AloiaCms\GUI\Middleware;
 
 use Closure;
-use FlatFileCms\GUI\User;
+use AloiaCms\GUI\User;
 use Illuminate\Support\Facades\Redirect;
 
 class Authenticated
@@ -19,7 +19,7 @@ class Authenticated
     {
         if (is_null(User::fromRequest($request))) {
             User::logout($request);
-            return Redirect::route('authenticate.login');
+            return Redirect::guest(route('authenticate.login'));
         }
 
         return $next($request);

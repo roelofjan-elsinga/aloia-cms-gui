@@ -1,9 +1,10 @@
 <?php
 
 
-namespace FlatFileCms\GUI\Publish;
+namespace AloiaCms\GUI\Publish;
 
-use FlatFileCms\Article;
+use AloiaCms\Models\Article;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Artisan;
 
 class PostPublisher
@@ -35,19 +36,12 @@ class PostPublisher
      */
     public function publish(): void
     {
-        Article::update(
-            Article::raw()
-                ->map(function (array $article) {
-                    if (strpos($article['filename'], $this->article_slug) !== false) {
-                        $article['isPublished'] = false;
-                        $article['isScheduled'] = true;
-                        $article['postDate'] = date('Y-m-d');
-                    }
+        Article::find($this->article_slug)
+            ->addMatter('is_published', false)
+            ->addMatter('is_scheduled', true)
+            ->setPostDate(Carbon::now())
+            ->save();
 
-                    return $article;
-                })
-        );
-
-        Artisan::call('flatfilecms:publish:posts');
+        Artisan::call('aloiacms:publish:posts');
     }
 }

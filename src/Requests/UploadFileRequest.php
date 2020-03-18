@@ -1,9 +1,9 @@
 <?php
 
 
-namespace FlatFileCms\GUI\Requests;
+namespace AloiaCms\GUI\Requests;
 
-use FlatFileCms\FileManager;
+use AloiaCms\FileManager;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UploadFileRequest extends FormRequest implements PersistableFormRequest

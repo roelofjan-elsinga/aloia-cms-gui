@@ -1,4 +1,4 @@
-@extends('flatfilecmsgui::template')
+@extends('aloiacmsgui::template')
 
 @section('content')
 

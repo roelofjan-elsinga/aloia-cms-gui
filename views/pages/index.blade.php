@@ -1,4 +1,4 @@
-@extends('flatfilecmsgui::template')
+@extends('aloiacmsgui::template')
 
 @section('content')
 
@@ -31,9 +31,9 @@
                     </div>
                     <div class="px-4 py-2">
                         <h4 class="flex-1 font-bold">
-                            <a href="{{route('pages.edit', $page->slug())}}">{{$page->title()}}</a>
+                            <a href="{{route('pages.edit', $page->filename())}}">{{$page->title()}}</a>
                             <small class="inline-block text-blue-600">
-                                <a href="/{{$page->slug(true)}}" target="_blank" class="underline">({{_translate("VIEW_PAGE")}})</a>
+                                <a href="/{{$page->url()}}" target="_blank" class="underline">({{_translate("VIEW_PAGE")}})</a>
                             </small>
                         </h4>
 
@@ -61,7 +61,7 @@
 
         <section class="md:w-1/4">
 
-            @include('flatfilecmsgui::blocks.actions-sidebar')
+            @include('aloiacmsgui::blocks.actions-sidebar')
 
         </section>
 

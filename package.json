@@ -1,8 +1,8 @@
 {
-  "name": "flat-file-cms-gui",
+  "name": "aloia-cms-gui",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:roelofjan-elsinga/flat-file-cms-gui.git",
+  "repository": "git@github.com:roelofjan-elsinga/aloia-cms-gui.git",
   "author": "Roelof Jan Elsinga <roelofjanelsinga@gmail.com>",
   "license": "MIT",
   "scripts": {

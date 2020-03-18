@@ -59,7 +59,7 @@
             <h3>{{_translate('SUB_CATEGORIES')}}</h3>
             @endif
 
-            @include('flatfilecmsgui::taxonomy.taxonomy', ['taxonomy' => $category->children(), 'current_index' => $current_index + 1])
+            @include('aloiacmsgui::taxonomy.taxonomy', ['taxonomy' => $category->children(), 'current_index' => $current_index + 1])
 
             <form action="{{route('taxonomy.store')}}" method="POST">
 

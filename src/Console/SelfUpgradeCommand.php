@@ -1,7 +1,7 @@
 <?php
 
 
-namespace FlatFileCms\GUI\Console;
+namespace AloiaCms\GUI\Console;
 
 use Illuminate\Console\Command;
 
@@ -12,7 +12,7 @@ class SelfUpgradeCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'flatfilecmsgui:self:upgrade';
+    protected $signature = 'aloiacmsgui:self:upgrade';
 
     /**
      * The console command description.
@@ -28,7 +28,7 @@ class SelfUpgradeCommand extends Command
      */
     public function handle()
     {
-        $this->call('flatfilecms:self:upgrade');
+        $this->call('aloiacms:self:upgrade');
 
         system("composer require roelofjan-elsinga/flat-file-cms-gui");
     }
