@@ -3,7 +3,7 @@
 namespace FlatFileCms\GUI\Controllers;
 
 use Gumlet\ImageResize;
-use FlatFileCms\Media;
+use AloiaCms\Media;
 use FlatFileCms\GUI\Requests\UploadImageRequest;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Redirect;

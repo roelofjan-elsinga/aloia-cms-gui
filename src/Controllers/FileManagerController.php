@@ -3,7 +3,7 @@
 
 namespace FlatFileCms\GUI\Controllers;
 
-use FlatFileCms\FileManager;
+use AloiaCms\FileManager;
 use FlatFileCms\GUI\Requests\UploadFileRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;

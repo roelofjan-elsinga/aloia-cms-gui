@@ -34,7 +34,7 @@
 
                     <div class="w-5/6">
                         <h4>Markdown</h4>
-                        <p class="text-sm bg-gray-400 block p-2">!["{{\FlatFileCms\Media::filenameToTitle($image->getFilename())}}"](/{{$image->getPathname()}})</p>
+                        <p class="text-sm bg-gray-400 block p-2">!["{{\AloiaCms\Media::filenameToTitle($image->getFilename())}}"](/{{$image->getPathname()}})</p>
 
                         <h4 class="mt-2">{{_translate('AS_URL')}}</h4>
 

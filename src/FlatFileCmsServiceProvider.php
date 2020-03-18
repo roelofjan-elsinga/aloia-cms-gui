@@ -2,6 +2,7 @@
 
 namespace FlatFileCms\GUI;
 
+use Collective\Html\HtmlServiceProvider;
 use FlatFileCms\GUI\Middleware\Authenticated;
 use FlatFileCms\GUI\Middleware\Guest;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,8 @@ class FlatFileCmsServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->register(HtmlServiceProvider::class);
+
         $this->mergeConfigFrom(
             __DIR__.'/../config/flatfilecmsgui.php',
             'flatfilecmsgui'

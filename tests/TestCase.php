@@ -6,6 +6,7 @@ use Collective\Html\FormBuilder;
 use Collective\Html\FormFacade;
 use Collective\Html\HtmlServiceProvider;
 use FlatFileCms\GUI\AloiaCmsServiceProvider;
+use FlatFileCms\GUI\FlatFileCmsServiceProvider;
 use FlatFileCms\GUI\Tests\Mocks\MockMix;
 use FlatFileCms\GUI\User;
 use Illuminate\Foundation\Mix;
@@ -72,8 +73,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageProviders($app)
     {
         return [
-            HtmlServiceProvider::class,
-            AloiaCmsServiceProvider::class
+            FlatFileCmsServiceProvider::class
         ];
     }
 }

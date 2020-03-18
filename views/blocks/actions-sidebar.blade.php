@@ -21,11 +21,6 @@
         {{_translate('MANAGE_CONTENT_BLOCKS')}}
     </a>
 
-    <a href="{{route('taxonomy.index')}}"
-       class="text-blue-800 mb-2 block">
-        {{_translate('MANAGE_TAXONOMY')}}
-    </a>
-
     <a href="{{route('files.index')}}"
        class="text-blue-800 mb-2 block">
         {{_translate('MANAGE_UPLOADED_FILES')}}

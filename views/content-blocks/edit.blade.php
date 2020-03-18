@@ -8,7 +8,6 @@
 
         {!! csrf_field() !!}
         <input type="hidden" name="_method" value="PUT" />
-        <input type="hidden" name="file_path" value="{{$file_path}}" />
 
         <div class="mb-4">
             @if($extension === 'html')
