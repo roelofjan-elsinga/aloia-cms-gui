@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1 class="mb-8 text-xl font-semibold">{{_translate('CREATE_ARTICLE')}}</h1>
+    <h1 class="mb-8 text-xl font-semibold">{{trans('aloiacmsgui::articles.create')}}</h1>
 
     @if ($errors->any())
         <div class="bg-red-600 text-white p-4 rounded mb-8">
@@ -14,66 +14,66 @@
         </div>
     @endif
 
-    {!! Form::open(['route' => 'articles.store', 'method' => 'post']) !!}
+    <form action="{{route('articles.store')}}" method="post">
+        {!! csrf_field() !!}
 
-    {!! Form::hidden('file_type', $file_type) !!}
+        <input type="hidden" name="file_type" value="{{$file_type}}">
 
-    {!! Form::label('slug', 'URL *', ['class' => 'label']) !!}
-    {!! Form::text('slug', null, ['class' => 'text-field', 'placeholder' => _translate('EXAMPLE_URL_PLACEHOLDER'), 'required' => 'required']) !!}
+        <label class="label" for="slug">URL *</label>
+        <input type="text" name="slug" class="text-field" placeholder="{{trans('aloiacmsgui::articles.example_url')}}" required>
 
-    <div class="flex">
-        <label class="label">{{_translate('CONTENT')}} *</label>
-        <div class="flex-1 text-right">
-            <a href="{{route('media.index')}}" target="_blank" class="mb-2 mt-4 inline-block link-no-underline">{{_translate('IMAGES_FOR_POST')}}</a>
+        <div class="flex">
+            <label class="label">{{trans('aloiacmsgui::articles.content')}} *</label>
+            <div class="flex-1 text-right">
+                <a href="{{route('media.index')}}" target="_blank" class="mb-2 mt-4 inline-block link-no-underline">{{trans('aloiacmsgui::images.for_post')}}</a>
+            </div>
         </div>
-    </div>
 
-    <div class="flex-1">
-        @if($file_type !== 'md')
-            <a href="{{route(Route::currentRouteName(), ['file_type' => 'md'])}}" class="text-blue-800 underline">Use Markdown editor</a>
-        @endif
+        <div class="flex-1">
+            @if($file_type !== 'md')
+                <a href="{{route(Route::currentRouteName(), ['file_type' => 'md'])}}" class="text-blue-800 underline">Use Markdown editor</a>
+            @endif
 
-        @if($file_type !== 'html')
-            <a href="{{route(Route::currentRouteName(), ['file_type' => 'html'])}}" class="text-blue-800 underline">Use HTML editor</a>
-        @endif
-    </div>
+            @if($file_type !== 'html')
+                <a href="{{route(Route::currentRouteName(), ['file_type' => 'html'])}}" class="text-blue-800 underline">Use HTML editor</a>
+            @endif
+        </div>
 
-    <div class="mb-4">
-        @if($file_type === 'html')
-            @include('aloiacmsgui::blocks.ckeditor', ['name' => 'content', 'value' => null])
-        @else
-            @include('aloiacmsgui::blocks.simplemde', ['name' => 'content', 'value' => null])
-        @endif
-    </div>
+        <div class="mb-4">
+            @if($file_type === 'html')
+                @include('aloiacmsgui::blocks.ckeditor', ['name' => 'content', 'value' => null])
+            @else
+                @include('aloiacmsgui::blocks.simplemde', ['name' => 'content', 'value' => null])
+            @endif
+        </div>
 
-    {!! Form::label('description', _translate('DESCRIPTION') . ' *', ['class' => 'label']) !!}
-    {!! Form::textarea('description', null, ['class' => 'text-field', 'rows' => 5, 'required' => 'required']) !!}
+        <label class="label" for="description">{{trans('aloiacmsgui::articles.description') }} *</label>
+        <textarea name="description" class="text-field" rows="5" required
+                  placeholder="{{trans('aloiacmsgui::articles.description') }}"></textarea>
 
-    {!! Form::label('post_date', _translate('POST_DATE') . ' *', ['class' => 'label']) !!}
-    {!! Form::date('post_date', null, ['class' => 'text-field']) !!}
+        <label class="label" for="post_date">{{trans('aloiacmsgui::articles.post_date') }}</label>
+        <input type="date" name="post_date" class="text-field">
 
-    <div class="my-4">
-        {!! Form::hidden('is_published', "0") !!}
+        <div class="my-4">
+            <input type="hidden" name="is_published" value="0">
+            <input type="checkbox" id="is_published" name="is_published" value="1">
+            <label for="is_published">{{trans('aloiacmsgui::articles.is_published') }}</label>
+        </div>
 
-        {!! Form::checkbox('is_published', "1", false) !!}
+        <div class="my-4">
+            <input type="hidden" name="is_scheduled" value="0">
+            <input type="checkbox" id="is_scheduled" name="is_scheduled" value="1">
+            <label for="is_scheduled">{{trans('aloiacmsgui::articles.is_scheduled') }}</label>
+        </div>
 
-        {!! Form::label('is_published', _translate('ARTICLE_IS_PUBLISHED')) !!}
-    </div>
+        * = {{trans('aloiacmsgui::pages.required')}}
 
-    <div class="my-4">
-        {!! Form::hidden('is_scheduled', "0") !!}
+        <div class="text-right">
+            <button type="submit" class="bg-green-600 text-white rounded p-4 my-4">
+                {{trans('aloiacmsgui::articles.create')}}
+            </button>
+        </div>
 
-        {!! Form::checkbox('is_scheduled', "1", false) !!}
-
-        {!! Form::label('is_scheduled', _translate('ARTICLE_IS_SCHEDULED')) !!}
-    </div>
-
-    * = {{_translate('REQUIRED')}}
-
-    <div class="text-right">
-        {!! Form::submit(_translate('CREATE_ARTICLE'), ['class' => 'bg-green-600 text-white rounded p-4 my-4']) !!}
-    </div>
-
-    {!! Form::close() !!}
+    </form>
 
 @endsection()

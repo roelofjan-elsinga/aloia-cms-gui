@@ -7,23 +7,23 @@
         <section class="flex-1 mr-4">
 
             <h1 class="mb-4">
-                {{_translate('MANAGE_UPLOADED_FILES')}}
+                {{trans('aloiacmsgui::files.manage')}}
             </h1>
 
             <a href="{{route('files.create')}}"
                class="text-blue-800 mb-2 block underline">
-                {{_translate('UPLOAD_A_NEW_FILE')}}
+                {{trans('aloiacmsgui::files.upload_new')}}
             </a>
 
             @if(Session::has('upload_success'))
                 <div class="bg-green-600 text-white p-4 rounded mb-4">
-                    <strong>{{_translate('GREAT')}}!</strong> {{_translate('FILE_UPLOADED')}}
+                    <strong>{{trans('aloiacmsgui::interface.great')}}!</strong> {{trans('aloiacmsgui::files.uploaded')}}
                 </div>
             @endif
 
             @if(Session::has('delete_success'))
                 <div class="bg-green-600 text-white p-4 rounded mb-4">
-                    <strong>{{_translate('GREAT')}}!</strong> {{_translate('FILE_DELETED')}}
+                    <strong>{{trans('aloiacmsgui::interface.great')}}!</strong> {{trans('aloiacmsgui::files.deleted')}}
                 </div>
             @endif
 
@@ -49,7 +49,7 @@
                     </div>
 
                     <div class="text-sm text-blue-800 break-words">
-                        <strong>{{_translate('LINK')}}:</strong> {{url('files/' . $file->basename())}}
+                        <strong>{{trans('aloiacmsgui::interface.link')}}:</strong> {{url('files/' . $file->basename())}}
                     </div>
 
                 </div>

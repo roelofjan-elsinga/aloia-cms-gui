@@ -20,7 +20,7 @@ class MediaController extends Controller
      */
     public function index(Media $media): ViewResponse
     {
-        $this->setTitle(_translate("MANAGE_IMAGES"));
+        $this->setTitle(trans("aloiacmsgui::images.manage"));
 
         return View::make('aloiacmsgui::media.index', [
             'images' => $media->allFiles()->onlyFullSize()
@@ -34,7 +34,7 @@ class MediaController extends Controller
      */
     public function create(): ViewResponse
     {
-        $this->setTitle(_translate("UPLOAD_IMAGE"));
+        $this->setTitle(trans("aloiacmsgui::images.upload"));
 
         return View::make('aloiacmsgui::media.create');
     }

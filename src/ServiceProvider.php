@@ -2,9 +2,9 @@
 
 namespace AloiaCms\GUI;
 
-use Collective\Html\HtmlServiceProvider;
 use AloiaCms\GUI\Middleware\Authenticated;
 use AloiaCms\GUI\Middleware\Guest;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
@@ -27,8 +27,6 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        $this->app->register(HtmlServiceProvider::class);
-
         $this->mergeConfigFrom(
             __DIR__.'/../config/aloiacmsgui.php',
             'aloiacmsgui'
@@ -65,11 +63,17 @@ class ServiceProvider extends BaseServiceProvider
 
         $this->loadViewsFrom(__DIR__.'/../views', 'aloiacmsgui');
 
+        $this->loadTranslationsFrom(__DIR__.'/../lang', 'aloiacmsgui');
+
         $this->publishes([
             __DIR__.'/../views/templates' => resource_path('views/vendor/aloiacmsgui/templates'),
         ], 'views');
 
         $this->registerRoutes();
+
+        Paginator::defaultView('aloiacmsgui::blocks.pagination');
+
+        Paginator::defaultSimpleView('aloiacmsgui::blocks.pagination');
     }
 
     /**

@@ -7,17 +7,17 @@
         <section class="flex-1 mr-4">
 
             <h1 class="mb-4">
-                {{_translate('MANAGE_ARTICLES')}}
+                {{trans('aloiacmsgui::articles.manage')}}
             </h1>
 
             <a href="{{route('articles.create')}}"
                class="text-blue-800 mb-2 block underline">
-                {{_translate('CREATE_NEW_ARTICLE')}}
+                {{trans('aloiacmsgui::articles.create_new')}}
             </a>
 
             @if(session()->has('updated_article') || session()->has('created_article') || session()->has('deleted_article'))
                 <div class="bg-green-600 text-white p-4 rounded mb-4">
-                    <strong>{{_translate('GREAT')}}!</strong> {{_translate('ARTICLE_UPDATED_SUCCESS')}}
+                    <strong>{{trans('aloiacmsgui::interface.great')}}!</strong> {{trans('aloiacmsgui::articles.updated_success')}}
                 </div>
             @endif
 
@@ -35,29 +35,33 @@
                         <h4 class="flex-1 font-bold">
                             <a href="{{route('articles.edit', $article['slug'])}}">{{$article['title']}}</a>
                             <small class="inline-block text-blue-600">
-                                <a href="/articles/{{$article['slug']}}" target="_blank" class="underline">({{_translate("VIEW_PAGE")}})</a>
+                                <a href="/articles/{{$article['slug']}}" target="_blank" class="underline">({{trans("aloiacmsgui::pages.view")}})</a>
                             </small>
                         </h4>
 
                         <div>
-                            Publish date: {{$article['postDate']->format('F jS, Y')}}
+                            {{trans('aloiacmsgui::articles.post_date')}}: {{$article['postDate']->format('F jS, Y')}}
                         </div>
 
                         @if($article['isPublished'])
-                            <p class="status green">{{_translate('PUBLISHED')}}</p>
+                            <p class="status green">{{trans('aloiacmsgui::articles.published')}}</p>
                         @endif
 
                         @if($article['isScheduled'])
-                            <p class="status orange">{{_translate('SCHEDULED')}}</p>
+                            <p class="status orange">{{trans('aloiacmsgui::articles.scheduled')}}</p>
                         @endif
 
                         @if(!$article['isPublished'] && !$article['isScheduled'])
-                            <p class="status">{{_translate('DRAFT')}}</p>
+                            <p class="status">{{trans('aloiacmsgui::articles.draft')}}</p>
                         @endif
                     </div>
                 </div>
 
             @endforeach
+
+            <div class="mt-8">
+                {!! $articles->links() !!}
+            </div>
 
         </section>
 

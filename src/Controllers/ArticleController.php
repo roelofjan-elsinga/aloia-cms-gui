@@ -6,6 +6,7 @@ use AloiaCms\Models\Article;
 use AloiaCms\GUI\Requests\CreateArticleRequest;
 use AloiaCms\GUI\Requests\UpdateArticleRequest;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
@@ -21,22 +22,26 @@ class ArticleController extends Controller
      */
     public function index(): ViewResponse
     {
-        $this->setTitle(_translate("MANAGE_ARTICLES"));
+        $this->setTitle(trans("aloiacmsgui::articles.manage"));
+
+        $page = request()->get('page') ?? 1;
+
+        $articles = Article::all()
+            ->map(function (Article $article) {
+                return [
+                    'title' => $article->title(),
+                    'image' => $article->thumbnail(),
+                    'slug' => $article->slug(),
+                    'isPublished' => $article->isPublished(),
+                    'isScheduled' => $article->isScheduled(),
+                    'postDate' => $article->getPostDate()
+                ];
+            })
+            ->sortByDesc('postDate')
+            ->values();
 
         return View::make('aloiacmsgui::articles.index', [
-            'articles' => Article::all()
-                ->map(function (Article $article) {
-                    return [
-                        'title' => $article->title(),
-                        'image' => $article->thumbnail(),
-                        'slug' => $article->slug(),
-                        'isPublished' => $article->isPublished(),
-                        'isScheduled' => $article->isScheduled(),
-                        'postDate' => $article->getPostDate()
-                    ];
-                })
-                ->sortByDesc('postDate')
-                ->values()
+            'articles' => $this->getPaginator($articles, route('articles.index'), $page, 10)
         ]);
     }
 
@@ -47,7 +52,7 @@ class ArticleController extends Controller
      */
     public function create(): ViewResponse
     {
-        $this->setTitle(_translate("CREATE_ARTICLE"));
+        $this->setTitle(trans("aloiacmsgui::articles.create"));
 
         $request = Request::capture();
 
@@ -81,7 +86,7 @@ class ArticleController extends Controller
     {
         $article = Article::find($slug);
 
-        $this->setTitle(_translate_dynamic('EDIT_ARTICLE', $article->title()));
+        $this->setTitle(trans('aloiacmsgui::articles.edit', ['title' => $article->title()]));
 
         $request = Request::capture();
 

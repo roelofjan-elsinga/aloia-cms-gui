@@ -7,17 +7,17 @@
         <section class="flex-1 mr-4">
 
             <h1 class="mb-4">
-                {{_translate('MANAGE_PAGES')}}
+                {{trans('aloiacmsgui::pages.manage')}}
             </h1>
 
             <a href="{{route('pages.create')}}"
                class="text-blue-800 mb-2 block underline">
-                {{_translate('CREATE_NEW_PAGE')}}
+                {{trans('aloiacmsgui::pages.create_new')}}
             </a>
 
             @if(session()->has('updated_page') || session()->has('created_page') || session()->has('deleted_page'))
                 <div class="bg-green-600 text-white p-4 rounded mb-4">
-                    <strong>{{_translate('GREAT')}}!</strong> {{_translate('PAGE_SAVED')}}
+                    <strong>{{trans('aloiacmsgui::interface.great')}}!</strong> {{trans('aloiacmsgui::pages.saved')}}
                 </div>
             @endif
 
@@ -33,29 +33,33 @@
                         <h4 class="flex-1 font-bold">
                             <a href="{{route('pages.edit', $page->filename())}}">{{$page->title()}}</a>
                             <small class="inline-block text-blue-600">
-                                <a href="/{{$page->url()}}" target="_blank" class="underline">({{_translate("VIEW_PAGE")}})</a>
+                                <a href="/{{$page->url()}}" target="_blank" class="underline">({{trans("aloiacmsgui::pages.view")}})</a>
                             </small>
                         </h4>
 
                         @if($page->isPublished())
-                            <p class="status green">{{_translate('PUBLISHED')}}</p>
+                            <p class="status green">{{trans('aloiacmsgui::articles.published')}}</p>
                         @endif
 
                         @if(!$page->isPublished())
-                            <p class="status">{{_translate('DRAFT')}}</p>
+                            <p class="status">{{trans('aloiacmsgui::articles.draft')}}</p>
                         @endif
 
                         @if($page->isHomepage())
-                            <p class="status orange">{{_translate('HOMEPAGE')}}</p>
+                            <p class="status orange">{{trans('aloiacmsgui::pages.homepage')}}</p>
                         @endif
 
                         @if($page->isInMenu())
-                            <p class="status blue">{{_translate('IS_IN_MENU')}}</p>
+                            <p class="status blue">{{trans('aloiacmsgui::interface.in_menu')}}</p>
                         @endif
                     </div>
                 </div>
 
             @endforeach
+
+            <div class="mt-8">
+                {!! $pages->links() !!}
+            </div>
 
         </section>
 

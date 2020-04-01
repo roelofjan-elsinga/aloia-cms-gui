@@ -20,12 +20,16 @@ class PagesController extends Controller
      */
     public function index(): ViewResponse
     {
-        $this->setTitle(_translate("MANAGE_PAGES"));
+        $this->setTitle(trans("aloiacmsgui::pages.manage"));
+
+        $page = request()->get('page') ?? 1;
+
+        $pages = Page::all()
+            ->sortByDesc('title')
+            ->values();
 
         return View::make('aloiacmsgui::pages.index', [
-            'pages' => Page::all()
-                ->sortByDesc('title')
-                ->values()
+            'pages' => $this->getPaginator($pages, route('pages.index'), $page, 10)
         ]);
     }
 
@@ -36,7 +40,7 @@ class PagesController extends Controller
      */
     public function create(): ViewResponse
     {
-        $this->setTitle(_translate("CREATE_NEW_PAGE"));
+        $this->setTitle(trans("aloiacmsgui::pages.create_new"));
 
         $request = Request::capture();
 
@@ -71,7 +75,7 @@ class PagesController extends Controller
     {
         $page = Page::find($slug);
 
-        $this->setTitle(_translate_dynamic('EDIT_ARTICLE', $page->title()));
+        $this->setTitle(trans('aloiacmsgui::articles.edit', ['title' => $page->title()]));
 
         return View::make('aloiacmsgui::pages.edit', [
             'page_resource' => $page,

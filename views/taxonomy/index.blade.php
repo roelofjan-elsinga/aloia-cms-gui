@@ -7,18 +7,18 @@
         <section class="flex-1 mr-4">
 
             <h1 class="mb-4">
-                {{_translate("MANAGE_TAXONOMY")}}
+                {{trans("aloiacmsgui::interface.taxonomy.manage")}}
             </h1>
 
             @if(session()->has('created') || session()->has('updated'))
                 <div class="bg-green-600 text-white p-4 rounded mb-4">
-                    <strong>{{_translate('GREAT')}}!</strong> {{_translate('TAXONOMY_SAVED')}}
+                    <strong>{{trans('aloiacmsgui::interface.great')}}!</strong> {{trans('aloiacmsgui::interface.taxonomy.saved')}}
                 </div>
             @endif
 
             @if(session()->has('deleted'))
                 <div class="bg-green-600 text-white p-4 rounded mb-4">
-                    <strong>{{_translate('GREAT')}}!</strong> {{_translate('TAXONOMY_DELETED')}}
+                    <strong>{{trans('aloiacmsgui::interface.great')}}!</strong> {{trans('aloiacmsgui::interface.taxonomy.deleted')}}
                 </div>
             @endif
 

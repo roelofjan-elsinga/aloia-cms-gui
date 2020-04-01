@@ -2,15 +2,10 @@
 
 namespace AloiaCms\GUI\Tests;
 
-use Collective\Html\FormBuilder;
-use Collective\Html\FormFacade;
-use Collective\Html\HtmlServiceProvider;
-use AloiaCms\GUI\AloiaCmsServiceProvider;
 use AloiaCms\GUI\ServiceProvider;
 use AloiaCms\GUI\Tests\Mocks\MockMix;
 use AloiaCms\GUI\User;
 use Illuminate\Foundation\Mix;
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;
 use org\bovigo\vfs\vfsStream;
