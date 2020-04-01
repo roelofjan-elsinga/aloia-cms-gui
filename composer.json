@@ -33,6 +33,7 @@
         "hooks": {
             "pre-commit": [
                 "echo committing as $(git config user.name)",
+                "npm run prod",
                 "./vendor/bin/php-cs-fixer fix . --rules=@PSR2",
                 "git add"
             ],
