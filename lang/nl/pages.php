@@ -19,4 +19,5 @@ return [
     "manage" => "Pagina's beheren",
     "saved" => "De pagina is opgeslagen!",
     "sidebar_blocks" => "Blokken in de sidebar",
+    "canonical_link" => "Canonical link (als deze content van een andere website komt, vul die URL in)"
 ];

@@ -52,8 +52,6 @@ class CreatePageRequest extends FormRequest implements PersistableFormRequest
             ];
         }
 
-        dd(basename($this->get('url')));
-
         Page::find($this->get('url'))
             ->setExtension($this->get('file_type'))
             ->setMatter([

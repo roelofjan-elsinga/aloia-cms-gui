@@ -6,118 +6,125 @@
 
     @include("aloiacmsgui::blocks.error-message")
 
-    {!! Form::open(['route' => ['pages.update', $page_resource->url()], 'method' => 'put']) !!}
+    <form action="{{route('pages.update', $page_resource->url())}}" method="post">
 
-    <div class="flex">
-        <section class="w-2/3 pr-4">
+        @method('put')
+        {!! csrf_field() !!}
 
-            {!! Form::hidden('file_type', $file_type) !!}
-            {!! Form::hidden('scheduled', $page_resource->isScheduled() ? "1" : "0") !!}
-            {!! Form::hidden('thumbnail', null) !!}
-            {!! Form::hidden('post_date', null) !!}
-            {!! Form::hidden('template_name', $page_resource->templateName()) !!}
-            {!! Form::hidden('meta_data', !is_null($page_resource->metaData()) ? json_encode($page_resource->metaData()) : null) !!}
+        <div class="flex">
+            <section class="w-2/3 pr-4">
 
-            {!! Form::label('title', trans('aloiacmsgui::pages.title') . ' *', ['class' => 'label']) !!}
-            {!! Form::text('title', $page_resource->title(), ['class' => 'text-field']) !!}
+                <input type="hidden" name="post_date" value="" />
+                <input type="hidden" name="file_type" value="{{$file_type}}" />
+                <input type="hidden" name="original_url" value="{{$page_resource->url()}}" />
+                <input type="hidden" name="template_name" value="{{$page_resource->templateName()}}" />
+                <input type="hidden" name="meta_data" value="{{!is_null($page_resource->metaData()) ? json_encode($page_resource->metaData()) : null}}" />
 
-            <div class="flex">
-                <label class="label flex-1">{{trans('aloiacmsgui::articles.content')}}</label>
-                <div class="flex-1 text-right">
-                    <a href="{{route('media.index')}}" target="_blank" class="mb-2 mt-4 inline-block link-no-underline">{{trans('aloiacmsgui::images.for_post')}}</a>
-                </div>
-            </div>
+                <label for="title" class="label">{{trans('aloiacmsgui::pages.title')}} *</label>
+                <input type="text" name="title" id="title" class="text-field" value="{{$page_resource->title()}}"
+                       placeholder="{{trans('aloiacmsgui::pages.title')}}" />
 
-            <div class="mb-4">
-                @if($file_type === 'html')
-                    @include('aloiacmsgui::blocks.ckeditor', ['name' => 'content', 'value' => $page_resource->rawBody()])
-                @else
-                    @include('aloiacmsgui::blocks.simplemde', ['name' => 'content', 'value' => $page_resource->rawBody()])
-                @endif
-            </div>
-
-            {!! Form::hidden('original_url', $page_resource->url()) !!}
-            {!! Form::label('url', 'URL *', ['class' => 'label', 'placeholder' => 'example-url']) !!}
-            {!! Form::text('url', $page_resource->url(), ['class' => 'text-field', 'placeholder' => trans('aloiacmsgui::articles.example_url')]) !!}
-
-            <div class="my-4">
-                {!! Form::hidden('is_published', "0") !!}
-
-                {!! Form::checkbox('is_published', "1", $page_resource->isPublished()) !!}
-
-                {!! Form::label('is_published', trans('aloiacmsgui::pages.is_published')) !!}
-            </div>
-
-            <div class="my-4">
-                {!! Form::hidden('in_menu', "0") !!}
-
-                {!! Form::checkbox('in_menu', "1", $page_resource->isInMenu()) !!}
-
-                {!! Form::label('in_menu', trans('aloiacmsgui::pages.in_menu')) !!}
-
-                <div id="menu_name" style="display: {{ $page_resource->isInMenu() ? 'block' : 'none'}};">
-                    {!! Form::label('menu_name', trans('aloiacmsgui::interface.menu_name'), ['class' => 'label']) !!}
-                    {!! Form::text('menu_name', $page_resource->menuName(), ['class' => 'text-field', 'placeholder' => trans('aloiacmsgui::interface.menu_name')]) !!}
+                <div class="flex">
+                    <label class="label flex-1">{{trans('aloiacmsgui::articles.content')}}</label>
+                    <div class="flex-1 text-right">
+                        <a href="{{route('media.index')}}" target="_blank" class="mb-2 mt-4 inline-block link-no-underline">{{trans('aloiacmsgui::images.for_post')}}</a>
+                    </div>
                 </div>
 
-                <script>
-                    function triggerMenuNameField(event) {
+                <div class="mb-4">
+                    @if($file_type === 'html')
+                        @include('aloiacmsgui::blocks.ckeditor', ['name' => 'content', 'value' => $page_resource->rawBody()])
+                    @else
+                        @include('aloiacmsgui::blocks.simplemde', ['name' => 'content', 'value' => $page_resource->rawBody()])
+                    @endif
+                </div>
 
-                        document.getElementById('menu_name').style.display = 'none';
+                <label for="url" class="label">URL *</label>
+                <input type="text" name="url" id="url" class="text-field" value="{{$page_resource->url()}}"
+                       placeholder="{{trans('aloiacmsgui::articles.example_url')}}" />
 
-                        if(event.checked) {
+                <div class="my-4">
+                    <input type="hidden" name="is_published" value="0">
+                    <input type="checkbox" id="is_published" name="is_published"
+                           value="1" {{$page_resource->isPublished() ? 'checked' : ''}}>
+                    <label for="is_published">{{trans('aloiacmsgui::pages.is_published') }}</label>
+                </div>
 
-                            document.getElementById('menu_name').style.display = 'block';
+                <div class="my-4">
+                    <input type="hidden" name="in_menu" value="0">
+                    <input type="checkbox" id="in_menu" name="in_menu" value="1"
+                           onchange="triggerMenuNameField(this)" {{$page_resource->isInMenu() ? 'checked' : ''}}>
+                    <label for="in_menu">{{trans('aloiacmsgui::pages.in_menu') }}</label>
 
+                    <div id="menu_name" style="display: none;">
+                        <label for="menu_name" class="label">{{trans('aloiacmsgui::interface.menu_name')}}</label>
+                        <input type="text" name="menu_name" id="menu_name" class="text-field" value="{{$page_resource->menuName()}}"
+                               placeholder="{{trans('aloiacmsgui::interface.menu_name')}}" />
+                    </div>
+
+                    <script>
+                        function triggerMenuNameField(event) {
+
+                            document.getElementById('menu_name').style.display = 'none';
+
+                            if(event.checked) {
+
+                                document.getElementById('menu_name').style.display = 'block';
+
+                            }
                         }
-                    }
-                </script>
-            </div>
+                    </script>
+                </div>
 
-            <div class="my-4">
-                {!! Form::hidden('is_homepage', "0") !!}
+                <div class="my-4">
+                    <input type="hidden" name="is_homepage" value="0">
+                    <input type="checkbox" id="is_homepage" name="is_homepage" value="1" {{$page_resource->isHomepage() ? 'checked' : ''}}>
+                    <label for="is_published">{{trans('aloiacmsgui::pages.is_homepage') }}</label>
+                </div>
 
-                {!! Form::checkbox('is_homepage', "1", $page_resource->isHomepage()) !!}
+                * = {{trans('aloiacmsgui::pages.required')}}
 
-                {!! Form::label('is_homepage', trans('aloiacmsgui::pages.is_homepage')) !!}
-            </div>
+                <div class="text-left">
+                    <button type="submit" class="bg-green-600 text-white rounded p-4 my-4">
+                        {{trans('aloiacmsgui::pages.update')}}
+                    </button>
+                </div>
 
-            * = {{trans('aloiacmsgui::pages.required')}}
+            </section>
 
-            <div class="text-left">
-                {!! Form::submit(trans('aloiacmsgui::pages.update'), ['class' => 'bg-green-600 text-white rounded p-4 my-4']) !!}
-            </div>
+            <section class="w-1/3 bg-gray-200 p-4 rounded-lg mb-8">
 
-        </section>
+                <label class="label" for="description">{{trans('aloiacmsgui::pages.seo_description') }} *</label>
+                <textarea name="description" id="description" class="text-field" rows="5" required
+                          placeholder="{{trans('aloiacmsgui::pages.seo_description') }}">{{$page_resource->description()}}</textarea>
 
-        <section class="w-1/3 bg-gray-200 p-4 rounded-lg mb-8">
+                <label class="label" for="summary">{{trans('aloiacmsgui::pages.seo_summary') }} *</label>
+                <textarea name="summary" id="summary" class="text-field" rows="3" required
+                          placeholder="{{trans('aloiacmsgui::pages.seo_summary') }}">{{$page_resource->summary()}}</textarea>
 
-            {!! Form::label('description', trans('aloiacmsgui::pages.seo_description') . ' *', ['class' => 'label']) !!}
-            {!! Form::textarea('description', $page_resource->description(), ['class' => 'text-field', 'rows' => 5]) !!}
+                <label for="canonical" class="label">{{trans('aloiacmsgui::pages.canonical_link')}}</label>
+                <input type="text" name="canonical" id="canonical" class="text-field"
+                       value="{{$page_resource->canonicalLink()}}" placeholder="https://google.com" />
 
-            {!! Form::label('summary', trans('aloiacmsgui::pages.seo_summary') . ' *', ['class' => 'label']) !!}
-            {!! Form::textarea('summary', $page_resource->summary(), ['class' => 'text-field', 'rows' => 3]) !!}
+                <label for="image" class="label">{{trans('aloiacmsgui::pages.social_media_image')}}</label>
+                <input type="text" name="image" id="image" class="text-field"
+                       value="{{$page_resource->image()}}" placeholder="https://google.com/image.jpeg" />
 
-            {!! Form::label('canonical', 'Canonical link (if this is content is posted elsewhere, submit that URL)', ['class' => 'label']) !!}
-            {!! Form::text('canonical', $page_resource->canonicalLink(), ['class' => 'text-field']) !!}
+                <label class="label" for="sidebar">{{trans('aloiacmsgui::pages.sidebar_blocks') }}</label>
+                <textarea name="sidebar" id="sidebar" class="text-field" rows="5"
+                          placeholder="{{trans('aloiacmsgui::pages.sidebar_blocks') }}">{{$page_resource->metaData()['sidebar'] ?? ""}}</textarea>
+            </section>
 
-            {!! Form::label('image', trans('aloiacmsgui::pages.social_media_image'), ['class' => 'label']) !!}
-            {!! Form::text('image', $page_resource->image(), ['class' => 'text-field']) !!}
+        </div>
 
-            {!! Form::label('sidebar', trans('aloiacmsgui::pages.sidebar_blocks'), ['class' => 'label']) !!}
-            {!! Form::textarea('sidebar', $page_resource->metaData()['sidebar'] ?? "", ['class' => 'text-field', 'rows' => 5]) !!}
-        </section>
-
-    </div>
-
-    {!! Form::close() !!}
+    </form>
 
     <div class="">
-        {!! Form::open(['route' => ['pages.destroy', $page_resource->url()], 'method' => 'delete']) !!}
-
-        <button type="submit" class="link text-red-500" onclick="return confirm('Are you sure you want to delete this item?');">Delete this page</button>
-
-        {!! Form::close() !!}
+        <form action="{{route('pages.destroy', $page_resource->url())}}" method="post">
+            @method('delete')
+            {!! csrf_field() !!}
+            <button type="submit" class="link text-red-500" onclick="return confirm('Are you sure you want to delete this item?');">Delete this page</button>
+        </form>
     </div>
 
-@endsection()
+@endsection

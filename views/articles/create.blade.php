@@ -56,13 +56,13 @@
 
         <div class="my-4">
             <input type="hidden" name="is_published" value="0">
-            <input type="checkbox" name="is_published" value="1">
+            <input type="checkbox" id="is_published" name="is_published" value="1">
             <label for="is_published">{{trans('aloiacmsgui::articles.is_published') }}</label>
         </div>
 
         <div class="my-4">
             <input type="hidden" name="is_scheduled" value="0">
-            <input type="checkbox" name="is_scheduled" value="1">
+            <input type="checkbox" id="is_scheduled" name="is_scheduled" value="1">
             <label for="is_scheduled">{{trans('aloiacmsgui::articles.is_scheduled') }}</label>
         </div>
 

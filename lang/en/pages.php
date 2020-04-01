@@ -19,4 +19,5 @@ return [
     "manage" => "Manage your pages",
     "saved" => "The page was saved successfully!",
     "sidebar_blocks" => "Sidebar blocks",
+    "canonical_link" => "Canonical link (if this is content is posted elsewhere, submit that URL)"
 ];
