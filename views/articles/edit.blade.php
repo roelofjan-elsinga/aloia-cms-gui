@@ -14,65 +14,67 @@
         </div>
     @endif
 
-    {!! Form::model($article, ['route' => ['articles.update', $article->slug()], 'method' => 'put']) !!}
+    <form action="{{route('articles.update', $article->slug())}}" method="post">
+        @method('put')
+        {!! csrf_field() !!}
 
-    {!! Form::hidden('file_type', $article->extension()) !!}
+        <input type="hidden" name="file_type" value="{{$article->extension()}}">
+        <input type="hidden" name="original_slug" value="{{$article->slug()}}">
 
-    {!! Form::hidden('original_slug', $article->slug()) !!}
-    {!! Form::label('slug', 'URL *', ['class' => 'label']) !!}
-    {!! Form::text('slug', $article->slug(), ['class' => 'text-field', 'placeholder' => trans('aloiacmsgui::articles.example_url'), 'required' => 'required']) !!}
+        <label class="label" for="slug">URL *</label>
+        <input type="text" name="slug" class="text-field" value="{{$article->slug()}}"
+               placeholder="{{trans('aloiacmsgui::articles.example_url')}}" required>
 
-    <div class="flex">
-        <label class="label flex-1">{{trans('aloiacmsgui::articles.content')}} *</label>
-        <div class="flex-1 text-right">
-            <a href="{{route('media.index')}}" target="_blank" class="mb-2 mt-4 inline-block link-no-underline">{{trans('aloiacmsgui::images.for_post')}}</a>
+        <div class="flex">
+            <label class="label flex-1">{{trans('aloiacmsgui::articles.content')}} *</label>
+            <div class="flex-1 text-right">
+                <a href="{{route('media.index')}}" target="_blank" class="mb-2 mt-4 inline-block link-no-underline">{{trans('aloiacmsgui::images.for_post')}}</a>
+            </div>
         </div>
-    </div>
 
-    <div class="mb-4">
-        @if($file_type === 'html')
-            @include('aloiacmsgui::blocks.ckeditor', ['name' => 'content', 'value' => $article->rawBody()])
-        @else
-            @include('aloiacmsgui::blocks.simplemde', ['name' => 'content', 'value' => $article->rawBody()])
-        @endif
-    </div>
+        <div class="mb-4">
+            @if($file_type === 'html')
+                @include('aloiacmsgui::blocks.ckeditor', ['name' => 'content', 'value' => $article->rawBody()])
+            @else
+                @include('aloiacmsgui::blocks.simplemde', ['name' => 'content', 'value' => $article->rawBody()])
+            @endif
+        </div>
 
-    {!! Form::label('description', trans('aloiacmsgui::articles.description') . ' *', ['class' => 'label']) !!}
-    {!! Form::textarea('description', $article->description(), ['class' => 'text-field', 'rows' => 5, 'required' => 'required']) !!}
+        <label class="label" for="description">{{trans('aloiacmsgui::articles.description') }} *</label>
+        <textarea name="description" class="text-field" rows="5" required
+                  placeholder="{{trans('aloiacmsgui::articles.description') }}">{{$article->description()}}</textarea>
 
-    {!! Form::label('post_date', trans('aloiacmsgui::articles.post_date') . ' *', ['class' => 'label']) !!}
-    {!! Form::date('post_date', $article->getPostDate(), ['class' => 'text-field']) !!}
+        <label class="label" for="post_date">{{trans('aloiacmsgui::articles.post_date') }}</label>
+        <input type="date" name="post_date" class="text-field" value="{{$article->getPostDate()->toDateString()}}">
 
-    <div class="my-4">
-        {!! Form::hidden('is_published', "0") !!}
+        <div class="my-4">
+            <input type="hidden" name="is_published" value="0">
+            <input type="checkbox" name="is_published" value="1" {{$article->isPublished() ? 'checked' : ''}}>
+            <label for="is_published">{{trans('aloiacmsgui::articles.is_published') }}</label>
+        </div>
 
-        {!! Form::checkbox('is_published', "1", $article->isPublished()) !!}
+        <div class="my-4">
+            <input type="hidden" name="is_scheduled" value="0">
+            <input type="checkbox" name="is_scheduled" value="1" {{$article->isScheduled() ? 'checked' : ''}}>
+            <label for="is_scheduled">{{trans('aloiacmsgui::articles.is_scheduled') }}</label>
+        </div>
 
-        {!! Form::label('is_published', trans('aloiacmsgui::articles.is_published')) !!}
-    </div>
+        * = {{trans('aloiacmsgui::pages.required')}}
 
-    <div class="my-4">
-        {!! Form::hidden('is_scheduled', "0") !!}
+        <div class="text-right">
+            <button type="submit" class="bg-green-600 text-white rounded p-4 my-4">
+                {{trans('aloiacmsgui::articles.update')}}
+            </button>
+        </div>
 
-        {!! Form::checkbox('is_scheduled', "1", $article->isScheduled()) !!}
-
-        {!! Form::label('is_scheduled', trans('aloiacmsgui::articles.is_scheduled')) !!}
-    </div>
-
-    * = {{trans('aloiacmsgui::pages.required')}}
-
-    <div class="text-right">
-        {!! Form::submit(trans('aloiacmsgui::articles.update'), ['class' => 'bg-green-600 text-white rounded p-4 my-4']) !!}
-    </div>
-
-    {!! Form::close() !!}
+    </form>
 
     <div class="">
-        {!! Form::open(['route' => ['articles.destroy', $article->slug()], 'method' => 'delete']) !!}
-
-        <button type="submit" class="link text-red-500" onclick="return confirm('Are you sure you want to delete this item?');">Delete this article</button>
-
-        {!! Form::close() !!}
+        <form action="{{route('articles.destroy', $article->slug())}}" method="post">
+            @method('delete')
+            {!! csrf_field() !!}
+            <button type="submit" class="link text-red-500" onclick="return confirm('Are you sure you want to delete this item?');">Delete this article</button>
+        </form>
     </div>
 
 @endsection
