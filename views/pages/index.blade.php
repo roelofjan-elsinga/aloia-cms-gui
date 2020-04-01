@@ -57,6 +57,10 @@
 
             @endforeach
 
+            <div class="mt-8">
+                {!! $pages->links() !!}
+            </div>
+
         </section>
 
         <section class="md:w-1/4">

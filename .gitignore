@@ -4,3 +4,4 @@ node_modules/
 symlink-packages.sh
 .phpunit.result.cache
 .php_cs.cache
+coverage/

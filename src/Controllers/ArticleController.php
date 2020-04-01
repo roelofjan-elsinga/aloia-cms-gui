@@ -6,6 +6,7 @@ use AloiaCms\Models\Article;
 use AloiaCms\GUI\Requests\CreateArticleRequest;
 use AloiaCms\GUI\Requests\UpdateArticleRequest;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
@@ -23,20 +24,24 @@ class ArticleController extends Controller
     {
         $this->setTitle(_translate("MANAGE_ARTICLES"));
 
+        $page = request()->get('page') ?? 1;
+
+        $articles = Article::all()
+            ->map(function (Article $article) {
+                return [
+                    'title' => $article->title(),
+                    'image' => $article->thumbnail(),
+                    'slug' => $article->slug(),
+                    'isPublished' => $article->isPublished(),
+                    'isScheduled' => $article->isScheduled(),
+                    'postDate' => $article->getPostDate()
+                ];
+            })
+            ->sortByDesc('postDate')
+            ->values();
+
         return View::make('aloiacmsgui::articles.index', [
-            'articles' => Article::all()
-                ->map(function (Article $article) {
-                    return [
-                        'title' => $article->title(),
-                        'image' => $article->thumbnail(),
-                        'slug' => $article->slug(),
-                        'isPublished' => $article->isPublished(),
-                        'isScheduled' => $article->isScheduled(),
-                        'postDate' => $article->getPostDate()
-                    ];
-                })
-                ->sortByDesc('postDate')
-                ->values()
+            'articles' => $this->getPaginator($articles, route('articles.index'), $page, 10)
         ]);
     }
 

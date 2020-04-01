@@ -5,6 +5,7 @@ namespace AloiaCms\GUI;
 use Collective\Html\HtmlServiceProvider;
 use AloiaCms\GUI\Middleware\Authenticated;
 use AloiaCms\GUI\Middleware\Guest;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
@@ -70,6 +71,10 @@ class ServiceProvider extends BaseServiceProvider
         ], 'views');
 
         $this->registerRoutes();
+
+        Paginator::defaultView('aloiacmsgui::blocks.pagination');
+
+        Paginator::defaultSimpleView('aloiacmsgui::blocks.pagination');
     }
 
     /**

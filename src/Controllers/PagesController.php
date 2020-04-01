@@ -22,10 +22,14 @@ class PagesController extends Controller
     {
         $this->setTitle(_translate("MANAGE_PAGES"));
 
+        $page = request()->get('page') ?? 1;
+
+        $pages = Page::all()
+            ->sortByDesc('title')
+            ->values();
+
         return View::make('aloiacmsgui::pages.index', [
-            'pages' => Page::all()
-                ->sortByDesc('title')
-                ->values()
+            'pages' => $this->getPaginator($pages, route('pages.index'), $page, 10)
         ]);
     }
 

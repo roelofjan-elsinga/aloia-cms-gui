@@ -59,6 +59,10 @@
 
             @endforeach
 
+            <div class="mt-8">
+                {!! $articles->links() !!}
+            </div>
+
         </section>
 
         <section class="md:w-1/4">
