@@ -2,7 +2,6 @@
 
 namespace AloiaCms\GUI;
 
-use Collective\Html\HtmlServiceProvider;
 use AloiaCms\GUI\Middleware\Authenticated;
 use AloiaCms\GUI\Middleware\Guest;
 use Illuminate\Pagination\Paginator;
@@ -28,8 +27,6 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        $this->app->register(HtmlServiceProvider::class);
-
         $this->mergeConfigFrom(
             __DIR__.'/../config/aloiacmsgui.php',
             'aloiacmsgui'
