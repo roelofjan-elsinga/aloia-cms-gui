@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1 class="mb-8 text-xl font-semibold">{{_translate_dynamic('EDIT_ARTICLE', $page_resource->title())}}</h1>
+    <h1 class="mb-8 text-xl font-semibold">{{trans('aloiacmsgui::articles.edit', ['title' => $page_resource->title()])}}</h1>
 
     @include("aloiacmsgui::blocks.error-message")
 
@@ -18,13 +18,13 @@
             {!! Form::hidden('template_name', $page_resource->templateName()) !!}
             {!! Form::hidden('meta_data', !is_null($page_resource->metaData()) ? json_encode($page_resource->metaData()) : null) !!}
 
-            {!! Form::label('title', _translate('PAGE_TITLE') . ' *', ['class' => 'label']) !!}
+            {!! Form::label('title', trans('aloiacmsgui::pages.title') . ' *', ['class' => 'label']) !!}
             {!! Form::text('title', $page_resource->title(), ['class' => 'text-field']) !!}
 
             <div class="flex">
-                <label class="label flex-1">{{_translate('CONTENT')}}</label>
+                <label class="label flex-1">{{trans('aloiacmsgui::articles.content')}}</label>
                 <div class="flex-1 text-right">
-                    <a href="{{route('media.index')}}" target="_blank" class="mb-2 mt-4 inline-block link-no-underline">{{_translate('IMAGES_FOR_POST')}}</a>
+                    <a href="{{route('media.index')}}" target="_blank" class="mb-2 mt-4 inline-block link-no-underline">{{trans('aloiacmsgui::images.for_post')}}</a>
                 </div>
             </div>
 
@@ -38,14 +38,14 @@
 
             {!! Form::hidden('original_url', $page_resource->url()) !!}
             {!! Form::label('url', 'URL *', ['class' => 'label', 'placeholder' => 'example-url']) !!}
-            {!! Form::text('url', $page_resource->url(), ['class' => 'text-field', 'placeholder' => _translate('EXAMPLE_URL_PLACEHOLDER')]) !!}
+            {!! Form::text('url', $page_resource->url(), ['class' => 'text-field', 'placeholder' => trans('aloiacmsgui::articles.example_url')]) !!}
 
             <div class="my-4">
                 {!! Form::hidden('is_published', "0") !!}
 
                 {!! Form::checkbox('is_published', "1", $page_resource->isPublished()) !!}
 
-                {!! Form::label('is_published', _translate('PAGE_IS_PUBLISHED')) !!}
+                {!! Form::label('is_published', trans('aloiacmsgui::pages.is_published')) !!}
             </div>
 
             <div class="my-4">
@@ -53,11 +53,11 @@
 
                 {!! Form::checkbox('in_menu', "1", $page_resource->isInMenu()) !!}
 
-                {!! Form::label('in_menu', _translate('PAGE_IS_IN_MENU')) !!}
+                {!! Form::label('in_menu', trans('aloiacmsgui::pages.in_menu')) !!}
 
                 <div id="menu_name" style="display: {{ $page_resource->isInMenu() ? 'block' : 'none'}};">
-                    {!! Form::label('menu_name', _translate('MENU_NAME'), ['class' => 'label']) !!}
-                    {!! Form::text('menu_name', $page_resource->menuName(), ['class' => 'text-field', 'placeholder' => _translate('MENU_NAME')]) !!}
+                    {!! Form::label('menu_name', trans('aloiacmsgui::interface.menu_name'), ['class' => 'label']) !!}
+                    {!! Form::text('menu_name', $page_resource->menuName(), ['class' => 'text-field', 'placeholder' => trans('aloiacmsgui::interface.menu_name')]) !!}
                 </div>
 
                 <script>
@@ -79,32 +79,32 @@
 
                 {!! Form::checkbox('is_homepage', "1", $page_resource->isHomepage()) !!}
 
-                {!! Form::label('is_homepage', _translate('PAGE_IS_HOMEPAGE')) !!}
+                {!! Form::label('is_homepage', trans('aloiacmsgui::pages.is_homepage')) !!}
             </div>
 
-            * = {{_translate('REQUIRED')}}
+            * = {{trans('aloiacmsgui::pages.required')}}
 
             <div class="text-left">
-                {!! Form::submit(_translate('UPDATE_PAGE'), ['class' => 'bg-green-600 text-white rounded p-4 my-4']) !!}
+                {!! Form::submit(trans('aloiacmsgui::pages.update'), ['class' => 'bg-green-600 text-white rounded p-4 my-4']) !!}
             </div>
 
         </section>
 
         <section class="w-1/3 bg-gray-200 p-4 rounded-lg mb-8">
 
-            {!! Form::label('description', _translate('SEO_DESCRIPTION') . ' *', ['class' => 'label']) !!}
+            {!! Form::label('description', trans('aloiacmsgui::pages.seo_description') . ' *', ['class' => 'label']) !!}
             {!! Form::textarea('description', $page_resource->description(), ['class' => 'text-field', 'rows' => 5]) !!}
 
-            {!! Form::label('summary', _translate('SEO_SUMMARY') . ' *', ['class' => 'label']) !!}
+            {!! Form::label('summary', trans('aloiacmsgui::pages.seo_summary') . ' *', ['class' => 'label']) !!}
             {!! Form::textarea('summary', $page_resource->summary(), ['class' => 'text-field', 'rows' => 3]) !!}
 
             {!! Form::label('canonical', 'Canonical link (if this is content is posted elsewhere, submit that URL)', ['class' => 'label']) !!}
             {!! Form::text('canonical', $page_resource->canonicalLink(), ['class' => 'text-field']) !!}
 
-            {!! Form::label('image', _translate('IMAGE_FOR_SOCIAL_MEDIA'), ['class' => 'label']) !!}
+            {!! Form::label('image', trans('aloiacmsgui::pages.social_media_image'), ['class' => 'label']) !!}
             {!! Form::text('image', $page_resource->image(), ['class' => 'text-field']) !!}
 
-            {!! Form::label('sidebar', _translate('SIDEBAR_BLOCKS'), ['class' => 'label']) !!}
+            {!! Form::label('sidebar', trans('aloiacmsgui::pages.sidebar_blocks'), ['class' => 'label']) !!}
             {!! Form::textarea('sidebar', $page_resource->metaData()['sidebar'] ?? "", ['class' => 'text-field', 'rows' => 5]) !!}
         </section>
 

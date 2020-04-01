@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1 class="mb-8 text-xl font-semibold">{{_translate_dynamic('EDIT_ARTICLE', $article->title())}}</h1>
+    <h1 class="mb-8 text-xl font-semibold">{{trans('aloiacmsgui::articles.edit', ['title' => $article->title()])}}</h1>
 
     @if ($errors->any())
         <div class="bg-red-600 text-white p-4 rounded mb-8">
@@ -20,12 +20,12 @@
 
     {!! Form::hidden('original_slug', $article->slug()) !!}
     {!! Form::label('slug', 'URL *', ['class' => 'label']) !!}
-    {!! Form::text('slug', $article->slug(), ['class' => 'text-field', 'placeholder' => _translate('EXAMPLE_URL_PLACEHOLDER'), 'required' => 'required']) !!}
+    {!! Form::text('slug', $article->slug(), ['class' => 'text-field', 'placeholder' => trans('aloiacmsgui::articles.example_url'), 'required' => 'required']) !!}
 
     <div class="flex">
-        <label class="label flex-1">{{_translate('CONTENT')}} *</label>
+        <label class="label flex-1">{{trans('aloiacmsgui::articles.content')}} *</label>
         <div class="flex-1 text-right">
-            <a href="{{route('media.index')}}" target="_blank" class="mb-2 mt-4 inline-block link-no-underline">{{_translate('IMAGES_FOR_POST')}}</a>
+            <a href="{{route('media.index')}}" target="_blank" class="mb-2 mt-4 inline-block link-no-underline">{{trans('aloiacmsgui::images.for_post')}}</a>
         </div>
     </div>
 
@@ -37,10 +37,10 @@
         @endif
     </div>
 
-    {!! Form::label('description', _translate('DESCRIPTION') . ' *', ['class' => 'label']) !!}
+    {!! Form::label('description', trans('aloiacmsgui::articles.description') . ' *', ['class' => 'label']) !!}
     {!! Form::textarea('description', $article->description(), ['class' => 'text-field', 'rows' => 5, 'required' => 'required']) !!}
 
-    {!! Form::label('post_date', _translate('POST_DATE') . ' *', ['class' => 'label']) !!}
+    {!! Form::label('post_date', trans('aloiacmsgui::articles.post_date') . ' *', ['class' => 'label']) !!}
     {!! Form::date('post_date', $article->getPostDate(), ['class' => 'text-field']) !!}
 
     <div class="my-4">
@@ -48,7 +48,7 @@
 
         {!! Form::checkbox('is_published', "1", $article->isPublished()) !!}
 
-        {!! Form::label('is_published', _translate('ARTICLE_IS_PUBLISHED')) !!}
+        {!! Form::label('is_published', trans('aloiacmsgui::articles.is_published')) !!}
     </div>
 
     <div class="my-4">
@@ -56,13 +56,13 @@
 
         {!! Form::checkbox('is_scheduled', "1", $article->isScheduled()) !!}
 
-        {!! Form::label('is_scheduled', _translate('ARTICLE_IS_SCHEDULED')) !!}
+        {!! Form::label('is_scheduled', trans('aloiacmsgui::articles.is_scheduled')) !!}
     </div>
 
-    * = {{_translate('REQUIRED')}}
+    * = {{trans('aloiacmsgui::pages.required')}}
 
     <div class="text-right">
-        {!! Form::submit(_translate('UPDATE_ARTICLE'), ['class' => 'bg-green-600 text-white rounded p-4 my-4']) !!}
+        {!! Form::submit(trans('aloiacmsgui::articles.update'), ['class' => 'bg-green-600 text-white rounded p-4 my-4']) !!}
     </div>
 
     {!! Form::close() !!}

@@ -20,7 +20,7 @@ class ContentBlocksController extends Controller
      */
     public function index(): ViewResponse
     {
-        $this->setTitle(_translate("MANAGE_CONTENT_BLOCKS"));
+        $this->setTitle(trans("aloiacmsgui::content_blocks.manage"));
 
         return View::make('aloiacmsgui::content-blocks.index', [
             'blocks' => ContentBlock::all()
@@ -40,7 +40,7 @@ class ContentBlocksController extends Controller
      */
     public function create(): ViewResponse
     {
-        $this->setTitle(_translate("CREATE_CONTENT_BLOCK"));
+        $this->setTitle(trans("aloiacmsgui::content_blocks.create"));
 
         $request = Request::capture();
 
@@ -73,7 +73,7 @@ class ContentBlocksController extends Controller
      */
     public function edit(string $name): ViewResponse
     {
-        $this->setTitle(_translate_dynamic('EDIT_CONTENT_BLOCK', $name));
+        $this->setTitle(trans('aloiacmsgui::content_blocks.edit', ['title' => $name]));
 
         $file_path = ContentBlock::find($name);
 

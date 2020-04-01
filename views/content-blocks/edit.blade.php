@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1 class="mb-8 text-xl font-semibold">{{_translate_dynamic('EDIT_CONTENT_BLOCK', $name)}}</h1>
+    <h1 class="mb-8 text-xl font-semibold">{{trans('aloiacmsgui::content_blocks.edit', ['title' => $name])}}</h1>
 
     <form action="{{route('content-blocks.update', $name)}}" method="post">
 
@@ -17,7 +17,7 @@
             @endif
         </div>
 
-        <button class="bg-green-600 text-white rounded p-4 my-4">{{_translate('UPDATE_CONTENT_BLOCK')}}</button>
+        <button class="bg-green-600 text-white rounded p-4 my-4">{{trans('aloiacmsgui::content_blocks.update')}}</button>
 
     </form>
 

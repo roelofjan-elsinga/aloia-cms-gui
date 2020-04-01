@@ -66,6 +66,8 @@ class ServiceProvider extends BaseServiceProvider
 
         $this->loadViewsFrom(__DIR__.'/../views', 'aloiacmsgui');
 
+        $this->loadTranslationsFrom(__DIR__.'/../lang', 'aloiacmsgui');
+
         $this->publishes([
             __DIR__.'/../views/templates' => resource_path('views/vendor/aloiacmsgui/templates'),
         ], 'views');

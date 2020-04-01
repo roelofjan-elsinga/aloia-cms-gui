@@ -8,23 +8,23 @@
 
             @if(Session::has('upload_success'))
                 <div class="bg-green-600 text-white p-4 rounded mb-4">
-                    <strong>{{_translate('GREAT')}}!</strong> {{_translate('IMAGE_UPLOADED')}}
+                    <strong>{{trans('aloiacmsgui::interface.great')}}!</strong> {{trans('aloiacmsgui::images.uploaded')}}
                 </div>
             @endif
 
             @if(Session::has('delete_success'))
                 <div class="bg-green-600 text-white p-4 rounded mb-4">
-                    <strong>{{_translate('GREAT')}}!</strong> {{_translate('IMAGE_DELETED')}}
+                    <strong>{{trans('aloiacmsgui::interface.great')}}!</strong> {{trans('aloiacmsgui::images.deleted')}}
                 </div>
             @endif
 
-            <h1 class="mb-4 text-xl font-semibold">{{_translate('MANAGE_IMAGES')}}</h1>
+            <h1 class="mb-4 text-xl font-semibold">{{trans('aloiacmsgui::images.manage')}}</h1>
 
             <p class="mb-2">
-                {{_translate('HOW_TO_INCLUDE_IN_POST')}}
+                {{trans('aloiacmsgui::images.include_in_post')}}
             </p>
 
-            <a href="{{route('media.create')}}" class="text-blue-800 mb-2 block underline">{{_translate('UPLOAD_AN_IMAGE')}}</a>
+            <a href="{{route('media.create')}}" class="text-blue-800 mb-2 block underline">{{trans('aloiacmsgui::images.upload_new')}}</a>
 
             @foreach($images as $image)
 
@@ -36,7 +36,7 @@
                         <h4>Markdown</h4>
                         <p class="text-sm bg-gray-400 block p-2">!["{{\AloiaCms\Media::filenameToTitle($image->getFilename())}}"](/{{$image->getPathname()}})</p>
 
-                        <h4 class="mt-2">{{_translate('AS_URL')}}</h4>
+                        <h4 class="mt-2">{{trans('aloiacmsgui::images.as_url')}}</h4>
 
                         <p class="text-sm">{{asset($image->getPathname())}}</p>
                     </div>

@@ -9,22 +9,22 @@
         <ul class="block flex-1 flex items-center justify-end">
             <li class="inline-block mx-2">
                 <a class="link text-xs md:text-base" href="{{ route('pages.index') }}">
-                    {{_translate('PAGES')}}
+                    {{trans('aloiacmsgui::pages.all')}}
                 </a>
             </li>
             <li class="inline-block mx-2">
                 <a class="link text-xs md:text-base" href="{{ route('articles.index') }}">
-                    {{_translate('ARTICLES')}}
+                    {{trans('aloiacmsgui::articles.articles')}}
                 </a>
             </li>
             <li class="inline-block mx-2">
                 <a class="link text-xs md:text-base" href="{{ route('media.index') }}">
-                    {{_translate('MEDIA')}}
+                    {{trans('aloiacmsgui::images.media')}}
                 </a>
             </li>
             <li class="inline-block mx-2 p-2 bg-green-200 rounded-lg">
                 <a class="link text-xs md:text-base" href="{{ url($website_url) }}">
-                    {{_translate('VIEW_WEBSITE')}}
+                    {{trans('aloiacmsgui::interface.view_website')}}
                 </a>
             </li>
 
@@ -33,7 +33,7 @@
                 <form action="{{route('authenticate.logout')}}" method="post">
                     {!! csrf_field() !!}
                     <button type="submit" class="link text-xs md:text-base">
-                        {{_translate('LOGOUT')}}
+                        {{trans('aloiacmsgui::interface.logout')}}
                     </button>
                 </form>
             </li>

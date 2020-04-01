@@ -20,7 +20,7 @@ class TaxonomyController extends Controller
      */
     public function index(): ViewResponse
     {
-        $this->setTitle(_translate("MANAGE_TAXONOMY"));
+        $this->setTitle(trans("aloiacmsgui::interface.taxonomy.manage"));
 
         return View::make('aloiacmsgui::taxonomy.index', [
             'taxonomy' => Taxonomy::get()->asNestedList()

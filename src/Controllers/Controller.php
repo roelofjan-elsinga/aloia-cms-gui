@@ -5,6 +5,7 @@ namespace AloiaCms\GUI\Controllers;
 use AloiaCms\TagsParser;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\View;
 
@@ -15,6 +16,8 @@ class Controller
         View::share('title', 'Aloia CMS');
         View::share('dashboard_url', Config::get('aloiacmsgui.dashboard_url'));
         View::share('website_url', Config::get('aloiacmsgui.website_url'));
+
+        App::setLocale(Config::get('aloiacmsgui.language'));
     }
 
     /**

@@ -20,7 +20,7 @@ class FileManagerController extends Controller
      */
     public function index(): ViewResponse
     {
-        $this->setTitle(_translate('MANAGE_UPLOADED_FILES'));
+        $this->setTitle(trans('aloiacmsgui::files.manage'));
 
         return View::make('aloiacmsgui::file-manager.index', [
             'files' => FileManager::all()
@@ -34,7 +34,7 @@ class FileManagerController extends Controller
      */
     public function create(): ViewResponse
     {
-        $this->setTitle(_translate('UPLOAD_A_NEW_FILE'));
+        $this->setTitle(trans('aloiacmsgui::files.upload_new'));
 
         return View::make('aloiacmsgui::file-manager.create');
     }

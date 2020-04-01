@@ -2,17 +2,17 @@
 
 @section('content')
 
-    <h1 class="mb-8 text-xl font-semibold">{{_translate('CREATE_CONTENT_BLOCK')}}</h1>
+    <h1 class="mb-8 text-xl font-semibold">{{trans('aloiacmsgui::content_blocks.create')}}</h1>
 
     <label class="label">
-        {{_translate('PAGE_TYPE')}}
+        {{trans('aloiacmsgui::pages.type')}}
     </label>
 
     <p>
-        {{_translate('CURRENTLY_USING')}}: <strong>{{$file_type}}</strong>.
+        {{trans('aloiacmsgui::interface.currently_using')}}: <strong>{{$file_type}}</strong>.
     </p>
 
-    {{_translate('CHANGE_TO')}}:
+    {{trans('aloiacmsgui::interface.change_to')}}:
 
     @if($file_type !== 'md')
         <a href="{{route(Route::currentRouteName(), ['file_type' => 'md'])}}" class="text-blue-800 underline">Markdown</a>
@@ -29,12 +29,12 @@
         <input type="hidden" name="file_type" value="{{$file_type}}" />
 
         <div class="mb-4">
-            <label for="name" class="label">{{_translate('BLOCK_NAME')}}</label>
-            <input type="text" name="name" placeholder="{{_translate('BLOCK_NAME')}}" class="text-field" required/>
+            <label for="name" class="label">{{trans('aloiacmsgui::content_blocks.name')}}</label>
+            <input type="text" name="name" placeholder="{{trans('aloiacmsgui::content_blocks.name')}}" class="text-field" required/>
         </div>
 
         <div class="mb-4">
-            <label for="content" class="label">{{_translate('CONTENT')}}</label>
+            <label for="content" class="label">{{trans('aloiacmsgui::articles.content')}}</label>
             @if($file_type === 'html')
                 @include('aloiacmsgui::blocks.ckeditor', ['name' => 'content', 'value' => null])
             @else
@@ -43,7 +43,7 @@
         </div>
 
         <button type="submit" class="bg-green-600 text-white rounded p-4 my-4">
-            {{_translate('CREATE_CONTENT_BLOCK')}}
+            {{trans('aloiacmsgui::content_blocks.create')}}
         </button>
 
     </form>

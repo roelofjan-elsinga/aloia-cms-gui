@@ -22,7 +22,7 @@ class ArticleController extends Controller
      */
     public function index(): ViewResponse
     {
-        $this->setTitle(_translate("MANAGE_ARTICLES"));
+        $this->setTitle(trans("aloiacmsgui::articles.manage"));
 
         $page = request()->get('page') ?? 1;
 
@@ -52,7 +52,7 @@ class ArticleController extends Controller
      */
     public function create(): ViewResponse
     {
-        $this->setTitle(_translate("CREATE_ARTICLE"));
+        $this->setTitle(trans("aloiacmsgui::articles.create"));
 
         $request = Request::capture();
 
@@ -86,7 +86,7 @@ class ArticleController extends Controller
     {
         $article = Article::find($slug);
 
-        $this->setTitle(_translate_dynamic('EDIT_ARTICLE', $article->title()));
+        $this->setTitle(trans('aloiacmsgui::articles.edit', ['title' => $article->title()]));
 
         $request = Request::capture();
 

@@ -6,7 +6,7 @@
 
         <section class="flex-1 mr-4">
 
-            <h1 class="mb-8 mt-8 md:mt-0">{{_translate("WELCOME")}} {{user()->username()}}!</h1>
+            <h1 class="mb-8 mt-8 md:mt-0">{{trans("aloiacmsgui::interface.welcome")}} {{user()->username()}}!</h1>
 
         </section>
 

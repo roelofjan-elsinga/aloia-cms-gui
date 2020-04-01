@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1 class="font-semibold text-2xl mb-4">{{_translate('CONTENT_BLOCKS')}}</h1>
+    <h1 class="font-semibold text-2xl mb-4">{{trans('aloiacmsgui::content_blocks.blocks')}}</h1>
 
     <main class="flex flex-col md:flex-row">
 
@@ -10,37 +10,37 @@
 
             @if(session()->has('error'))
                 <div class="bg-red-600 text-white p-4 rounded mb-4">
-                    <strong>{{_translate('OOPS')}}!</strong>
+                    <strong>{{trans('aloiacmsgui::interface.oops')}}!</strong>
                     @if(session()->get('error') === 'not_found')
-                        {{_translate('COULDNT_FIND_BLOCK')}}
+                        {{trans('aloiacmsgui::content_blocks.not_found')}}
                     @endif
                 </div>
             @endif
 
             @if(session()->has('success'))
                 <div class="bg-green-600 text-white p-4 rounded mb-4">
-                    <strong>{{_translate('GREAT')}}!</strong>
+                    <strong>{{trans('aloiacmsgui::interface.great')}}!</strong>
                     @if(session()->get('success') === 'deleted')
-                        {{_translate('BLOCK_DELETED')}}
+                        {{trans('aloiacmsgui::content_blocks.deleted')}}
                     @elseif(session()->get('success') === 'created')
-                        {{_translate('BLOCK_CREATED')}}
+                        {{trans('aloiacmsgui::content_blocks.created')}}
                     @endif
                 </div>
             @endif
 
-            <a href="{{route('content-blocks.create')}}" class="block underline mb-2">{{_translate('CREATE_NEW_BLOCK')}}</a>
+            <a href="{{route('content-blocks.create')}}" class="block underline mb-2">{{trans('aloiacmsgui::content_blocks.create_new')}}</a>
 
             <div>
                 @foreach($blocks as $block)
 
                     <div class="mb-2 pb-2 border-b border-gray-300">
                         <h4>{{$block['name']}} ({{$block['extension']}})</h4>
-                        <a href="{{route('content-blocks.edit', $block['name'])}}" class="inline-block underline">{{_translate('EDIT')}}</a>
+                        <a href="{{route('content-blocks.edit', $block['name'])}}" class="inline-block underline">{{trans('aloiacmsgui::interface.edit')}}</a>
                         <form action="{{route('content-blocks.destroy', $block['name'])}}" onsubmit="return confirm('Are you sure?')" method="post" class="inline-block">
                             {!! csrf_field() !!}
                             <input type="hidden" name="_method" value="DELETE" />
 
-                            <button type="submit" class="block underline">{{_translate('DELETE')}}</button>
+                            <button type="submit" class="block underline">{{trans('aloiacmsgui::interface.delete')}}</button>
                         </form>
 
                     </div>
