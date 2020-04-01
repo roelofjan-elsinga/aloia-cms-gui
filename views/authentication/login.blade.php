@@ -8,16 +8,15 @@
             </div>
         @endif
 
-        {!! Form::open(['route' => 'authenticate.login', 'method' => 'post', 'class' => 'flex flex-col md:w-1/2 mx-auto', 'autocomplete' => false]) !!}
+        <form action="{{route('authenticate.login')}}" method="post" class="flex flex-col md:w-1/2 mx-auto" autocomplete="off">
+            {!! csrf_field() !!}
+            <label class="text-left mb-2 font-bold" for="username">User name</label>
+            <input type="text" id="username" name="username" class="flex-1 p-4 border mb-4 rounded" placeholder="User name" autofocus required>
 
-            {!! Form::label('username', 'User name', ['class' => 'text-left mb-2 font-bold']) !!}
-            {!! Form::text('username', null, ['class' => 'flex-1 p-4 border mb-4 rounded', 'placeholder' => 'User name', 'autofocus', 'required' => 'required']) !!}
+            <label class="text-left mb-2 font-bold" for="password">Password</label>
+            <input type="password" id="password" name="password" class="flex-1 p-4 border mb-4 rounded" placeholder="Password" autofocus required>
 
-            {!! Form::label('password', 'Password', ['class' => 'text-left mb-2 font-bold']) !!}
-            {!! Form::input('password', 'password', null, ['class' => 'flex-1 p-4 border mb-4 rounded', 'placeholder' => 'Password', 'required' => 'required']) !!}
-
-            {!! Form::submit('Log in', ['class' => 'flex-1 p-4 mt-4 bg-green-500 text-white rounded']) !!}
-
-        {!! Form::close() !!}
+            <button type="submit" class="flex-1 p-4 mt-4 bg-green-500 text-white rounded">Log in</button>
+        </form>
     </div>
 @endsection
