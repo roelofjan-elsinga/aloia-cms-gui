@@ -1,6 +1,6 @@
 # Flat File CMS GUI
 
-[![Build status](https://travis-ci.com/roelofjan-elsinga/flat-file-cms-gui.svg)](https://travis-ci.com/roelofjan-elsinga/flat-file-cms-gui)
+[![Build status](https://travis-ci.com/roelofjan-elsinga/aloia-cms-gui.svg)](https://travis-ci.com/roelofjan-elsinga/aloia-cms-gui)
 [![StyleCI Status](https://github.styleci.io/repos/193145501/shield)](https://github.styleci.io/repos/193145501)
 [![Code coverage](https://codecov.io/gh/roelofjan-elsinga/aloia-cms-gui/branch/master/graph/badge.svg)](https://codecov.io/gh/roelofjan-elsinga/aloia-cms-gui)
 [![Total Downloads](https://poser.pugx.org/roelofjan-elsinga/aloia-cms-gui/downloads)](https://packagist.org/packages/roelofjan-elsinga/aloia-cms-gui)
