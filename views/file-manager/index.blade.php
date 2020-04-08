@@ -32,7 +32,7 @@
                 <div class="bg-blue-100 p-2 rounded mb-2">
 
                     <div class="flex">
-                        <div class="flex-1 font-bold text-blue-900 inline-block break-words">
+                        <div class="flex-1 font-bold text-theme-darkest inline-block break-words">
                             {{$file->basename()}}
                         </div>
 

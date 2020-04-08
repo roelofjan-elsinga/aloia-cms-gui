@@ -11,6 +11,7 @@ return [
     "need_thumbnail" => "This image needs a thumbnail",
     "uploaded" => "The image was uploaded successfully!",
     "deleted" => "The image was deleted successfully!",
-    "include_in_post" => "To include these images in your content, simply copy/paste the markdown or copy the URL.",
+    "include_in_post" => "To include these images in your content, simply click on the image and you can paste the link in your content.",
     "as_url" => "As URL",
+    "copied_url" => "The image URL is copied to your clipboard!",
 ];

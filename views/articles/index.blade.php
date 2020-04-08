@@ -23,7 +23,7 @@
 
             @foreach($articles as $article)
 
-                <div class="flex mb-4 text-blue-900 no-underline">
+                <div class="flex mb-4 text-theme-darkest no-underline">
                     <div class="w-1/4 md:w-32">
                         @if(!empty($article['image']))
                             <img src="{{asset($article['image'])}}" alt="{{$article['title']}}" style="max-height: 75px;"/>

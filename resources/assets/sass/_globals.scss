@@ -4,14 +4,14 @@ html {
 }
 
 .link {
-    @apply text-blue-900;
+    @apply text-theme-darkest;
     font-weight: 700;
     padding-bottom: .25rem;
     text-decoration: none;
 
     &:hover, &--underline {
         border-bottom-width: 2px;
-        @apply border-blue-900;
+        @apply border-theme-darkest;
     }
 
     &--light {

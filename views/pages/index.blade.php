@@ -23,7 +23,7 @@
 
             @foreach($pages as $page)
 
-                <div class="flex mb-2 text-blue-900 no-underline">
+                <div class="flex mb-2 text-theme-darkest no-underline">
                     <div class="w-32">
                         @if(!empty($page->image()))
                             <img src="{{asset($page->image())}}" alt="{{$page->title()}}" style="max-height: 75px;"/>

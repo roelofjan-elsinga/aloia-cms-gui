@@ -11,6 +11,7 @@ return [
     "need_thumbnail" => "Deze afbeelding heeft een thumbnail nodig",
     "uploaded" => "De afbeelding is opgeslagen!",
     "deleted" => "De afbeelding is verwijderd!",
-    "include_in_post" => "Deze afbeeldingen kun je in content opnemen door de Markdown of de link te knippen en plakken.",
+    "include_in_post" => "Deze afbeeldingen kun je in content opnemen door op de afbeelding te klikken en vervolgens de link in je content te plakken.",
     "as_url" => "als URL",
+    "copied_url" => "De URL van de afbeelding is gekopiëerd!",
 ];

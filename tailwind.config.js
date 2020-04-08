@@ -18,18 +18,25 @@ module.exports = {
 
     theme: {
 
+        extend: {
+            colors: {
+                'theme-dark': '#4fabfe',
+                'theme-darkest': '#12283a'
+            }
+        },
+
         /*
-    |-----------------------------------------------------------------------------
-    | Colors                                  https://tailwindcss.com/docs/colors
-    |-----------------------------------------------------------------------------
-    |
-    | The color palette defined above is also assigned to the "colors" key of
-    | your Tailwind config. This makes it easy to access them in your CSS
-    | using Tailwind's config helper. For example:
-    |
-    | .error { color: config('colors.red') }
-    |
-    */
+        |-----------------------------------------------------------------------------
+        | Colors                                  https://tailwindcss.com/docs/colors
+        |-----------------------------------------------------------------------------
+        |
+        | The color palette defined above is also assigned to the "colors" key of
+        | your Tailwind config. This makes it easy to access them in your CSS
+        | using Tailwind's config helper. For example:
+        |
+        | .error { color: config('colors.red') }
+        |
+        */
 
         colors: {
             transparent: 'transparent',
@@ -393,7 +400,7 @@ module.exports = {
         */
 
             borderColor: theme => ({
-                default: theme('colors.grey-light'),
+                default: theme('colors.gray.200'),
                 ...theme('colors'),
             }),
 
