@@ -44,6 +44,9 @@
         <textarea name="description" class="text-field" rows="5" required
                   placeholder="{{trans('aloiacmsgui::articles.description') }}">{{$article->description()}}</textarea>
 
+        <input type="hidden" name="faq" id="faqField"/>
+        <div id="faqEditor" data-faq="{{json_encode($article->faq ?? [])}}" data-form-field="faqField"></div>
+
         <label class="label" for="post_date">{{trans('aloiacmsgui::articles.post_date') }}</label>
         <input type="date" name="post_date" class="text-field" value="{{$article->getPostDate()->toDateString()}}">
 
@@ -78,3 +81,7 @@
     </div>
 
 @endsection
+
+@push('scripts')
+    <script src="{{asset(mix('FAQEditor.js', 'vendor/aloiacmsgui'))}}" defer></script>
+@endpush
