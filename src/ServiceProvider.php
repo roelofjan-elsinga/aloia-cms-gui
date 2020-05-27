@@ -55,11 +55,11 @@ class ServiceProvider extends BaseServiceProvider
     {
         $this->publishes([
             __DIR__.'/../config/aloiacmsgui.php' => config_path('aloiacmsgui.php'),
-        ], 'config');
+        ], 'aloiacmsgui-config');
 
         $this->publishes([
             __DIR__ . '/../public' => public_path('vendor/aloiacmsgui'),
-        ], 'public');
+        ], 'aloiacmsgui-assets');
 
         $this->loadViewsFrom(__DIR__.'/../views', 'aloiacmsgui');
 
@@ -67,7 +67,7 @@ class ServiceProvider extends BaseServiceProvider
 
         $this->publishes([
             __DIR__.'/../views/templates' => resource_path('views/vendor/aloiacmsgui/templates'),
-        ], 'views');
+        ], 'aloiacmsgui-views');
 
         $this->registerRoutes();
 
