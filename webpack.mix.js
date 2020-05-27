@@ -15,13 +15,14 @@ const purgeCss = require('laravel-mix-purgecss');
 mix
     .setPublicPath('public')
     .sass('resources/assets/sass/style.scss', 'public')
+    .react('resources/assets/js/FAQEditor.jsx', 'public')
     .options({
         processCssUrls: false,
         postCss: [ require('tailwindcss')('./tailwind.config.js') ],
     })
     .purgeCss({
-        extensions: ['html', 'js', 'php', 'md'],
-        folders: ['views'],
+        extensions: ['html', 'js', 'php', 'md', 'jsx'],
+        folders: ['views', 'resources'],
     })
     .sourceMaps()
     .version();

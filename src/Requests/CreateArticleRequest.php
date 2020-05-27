@@ -2,6 +2,7 @@
 
 namespace AloiaCms\GUI\Requests;
 
+use AloiaCms\GUI\Helpers\FAQ;
 use Carbon\Carbon;
 use AloiaCms\GUI\Publish\PostPublisher;
 use AloiaCms\Models\Article;
@@ -42,7 +43,9 @@ class CreateArticleRequest extends FormRequest implements PersistableFormRequest
      */
     public function save(): void
     {
-        Article::find($this->get('slug'))
+        $article = Article::find($this->get('slug'));
+
+        $article
             ->setExtension($this->get('file_type'))
             ->setMatter([
                 'description' => $this->get('description'),
@@ -51,8 +54,13 @@ class CreateArticleRequest extends FormRequest implements PersistableFormRequest
                 'is_scheduled' => $this->get('is_scheduled') === "1"
             ])
             ->setUpdateDate(Carbon::now())
-            ->setBody($this->get('content'))
-            ->save();
+            ->setBody($this->get('content'));
+
+        if (FAQ::isValid($this->get('faq'))) {
+            $article->addMatter('faq', FAQ::format($this->get('faq')));
+        }
+
+        $article->save();
 
         if ($this->get('is_published') === "1") {
             PostPublisher::forSlug($this->get('slug'))->publish();

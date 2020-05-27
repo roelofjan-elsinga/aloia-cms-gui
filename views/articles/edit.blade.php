@@ -47,6 +47,9 @@
         <label class="label" for="post_date">{{trans('aloiacmsgui::articles.post_date') }}</label>
         <input type="date" name="post_date" class="text-field" value="{{$article->getPostDate()->toDateString()}}">
 
+        <input type="hidden" name="faq" id="faqField" value="{{json_encode($article->faq ?? [])}}"/>
+        <div id="faqEditor" data-faq="{{json_encode($article->faq ?? [])}}" data-form-field="faqField"></div>
+
         <div class="my-4">
             <input type="hidden" name="is_published" value="0">
             <input type="checkbox" name="is_published" value="1" {{$article->isPublished() ? 'checked' : ''}}>
@@ -78,3 +81,7 @@
     </div>
 
 @endsection
+
+@push('scripts')
+    <script src="{{asset(mix('FAQEditor.js', 'vendor/aloiacmsgui'))}}" defer></script>
+@endpush
