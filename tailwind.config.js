@@ -16,6 +16,12 @@ View the full documentation at https://tailwindcss.com.
 
 module.exports = {
 
+    purge: [
+        './views/**/*.php',
+        './resources/**/*.js',
+        './resources/**/*.jsx',
+    ],
+
     theme: {
 
         extend: {
