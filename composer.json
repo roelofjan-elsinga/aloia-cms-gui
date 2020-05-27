@@ -49,7 +49,7 @@
         }
     },
     "require": {
-        "php": ">=7.2",
+        "php": ">=7.3",
         "illuminate/support": "^6.0|^7.0",
         "illuminate/view": "^6.0|^7.0",
         "gumlet/php-image-resize": "^1.9",
