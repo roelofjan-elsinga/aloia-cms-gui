@@ -51,10 +51,11 @@
         <textarea name="description" class="text-field" rows="5" required
                   placeholder="{{trans('aloiacmsgui::articles.description') }}"></textarea>
 
-        <input type="hidden" id="faqEditor" name="faq" />
-
         <label class="label" for="post_date">{{trans('aloiacmsgui::articles.post_date') }}</label>
         <input type="date" name="post_date" class="text-field">
+
+        <input type="hidden" name="faq" id="faqField" value="{{json_encode([])}}"/>
+        <div id="faqEditor" data-faq="{{json_encode([])}}" data-form-field="faqField"></div>
 
         <div class="my-4">
             <input type="hidden" name="is_published" value="0">
@@ -81,5 +82,5 @@
 @endsection
 
 @push('scripts')
-    <script src="{{asset(mix('FAQEditor.js', 'vendor/aloiacmsgui'))}}"></script>
+    <script src="{{asset(mix('FAQEditor.js', 'vendor/aloiacmsgui'))}}" defer></script>
 @endpush

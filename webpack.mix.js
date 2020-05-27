@@ -21,8 +21,8 @@ mix
         postCss: [ require('tailwindcss')('./tailwind.config.js') ],
     })
     .purgeCss({
-        extensions: ['html', 'js', 'php', 'md'],
-        folders: ['views'],
+        extensions: ['html', 'js', 'php', 'md', 'jsx'],
+        folders: ['views', 'resources'],
     })
     .sourceMaps()
     .version();

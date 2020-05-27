@@ -4,6 +4,7 @@ namespace AloiaCms\GUI\Requests;
 
 use Carbon\Carbon;
 use AloiaCms\GUI\Publish\PostPublisher;
+use AloiaCms\GUI\Helpers\FAQ;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 use AloiaCms\Models\Article;
@@ -60,8 +61,13 @@ class UpdateArticleRequest extends FormRequest implements PersistableFormRequest
             ->addMatter('is_published', $this->get('is_published') === "1")
             ->addMatter('is_scheduled', $this->get('is_scheduled') === "1")
             ->setUpdateDate(Carbon::now())
-            ->setBody($this->get('content'))
-            ->save();
+            ->setBody($this->get('content'));
+
+        if (FAQ::isValid($this->get('faq'))) {
+            $article->addMatter('faq', FAQ::format($this->get('faq')));
+        }
+
+        $article->save();
 
         if (! $isPublished && $this->get('is_published') === "1") {
             PostPublisher::forSlug($this->get('slug'))->publish();
