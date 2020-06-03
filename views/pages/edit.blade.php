@@ -6,7 +6,7 @@
 
     @include("aloiacmsgui::blocks.error-message")
 
-    <form action="{{route('pages.update', $page_resource->url())}}" method="post">
+    <form action="{{route('pages.update', $page_resource->filename())}}" method="post">
 
         @method('put')
         {!! csrf_field() !!}

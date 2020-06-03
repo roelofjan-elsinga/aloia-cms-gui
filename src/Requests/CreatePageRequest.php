@@ -36,6 +36,7 @@ class CreatePageRequest extends FormRequest implements PersistableFormRequest
             'is_published' => 'required|boolean',
             'summary' => 'required',
             'template_name' => 'required',
+            'file_type' => 'required',
         ];
     }
 
