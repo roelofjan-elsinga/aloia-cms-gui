@@ -5,7 +5,7 @@ namespace AloiaCms\GUI\Helpers;
 
 class FAQ
 {
-    public static function isValid(string $faq_string): bool
+    public static function isValid(?string $faq_string): bool
     {
         if (empty($faq_string)) {
             return false;
