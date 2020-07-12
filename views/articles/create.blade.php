@@ -57,6 +57,8 @@
         <input type="hidden" name="faq" id="faqField" value="{{json_encode([])}}"/>
         <div id="faqEditor" data-faq="{{json_encode([])}}" data-form-field="faqField"></div>
 
+        @include('aloiacmsgui::articles.custom_content')
+
         <div class="my-4">
             <input type="hidden" name="is_published" value="0">
             <input type="checkbox" id="is_published" name="is_published" value="1">

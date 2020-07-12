@@ -3,6 +3,7 @@
 namespace AloiaCms\GUI\Requests;
 
 use AloiaCms\GUI\Helpers\FAQ;
+use AloiaCms\GUI\Helpers\Json;
 use Carbon\Carbon;
 use AloiaCms\GUI\Publish\PostPublisher;
 use AloiaCms\Models\Article;
@@ -60,10 +61,36 @@ class CreateArticleRequest extends FormRequest implements PersistableFormRequest
             $article->addMatter('faq', FAQ::format($this->get('faq')));
         }
 
+        $this->storeCustomData($article);
+
         $article->save();
 
         if ($this->get('is_published') === "1") {
             PostPublisher::forSlug($this->get('slug'))->publish();
+        }
+    }
+
+    private function storeCustomData(&$article): void
+    {
+        $storable_data = $this->except([
+            '_method',
+            '_token',
+            'description',
+            'post_date',
+            'is_published',
+            'is_scheduled',
+            'content',
+            'faq',
+            'file_type',
+            'slug'
+        ]);
+
+        foreach ($storable_data as $key => $value) {
+            if (Json::isValid($value)) {
+                $value = json_decode($value, true);
+            }
+
+            $article->addMatter($key, $value);
         }
     }
 }
