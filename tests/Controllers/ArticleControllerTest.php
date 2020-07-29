@@ -17,18 +17,44 @@ class ArticleControllerTest extends TestCase
 
     public function testUserCanViewArticleOverview()
     {
-        $this->withoutExceptionHandling();
-
         $this
             ->get(route('articles.index'))
             ->assertOk()
             ->assertViewIs('aloiacmsgui::articles.index');
     }
 
+    public function testUserCanSearchArticlesInOverview()
+    {
+        Article::find('testing')
+            ->setExtension('md')
+            ->setMatter([
+                'title' => 'This is a test',
+                'description' => 'This is a testing post'
+            ])
+            ->setBody('# Testing')
+            ->setPostDate(now())
+            ->save();
+
+        Article::find('test-post')
+            ->setExtension('md')
+            ->setMatter([
+                'title' => 'This is another test',
+                'description' => 'This is a test post'
+            ])
+            ->setBody('# Test post')
+            ->setPostDate(now())
+            ->save();
+
+        $this
+            ->get(route('articles.index', ['q' => 'testing']))
+            ->assertOk()
+            ->assertViewIs('aloiacmsgui::articles.index')
+            ->assertSee('This is a test')
+            ->assertDontSee('This is another test');
+    }
+
     public function testUserCanViewArticleCreationPage()
     {
-        $this->withoutExceptionHandling();
-
         $this
             ->get(route('articles.create'))
             ->assertOk()
@@ -37,8 +63,6 @@ class ArticleControllerTest extends TestCase
 
     public function testUserCanCreateAnArticle()
     {
-        $this->withoutExceptionHandling();
-
         $this
             ->post(route('articles.store'), [
                 'slug' => 'testing',
@@ -58,8 +82,6 @@ class ArticleControllerTest extends TestCase
 
     public function testUserCanViewEditPage()
     {
-        $this->withoutExceptionHandling();
-
         Article::find('testing')
             ->setExtension('md')
             ->setMatter([
@@ -77,8 +99,6 @@ class ArticleControllerTest extends TestCase
 
     public function testUserCanUpdateArticle()
     {
-        $this->withoutExceptionHandling();
-
         Article::find('testing')
             ->setExtension('md')
             ->setMatter([
@@ -115,8 +135,6 @@ class ArticleControllerTest extends TestCase
 
     public function testUserCanDeletedArticle()
     {
-        $this->withoutExceptionHandling();
-
         Article::find('testing')
             ->setExtension('md')
             ->setMatter([

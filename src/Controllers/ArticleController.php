@@ -27,21 +27,21 @@ class ArticleController extends Controller
         $page = request()->get('page') ?? 1;
 
         $articles = Article::all()
-            ->map(function (Article $article) {
-                return [
-                    'title' => $article->title(),
-                    'image' => $article->thumbnail(),
-                    'slug' => $article->slug(),
-                    'isPublished' => $article->isPublished(),
-                    'isScheduled' => $article->isScheduled(),
-                    'postDate' => $article->getPostDate()
-                ];
-            })
-            ->sortByDesc('postDate')
-            ->values();
+            ->sortByDesc(function (Article $article) {
+                return $article->getPostDate();
+            });
+
+        if (request()->get('q')) {
+            $articles = $articles
+                ->filter(function (Article $article) {
+                    return strpos(strtolower($article->title()), strtolower(request()->get('q'))) !== false
+                        || strpos(strtolower($article->description()), strtolower(request()->get('q'))) !== false
+                        || strpos(strtolower($article->body()), strtolower(request()->get('q'))) !== false;
+                });
+        }
 
         return View::make('aloiacmsgui::articles.index', [
-            'articles' => $this->getPaginator($articles, route('articles.index'), $page, 10)
+            'articles' => $this->getPaginator($articles->values(), route('articles.index'), $page, 10)
         ]);
     }
 

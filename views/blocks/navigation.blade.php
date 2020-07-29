@@ -6,33 +6,34 @@
             {{config('app.name')}}
         </a>
 
-        <ul class="block flex-1 flex items-center justify-end">
-            <li class="inline-block mx-2">
+        <ul class="block flex-1 flex items-center justify-end space-x-4">
+            <li>
                 <a class="link text-xs md:text-base" href="{{ route('pages.index') }}">
                     {{trans('aloiacmsgui::pages.all')}}
                 </a>
             </li>
-            <li class="inline-block mx-2">
+            <li>
                 <a class="link text-xs md:text-base" href="{{ route('articles.index') }}">
                     {{trans('aloiacmsgui::articles.articles')}}
                 </a>
             </li>
-            <li class="inline-block mx-2">
+            <li>
                 <a class="link text-xs md:text-base" href="{{ route('media.index') }}">
                     {{trans('aloiacmsgui::images.media')}}
                 </a>
             </li>
-            <li class="inline-block mx-2 p-2 bg-green-200 rounded-lg">
-                <a class="link text-xs md:text-base" href="{{ url($website_url) }}">
+            <li>
+                <a class="green-button"
+                   href="{{ url($website_url) }}">
                     {{trans('aloiacmsgui::interface.view_website')}}
                 </a>
             </li>
 
             @if(user())
-            <li class="inline-block mx-2 p-2 bg-red-200 rounded-lg">
+            <li>
                 <form action="{{route('authenticate.logout')}}" method="post">
                     {!! csrf_field() !!}
-                    <button type="submit" class="link text-xs md:text-base">
+                    <button type="submit" class="red-button">
                         {{trans('aloiacmsgui::interface.logout')}}
                     </button>
                 </form>
