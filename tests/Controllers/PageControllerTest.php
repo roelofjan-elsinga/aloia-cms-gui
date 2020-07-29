@@ -17,18 +17,52 @@ class PageControllerTest extends TestCase
 
     public function testUserCanViewPageOverview()
     {
-        $this->withoutExceptionHandling();
-
         $this
             ->get(route('pages.index'))
             ->assertOk()
             ->assertViewIs('aloiacmsgui::pages.index');
     }
 
+    public function testUserCanSearchArticlesInOverview()
+    {
+        $page = Page::find('testing')
+            ->setExtension('md')
+            ->setMatter([
+                'title' => 'Testing page',
+                'description' => 'Description',
+                'is_published' => false,
+                'is_scheduled' => false,
+                'summary' => 'Summary',
+                'template_name' => 'default',
+            ])
+            ->setBody('# Testing')
+            ->setPostDate(now())
+            ->save();
+
+        Page::find('test-post')
+            ->setExtension('md')
+            ->setMatter([
+                'title' => 'Test post',
+                'description' => 'Description',
+                'is_published' => false,
+                'is_scheduled' => false,
+                'summary' => 'Summary',
+                'template_name' => 'default',
+            ])
+            ->setBody('# This is a test post')
+            ->setPostDate(now())
+            ->save();
+
+        $this
+            ->get(route('pages.index', ['q' => 'testing']))
+            ->assertOk()
+            ->assertViewIs('aloiacmsgui::pages.index')
+            ->assertSee('Testing page')
+            ->assertDontSee('Test post');
+    }
+
     public function testUserCanViewPageCreationPage()
     {
-        $this->withoutExceptionHandling();
-
         $this
             ->get(route('pages.create'))
             ->assertOk()
@@ -37,8 +71,6 @@ class PageControllerTest extends TestCase
 
     public function testUserCanCreateAnPage()
     {
-        $this->withoutExceptionHandling();
-
         $this
             ->post(route('pages.store'), [
                 'url' => 'testing',
@@ -60,8 +92,6 @@ class PageControllerTest extends TestCase
 
     public function testUserCanViewEditPage()
     {
-        $this->withoutExceptionHandling();
-
         Page::find('testing')
             ->setExtension('md')
             ->setMatter([
@@ -85,8 +115,6 @@ class PageControllerTest extends TestCase
 
     public function testUserCanUpdatePage()
     {
-        $this->withoutExceptionHandling();
-
         Page::find('testing')
             ->setExtension('md')
             ->setMatter([
@@ -125,8 +153,6 @@ class PageControllerTest extends TestCase
 
     public function testUserCanDeletedPage()
     {
-        $this->withoutExceptionHandling();
-
         Page::find('testing')
             ->setExtension('md')
             ->setMatter([

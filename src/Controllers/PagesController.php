@@ -29,10 +29,10 @@ class PagesController extends Controller
 
         if (request()->get('q')) {
             $pages = $pages
-                ->filter(function (Page $pages) {
-                    return strpos(strtolower($pages->title()), strtolower(request()->get('q'))) !== false
-                        || strpos(strtolower($pages->description()), strtolower(request()->get('q'))) !== false
-                        || strpos(strtolower($pages->body()), strtolower(request()->get('q'))) !== false;
+                ->filter(function (Page $page) {
+                    return strpos(strtolower($page->title()), strtolower(request()->get('q'))) !== false
+                        || strpos(strtolower($page->description()), strtolower(request()->get('q'))) !== false
+                        || strpos(strtolower($page->body()), strtolower(request()->get('q'))) !== false;
                 });
         }
 
