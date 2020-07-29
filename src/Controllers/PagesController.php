@@ -25,11 +25,19 @@ class PagesController extends Controller
         $page = request()->get('page') ?? 1;
 
         $pages = Page::all()
-            ->sortByDesc('title')
-            ->values();
+            ->sortByDesc('title');
+
+        if (request()->get('q')) {
+            $pages = $pages
+                ->filter(function (Page $pages) {
+                    return strpos(strtolower($pages->title()), strtolower(request()->get('q'))) !== false
+                        || strpos(strtolower($pages->description()), strtolower(request()->get('q'))) !== false
+                        || strpos(strtolower($pages->body()), strtolower(request()->get('q'))) !== false;
+                });
+        }
 
         return View::make('aloiacmsgui::pages.index', [
-            'pages' => $this->getPaginator($pages, route('pages.index'), $page, 10)
+            'pages' => $this->getPaginator($pages->values(), route('pages.index'), $page, 10)
         ]);
     }
 

@@ -21,6 +21,8 @@
                 </div>
             @endif
 
+            @include('aloiacmsgui::blocks.models-search-bar', ['route_name' => 'pages.index'])
+
             @foreach($pages as $page)
 
                 <div class="flex mb-2 text-theme-darkest no-underline">

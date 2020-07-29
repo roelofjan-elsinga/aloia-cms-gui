@@ -1,0 +1,31 @@
+.button {
+  @apply text-gray-900 font-bold text-xs p-2 bg-gray-200 rounded-lg duration-300;
+
+  @screen md {
+    @apply text-base;
+  }
+
+  &:hover {
+    @apply bg-gray-300;
+  }
+}
+
+.green-button {
+  @extend .button;
+
+  @apply text-green-900 bg-green-200;
+
+  &:hover {
+    @apply bg-green-300;
+  }
+}
+
+.red-button {
+  @extend .button;
+
+  @apply text-red-900 bg-red-200;
+
+  &:hover {
+    @apply bg-red-300;
+  }
+}
