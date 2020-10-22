@@ -1,6 +1,6 @@
 <aside x-data="{open:false}" class="w-full h-screen md:w-64 fixed z-10">
     <div class="md:hidden relative pr-4" x-show="!open">
-        <button @click="open = true" class="mt-8 float-right">Menu</button>
+        <button @click="open = true" class="mt-4 float-right bg-white p-4 rounded">Menu</button>
     </div>
 
     <nav class="w-full h-full md:w-64 bg-gray-100 p-8 md:mx-0 absolute md:relative md:block z-10"
@@ -62,7 +62,7 @@
             </form>
         @endif
 
-        <a class="text-green-900 bg-green-200 block font-bold px-8 py-4 rounded mt-8 text-center"
+        <a class="green-button block px-8 py-4 rounded mt-8 text-center"
            href="{{ url($website_url) }}">
             {{trans('aloiacmsgui::interface.view_website')}}
         </a>
