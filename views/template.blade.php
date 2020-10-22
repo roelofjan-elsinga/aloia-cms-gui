@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,7 +35,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="text-blue-darkest flex flex-col md:flex-row h-full">
+<body class="text-blue-darkest flex flex-col md:flex-row h-auto">
 
 @section('navigation')
 
@@ -43,7 +43,7 @@
 
 @show
 
-<main class="flex-1 pt-8 mt-8 md:mt-0 px-4 md:px-8 md:ml-64">
+<main class="flex-1 pt-8 px-4 md:px-8">
     @yield('content')
 </main>
 

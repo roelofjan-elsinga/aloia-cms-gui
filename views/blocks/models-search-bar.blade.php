@@ -1,4 +1,4 @@
-<form action="{{route($route_name)}}" method="get" class="my-4 block w-1/2">
+<form action="{{route($route_name)}}" method="get" class="my-4 block w-full md:w-1/2">
     <label for="q" class="font-bold">Search for a resource</label>
     <div class="flex">
         <input type="text" value="{{request()->get('q')}}"

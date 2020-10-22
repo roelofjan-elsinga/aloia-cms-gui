@@ -1,9 +1,9 @@
-<aside x-data="{open:false}" class="w-full h-screen md:w-64 fixed z-10">
-    <div class="md:hidden relative pr-4" x-show="!open">
-        <button @click="open = true" class="mt-4 float-right bg-white p-4 rounded">Menu</button>
+<aside x-data="{open:false}" class="sticky top-0 self-start w-full md:w-64">
+    <div class="md:hidden relative" x-show="!open">
+        <button @click="open = true" class="mr-4 float-right bg-white p-4 rounded underline">Menu</button>
     </div>
 
-    <nav class="w-full h-full md:w-64 bg-gray-100 p-8 md:mx-0 absolute md:relative md:block z-10"
+    <nav class="w-full h-screen md:w-64 bg-gray-100 px-8 py-4 md:mx-0 md:block z-10 hidden"
          :class="{'block' : open, 'hidden': !open}">
         <a class="text-blue-darkest no-underline text-2xl font-bold hidden md:block mb-8"
            href="{{ url($dashboard_url) }}">
