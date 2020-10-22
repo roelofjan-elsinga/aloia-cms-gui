@@ -1,7 +1,7 @@
 <?php
 
 return [
-    "manage" => "Manage uploaded files",
+    "manage" => "File management",
     "upload_new" => "Upload a new file",
     "upload" => "Upload file",
     "uploaded" => "The file was uploaded successfully!",

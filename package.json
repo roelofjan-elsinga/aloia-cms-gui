@@ -23,7 +23,7 @@
     "laravel-mix-purgecss": "^4.1.0",
     "sass": "^1.21.0",
     "sass-loader": "7.*",
-    "tailwindcss": "^1.0.4",
+    "tailwindcss": "^1.0",
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
