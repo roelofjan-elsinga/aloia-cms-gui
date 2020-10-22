@@ -22,6 +22,11 @@ module.exports = {
         './resources/**/*.jsx',
     ],
 
+    future: {
+        removeDeprecatedGapUtilities: true,
+        purgeLayersByDefault: true,
+    },
+
     theme: {
 
         extend: {
