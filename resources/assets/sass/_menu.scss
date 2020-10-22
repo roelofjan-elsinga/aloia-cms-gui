@@ -1,0 +1,13 @@
+.menu-items {
+
+  @apply leading-loose;
+
+  > li {
+    @apply mb-1 text-base;
+
+    &:hover {
+      @apply underline;
+    }
+  }
+
+}

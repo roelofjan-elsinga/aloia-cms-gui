@@ -1,7 +1,13 @@
 @extends('aloiacmsgui::template')
 
+@section('navigation')
+
+@endsection
+
 @section('content')
-    <div class="section text-center">
+    <div class="container mx-auto section text-center pt-8">
+        <h1 class="text-2xl mb-8">{{trans('aloiacmsgui::auth.login_title')}}</h1>
+
         @if (session()->has('errors'))
             <div class="bg-red-600 md:w-1/2 mx-auto text-white p-4 rounded mb-8">
                 <strong>Whoops!</strong> There were some problems with your input.

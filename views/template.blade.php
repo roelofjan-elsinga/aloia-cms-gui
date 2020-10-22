@@ -23,6 +23,9 @@
         <link href="{{ asset(mix('style.css', 'vendor/aloiacmsgui')) }}" rel="stylesheet" defer>
     @show
 
+    <script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine-ie11.min.js" defer></script>
+
     @stack('scripts')
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -32,7 +35,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="container mx-auto text-blue-darkest px-4 lg:px-0">
+<body class="text-blue-darkest flex flex-col md:flex-row">
 
 @section('navigation')
 
@@ -40,7 +43,9 @@
 
 @show
 
-@yield('content')
+<main class="flex-1 pt-8 px-8">
+    @yield('content')
+</main>
 
 </body>
 </html>

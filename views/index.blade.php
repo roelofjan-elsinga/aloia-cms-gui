@@ -2,20 +2,6 @@
 
 @section('content')
 
-    <main class="flex flex-col md:flex-row">
-
-        <section class="flex-1 mr-4">
-
-            <h1 class="mb-8 mt-8 md:mt-0">{{trans("aloiacmsgui::interface.welcome")}} {{user()->username()}}!</h1>
-
-        </section>
-
-        <section class="md:w-1/4">
-
-            @include('aloiacmsgui::blocks.actions-sidebar')
-
-        </section>
-
-    </main>
+    <h1 class="mb-8 mt-8 md:mt-0">{{trans("aloiacmsgui::interface.welcome")}} {{user()->username()}}!</h1>
 
 @endsection

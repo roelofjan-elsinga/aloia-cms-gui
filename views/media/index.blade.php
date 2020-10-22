@@ -2,63 +2,51 @@
 
 @section('content')
 
-    <main class="flex flex-col md:flex-row">
+    @if(Session::has('upload_success'))
+        <div class="bg-green-600 text-white p-4 rounded mb-4">
+            <strong>{{trans('aloiacmsgui::interface.great')}}!</strong> {{trans('aloiacmsgui::images.uploaded')}}
+        </div>
+    @endif
 
-        <section class="flex-1 md:mr-4">
+    @if(Session::has('delete_success'))
+        <div class="bg-green-600 text-white p-4 rounded mb-4">
+            <strong>{{trans('aloiacmsgui::interface.great')}}!</strong> {{trans('aloiacmsgui::images.deleted')}}
+        </div>
+    @endif
 
-            @if(Session::has('upload_success'))
-                <div class="bg-green-600 text-white p-4 rounded mb-4">
-                    <strong>{{trans('aloiacmsgui::interface.great')}}!</strong> {{trans('aloiacmsgui::images.uploaded')}}
-                </div>
-            @endif
+    <div class="bg-green-200 text-theme-darkest p-4 rounded mb-8 fixed bottom-0 duration-200 hidden mr-4 shadow" id="copied_alert">
+        <strong class="font-black">{{trans('aloiacmsgui::interface.great')}}!</strong> {{trans('aloiacmsgui::images.copied_url')}}
+    </div>
 
-            @if(Session::has('delete_success'))
-                <div class="bg-green-600 text-white p-4 rounded mb-4">
-                    <strong>{{trans('aloiacmsgui::interface.great')}}!</strong> {{trans('aloiacmsgui::images.deleted')}}
-                </div>
-            @endif
+    <h1 class="mb-4 text-xl font-semibold">{{trans('aloiacmsgui::images.manage')}}</h1>
 
-            <div class="bg-green-200 text-theme-darkest p-4 rounded mb-8 fixed bottom-0 duration-200 hidden mr-4 shadow" id="copied_alert">
-                <strong class="font-black">{{trans('aloiacmsgui::interface.great')}}!</strong> {{trans('aloiacmsgui::images.copied_url')}}
-            </div>
+    <p class="mb-2">
+        {{trans('aloiacmsgui::images.include_in_post')}}
+    </p>
 
-            <h1 class="mb-4 text-xl font-semibold">{{trans('aloiacmsgui::images.manage')}}</h1>
+    <a href="{{route('media.create')}}" class="text-blue-800 mb-2 block underline">{{trans('aloiacmsgui::images.upload_new')}}</a>
 
-            <p class="mb-2">
-                {{trans('aloiacmsgui::images.include_in_post')}}
-            </p>
+    @foreach($images->chunk(4) as $image_chunk)
 
-            <a href="{{route('media.create')}}" class="text-blue-800 mb-2 block underline">{{trans('aloiacmsgui::images.upload_new')}}</a>
+        <div class="w-full flex flex-row space-x-2">
 
-            @foreach($images->chunk(2) as $image_chunk)
+            @foreach($image_chunk as $image)
 
-                <div class="w-full flex flex-row -mx-2">
+                <div class="flex-1 mb-4">
 
-                    @foreach($image_chunk as $image)
+                    <img src="{{asset($image->getPathname())}}"
+                         class="w-full h-auto object-contain rounded cursor-pointer"
+                         onclick="copyStringToClipboard('/{{$image->getPathname()}}');showAlert()">
 
-                        <div class="flex-1 mx-2">
-
-                            <img src="{{asset($image->getPathname())}}"
-                                 class="w-full h-auto object-contain rounded cursor-pointer mb-4"
-                                 onclick="copyStringToClipboard('/{{$image->getPathname()}}');showAlert()">
-
-                        </div>
-
-                    @endforeach
+                    <span>{{basename($image->getPathname())}}</span>
 
                 </div>
 
             @endforeach
 
-        </section>
+        </div>
 
-        <section class="md:w-1/4">
-
-            @include('aloiacmsgui::blocks.actions-sidebar')
-
-        </section>
-
-    </main>
+    @endforeach
 
 @endsection
 

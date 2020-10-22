@@ -1,6 +1,7 @@
 <?php
 
 return [
+    "dashboard" => "Dashboard",
     "welcome" => "Welcome",
     "great" => "Great",
     "what_to_do" => "What do you want to do?",
