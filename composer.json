@@ -55,7 +55,7 @@
         "gumlet/php-image-resize": "^1.9",
         "illuminate/http": "^6.0|^7.0|^8.0",
         "rbdwllr/reallysimplejwt": "^2.0",
-        "genealabs/laravel-caffeine": "^1.0|^7.0",
+        "genealabs/laravel-caffeine": "^1.0|^7.0|^8.0",
         "roelofjan-elsinga/aloia-cms": "^2.0|^3.0",
         "roelofjan-elsinga/aloia-cms-publish": "^2.0|^3.0"
     },
