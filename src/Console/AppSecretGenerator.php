@@ -92,11 +92,24 @@ class AppSecretGenerator extends Command
      */
     protected function writeNewEnvironmentFileWith($key)
     {
-        file_put_contents($this->laravel->environmentFilePath(), preg_replace(
-            $this->keyReplacementPattern(),
-            'APP_SECRET='.$key,
-            file_get_contents($this->laravel->environmentFilePath())
-        ));
+        $env_path = $this->laravel->environmentFilePath();
+
+        $matches = [];
+
+        preg_match($this->keyReplacementPattern(), file_get_contents($env_path), $matches);
+
+        if (count($matches) === 0) {
+            // create new entry
+            file_put_contents($env_path, PHP_EOL."APP_SECRET=$key".PHP_EOL, FILE_APPEND);
+            $this->line('Set new APP_SECRET value');
+        } else {
+            file_put_contents($env_path, preg_replace(
+                $this->keyReplacementPattern(),
+                'APP_SECRET='.$key,
+                file_get_contents($this->laravel->environmentFilePath())
+            ));
+            $this->line('Updated APP_SECRET value');
+        }
     }
 
     /**

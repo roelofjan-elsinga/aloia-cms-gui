@@ -18,7 +18,7 @@ class AssetsCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Re-publish the Flat File CMS GUI assets';
+    protected $description = 'Re-publish the Aloia CMS GUI assets';
 
     /**
      * Execute the console command.
@@ -28,7 +28,7 @@ class AssetsCommand extends Command
     public function handle()
     {
         $this->call('vendor:publish', [
-            '--tag' => 'public',
+            '--tag' => 'aloiacmsgui-assets',
             '--force' => true,
         ]);
     }

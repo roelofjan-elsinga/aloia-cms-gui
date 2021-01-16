@@ -39,9 +39,8 @@ class ServiceProvider extends BaseServiceProvider
                 Console\AssetsCommand::class,
                 Console\ConfigCommand::class,
                 Console\ViewsCommand::class,
-                Console\AppSecretGenerator::class,
                 Console\CreateAccount::class,
-                Console\SelfUpgradeCommand::class,
+                Console\AppSecretGenerator::class,
             ]);
         }
     }

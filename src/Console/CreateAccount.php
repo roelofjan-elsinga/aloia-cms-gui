@@ -57,6 +57,10 @@ class CreateAccount extends Command
             return;
         }
 
+        if (!file_exists($file_path)) {
+            mkdir($file_path, 0777, true);
+        }
+
         file_put_contents(
             "{$file_path}/{$user_name}.json",
             json_encode($user, JSON_PRETTY_PRINT)

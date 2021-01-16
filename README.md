@@ -7,10 +7,9 @@
 [![Latest Stable Version](https://poser.pugx.org/roelofjan-elsinga/aloia-cms-gui/v/stable)](https://packagist.org/packages/roelofjan-elsinga/aloia-cms-gui)
 [![License](https://poser.pugx.org/roelofjan-elsinga/aloia-cms-gui/license)](https://packagist.org/packages/roelofjan-elsinga/aloia-cms-gui)
 
-This is the official Graphical User Interface (GUI) for the Flat File CMS package. 
-This package includes the latest version of the Flat File CMS, Authentication, User creation, 
-Media management and the ability to manage the data used by the Flat File CMS package in a clear 
-and visual web environment.
+This is the official Graphical User Interface (GUI) for [Aloia CMS](https://github.com/roelofjan-elsinga/aloia-cms). 
+This package includes the latest version of the Aloia CMS, Authentication, User creation, 
+Media management and the ability to manage the data used by Aloia CMS in a clear and visual web environment.
 
 ## Installation
 

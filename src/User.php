@@ -185,8 +185,14 @@ class User
      */
     public static function store(string $token, array $user)
     {
+        $file_path = self::getTokenFilePath();
+
+        if (!file_exists($file_path)) {
+            mkdir($file_path, 0777, true);
+        }
+
         file_put_contents(
-            self::getTokenFilePathForToken($token),
+            "{$file_path}/{$token}",
             json_encode($user)
         );
     }
@@ -197,11 +203,9 @@ class User
      * @param string $token
      * @return string
      */
-    private static function getTokenFilePathForToken(string $token)
+    private static function getTokenFilePath()
     {
-        $path = Config::get('aloiacmsgui.authentication_tokens_folder_path');
-
-        return "{$path}/{$token}";
+        return Config::get('aloiacmsgui.authentication_tokens_folder_path');
     }
 
     /**
