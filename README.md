@@ -1,4 +1,4 @@
-# Flat File CMS GUI
+# Aloia CMS Dashboard
 
 [![Build status](https://travis-ci.com/roelofjan-elsinga/aloia-cms-gui.svg)](https://travis-ci.com/roelofjan-elsinga/aloia-cms-gui)
 [![StyleCI Status](https://github.styleci.io/repos/193145501/shield)](https://github.styleci.io/repos/193145501)
