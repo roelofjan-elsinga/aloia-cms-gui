@@ -31,13 +31,8 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
         $this->swap(Mix::class, new MockMix());
 
-        $password = Hash::make('password');
-
         $this->fs = vfsStream::setup('root', 0777, [
             'app' => [
-                'accounts' => [
-                    'default.json' => '{"username":"default", "password":"' . $password . '", "role":"user"}'
-                ],
                 'authentication' => []
             ],
             'collections' => []
