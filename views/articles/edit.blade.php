@@ -27,9 +27,6 @@
 
         <div class="flex">
             <label class="label flex-1">{{trans('aloiacmsgui::articles.content')}} *</label>
-            <div class="flex-1 text-right">
-                <a href="{{route('media.index')}}" target="_blank" class="mb-2 mt-4 inline-block link-no-underline">{{trans('aloiacmsgui::images.for_post')}}</a>
-            </div>
         </div>
 
         <div class="mb-4">

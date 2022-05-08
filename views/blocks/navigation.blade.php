@@ -30,11 +30,6 @@
                     {{trans('aloiacmsgui::articles.articles')}}
                 </a>
             </li>
-            <li>
-                <a href="{{ route('media.index') }}">
-                    {{trans('aloiacmsgui::images.media')}}
-                </a>
-            </li>
 
             <li>
                 <a href="{{route('content-blocks.index')}}">
@@ -42,25 +37,10 @@
                 </a>
             </li>
 
-            <li>
-                <a href="{{route('files.index')}}">
-                    {{trans('aloiacmsgui::files.manage')}}
-                </a>
-            </li>
-
             @include('aloiacmsgui::blocks.additional-nav-links')
         </ul>
 
         <hr class="my-4"/>
-
-        @if(user())
-            <form action="{{route('authenticate.logout')}}" method="post">
-                {!! csrf_field() !!}
-                <button type="submit" class="hover:underline">
-                    {{trans('aloiacmsgui::interface.logout')}}
-                </button>
-            </form>
-        @endif
 
         <a class="green-button block px-8 py-4 rounded mt-8 text-center"
            href="{{ url($website_url) }}">

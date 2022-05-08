@@ -32,14 +32,11 @@ class ServiceProvider extends BaseServiceProvider
             'aloiacmsgui'
         );
 
-        require "helpers.php";
-
         if ($this->app->runningInConsole()) {
             $this->commands([
                 Console\AssetsCommand::class,
                 Console\ConfigCommand::class,
                 Console\ViewsCommand::class,
-                Console\CreateAccount::class,
                 Console\AppSecretGenerator::class,
             ]);
         }
@@ -82,9 +79,6 @@ class ServiceProvider extends BaseServiceProvider
      */
     protected function registerRoutes()
     {
-        $this->app['router']->aliasMiddleware('fileAuth', Authenticated::class);
-        $this->app['router']->aliasMiddleware('fileGuest', Guest::class);
-
         Route::group([
             'domain' => config('aloiacmsgui.domain', null),
             'prefix' => config('aloiacmsgui.path'),

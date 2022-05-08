@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Flat File CMS GUI Domain
+    | Aloia CMS GUI Domain
     |--------------------------------------------------------------------------
     |
     | This is the subdomain where the GUI will be accessible from. If this
@@ -17,7 +17,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Flat File CMS GUI Path
+    | Aloia CMS GUI Path
     |--------------------------------------------------------------------------
     |
     | This is the URI path where the GUI will be accessible from. Feel free
@@ -30,7 +30,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Flat File CMS GUI Route Middleware
+    | Aloia CMS GUI Route Middleware
     |--------------------------------------------------------------------------
     |
     | These middleware will get attached onto each GUI route, giving you
@@ -43,7 +43,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Flat File CMS GUI Dashboard URL path
+    | Aloia CMS GUI Dashboard URL path
     |--------------------------------------------------------------------------
     |
     | This is the URI path where the GUI will send links to the dashboard to.
@@ -53,7 +53,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Flat File CMS GUI Website URL path
+    | Aloia CMS GUI Website URL path
     |--------------------------------------------------------------------------
     |
     | This is the URI path where the GUI will send links to the website to.
@@ -63,7 +63,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Flat File CMS GUI Language
+    | Aloia CMS GUI Language
     |--------------------------------------------------------------------------
     |
     | This is the language used for the dashboard.
@@ -71,25 +71,5 @@ return [
     |
     */
     'language' => 'en',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Flat File CMS GUI User Accounts Folder Path
-    |--------------------------------------------------------------------------
-    |
-    | This is the folder path where the system will save any user accounts.
-    |
-    */
-    'user_accounts_folder_path' => storage_path('app/accounts'),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Flat File CMS GUI Authentication Token Folder Path
-    |--------------------------------------------------------------------------
-    |
-    | This is the folder path where the system will save any authentication tokens.
-    |
-    */
-    'authentication_tokens_folder_path' => storage_path('app/authentication'),
 
 ];
