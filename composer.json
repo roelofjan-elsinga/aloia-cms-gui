@@ -37,9 +37,7 @@
         "ext-gd": "*",
         "illuminate/support": "^8.0|^9.0",
         "illuminate/view": "^8.0|^9.0",
-        "gumlet/php-image-resize": "^1.9",
         "illuminate/http": "^8.0|^9.0",
-        "rbdwllr/reallysimplejwt": "^2.0",
         "genealabs/laravel-caffeine": "^8.0|^9.0",
         "roelofjan-elsinga/aloia-cms": "^4.0",
         "roelofjan-elsinga/aloia-cms-publish": "^4.0"
