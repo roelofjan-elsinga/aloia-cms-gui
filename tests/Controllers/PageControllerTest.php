@@ -8,13 +8,6 @@ use AloiaCms\Models\Page;
 
 class PageControllerTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-
-        $this->authenticateRequest();
-    }
-
     public function testUserCanViewPageOverview()
     {
         $this

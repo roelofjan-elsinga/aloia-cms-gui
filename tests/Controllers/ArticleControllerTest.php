@@ -8,13 +8,6 @@ use AloiaCms\Models\Article;
 
 class ArticleControllerTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-
-        $this->authenticateRequest();
-    }
-
     public function testUserCanViewArticleOverview()
     {
         $this

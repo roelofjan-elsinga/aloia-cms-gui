@@ -44,25 +44,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
         ]);
 
         Config::set('app.secret', env('APP_SECRET'));
-        Config::set('aloiacmsgui.user_accounts_folder_path', "{$this->fs->url()}/app/accounts");
-        Config::set('aloiacmsgui.authentication_tokens_folder_path', "{$this->fs->url()}/app/authentication");
         Config::set('aloiacms.collections_path', "{$this->fs->url()}/collections");
-    }
-
-    /**
-     * Log in a default user to authenticate the current request
-     */
-    protected function authenticateRequest(): void
-    {
-        $token = User::getTokenForUsername('default');
-
-        $user = User::getUserFor('default');
-
-        User::store($token, $user);
-
-        $this->defaultHeaders = [
-            'Authorization' => "Bearer {$token}"
-        ];
     }
 
     protected function getPackageProviders($app)
