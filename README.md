@@ -1,5 +1,6 @@
 # Aloia CMS Dashboard
 
+[![CI](https://github.com/roelofjan-elsinga/aloia-cms-gui/actions/workflows/ci.yml/badge.svg)](https://github.com/roelofjan-elsinga/aloia-cms-gui/actions/workflows/ci.yml)
 [![StyleCI Status](https://github.styleci.io/repos/193145501/shield)](https://github.styleci.io/repos/193145501)
 [![Code coverage](https://codecov.io/gh/roelofjan-elsinga/aloia-cms-gui/branch/master/graph/badge.svg)](https://codecov.io/gh/roelofjan-elsinga/aloia-cms-gui)
 [![Total Downloads](https://poser.pugx.org/roelofjan-elsinga/aloia-cms-gui/downloads)](https://packagist.org/packages/roelofjan-elsinga/aloia-cms-gui)
@@ -11,10 +12,8 @@ This package includes the latest version of the Aloia CMS, Authentication, User 
 Media management and the ability to manage the data used by Aloia CMS in a clear and visual web environment.
 
 ## Requirements
-PHP >= 7.4
-Laravel 6, 7, or 8
-
-Support for Laravel 9 and PHP 8.x is under development.
+- PHP >= 8.0
+- Laravel 8 or 9
 
 ## Installation
 You can include this package through Composer using:
@@ -65,18 +64,6 @@ php artisan aloiacmsgui:secret:generate
 This will create an entry in your .env file: APP_SECRET=[your-token].
 
 To regenerate this key, you can re-run the command.
-
-## Creating a user
-
-You can create a user by running:
-
-```bash
-php artisan aloiacmsgui:create:account \
-  --username=yourusername \
-  --password=yourpassword
-```
-
-After this, you'll be able to log in using the credentials.
 
 ## Get to your dashboard
 Your dashboard is located at ``/cms/login`` by default.
