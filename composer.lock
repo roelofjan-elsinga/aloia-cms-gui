@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "04e740ff73c643f9d9dd2213de52773b",
+    "content-hash": "1cb69fc6828dbfa0c18581bfef2eca5f",
     "packages": [
         {
             "name": "brick/math",
@@ -2099,16 +2099,16 @@
         },
         {
             "name": "roelofjan-elsinga/aloia-cms",
-            "version": "4.1.0",
+            "version": "4.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roelofjan-elsinga/aloia-cms.git",
-                "reference": "171fd73f4433ea5da233118aa72c96ec1fd6703a"
+                "reference": "de1180ab341bd38749d294d39c6f5f0e625ec890"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roelofjan-elsinga/aloia-cms/zipball/171fd73f4433ea5da233118aa72c96ec1fd6703a",
-                "reference": "171fd73f4433ea5da233118aa72c96ec1fd6703a",
+                "url": "https://api.github.com/repos/roelofjan-elsinga/aloia-cms/zipball/de1180ab341bd38749d294d39c6f5f0e625ec890",
+                "reference": "de1180ab341bd38749d294d39c6f5f0e625ec890",
                 "shasum": ""
             },
             "require": {
@@ -2163,7 +2163,7 @@
             ],
             "support": {
                 "issues": "https://github.com/roelofjan-elsinga/aloia-cms/issues",
-                "source": "https://github.com/roelofjan-elsinga/aloia-cms/tree/4.1.0"
+                "source": "https://github.com/roelofjan-elsinga/aloia-cms/tree/4.1.1"
             },
             "funding": [
                 {
@@ -2175,7 +2175,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-05-06T14:46:53+00:00"
+            "time": "2022-05-10T17:30:50+00:00"
         },
         {
             "name": "roelofjan-elsinga/aloia-cms-publish",
