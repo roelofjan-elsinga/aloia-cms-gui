@@ -14,7 +14,7 @@
 
             <section class="w-2/3 pr-4">
 
-                <input type="hidden" name="post_date" value="{{ Carbon\Carbon::Now()->toDateTimeString() }}" />
+                <input type="hidden" name="post_date" value="{{ Now() }}" />
                 <input type="hidden" name="file_type" value="{{$file_type}}" />
                 <input type="hidden" name="template_name" value="{{$template_name}}" />
 
