@@ -5,9 +5,6 @@ namespace AloiaCms\GUI\Requests;
 use Carbon\Carbon;
 use AloiaCms\Models\Page;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\File;
 
 class UpdatePageRequest extends FormRequest implements PersistableFormRequest
 {
@@ -37,6 +34,7 @@ class UpdatePageRequest extends FormRequest implements PersistableFormRequest
             'is_published' => 'required|boolean',
             'summary' => 'required',
             'template_name' => 'required',
+            'post_date' => 'date',
         ];
     }
 
@@ -67,7 +65,6 @@ class UpdatePageRequest extends FormRequest implements PersistableFormRequest
             ->setExtension($this->get('file_type'))
             ->addMatter('title', $this->get('title'))
             ->addMatter('description', $this->get('description'))
-            ->addMatter('post_date', $this->get('post_date'))
             ->addMatter('is_published', $this->get('is_published') === "1")
             ->addMatter('summary', $this->get('summary'))
             ->addMatter('template_name', $this->get('template_name'))
@@ -80,6 +77,7 @@ class UpdatePageRequest extends FormRequest implements PersistableFormRequest
             ->addMatter('is_homepage', $this->get('is_homepage') === "1")
             ->addMatter('keywords', $this->get('keywords'))
             ->addMatter('url', $full_url)
+            ->setPostDate(Carbon::parse($this->get('post_date')))
             ->setUpdateDate(Carbon::now())
             ->setBody($this->get('content'))
             ->save();

@@ -3,10 +3,7 @@
 namespace AloiaCms\GUI\Requests;
 
 use AloiaCms\Models\Page;
-use AloiaCms\GUI\Publish\PostPublisher;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\File;
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreatePageRequest extends FormRequest implements PersistableFormRequest
@@ -37,6 +34,7 @@ class CreatePageRequest extends FormRequest implements PersistableFormRequest
             'summary' => 'required',
             'template_name' => 'required',
             'file_type' => 'required',
+            'post_date' => 'date',
         ];
     }
 
@@ -58,7 +56,6 @@ class CreatePageRequest extends FormRequest implements PersistableFormRequest
             ->setMatter([
                 'title' => $this->get('title'),
                 'description' => $this->get('description'),
-                'post_date' => $this->get('post_date'),
                 'is_published' => $this->get('is_published') === "1",
                 'is_scheduled' => false,
                 'summary' => $this->get('summary'),
@@ -70,6 +67,7 @@ class CreatePageRequest extends FormRequest implements PersistableFormRequest
                 'image' => $this->get('image'),
                 'url' => $this->get('url'),
             ])
+            ->setPostDate(Carbon::parse($this->get('post_date')))
             ->setBody($this->get('content'))
             ->save();
     }
