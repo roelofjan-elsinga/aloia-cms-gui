@@ -14,7 +14,7 @@
         <div class="flex">
             <section class="w-2/3 pr-4">
 
-                <input type="hidden" name="post_date" value="" />
+                <input type="hidden" name="post_date" value="{{ $page_resource->getPostDate() ?? now() }}" />
                 <input type="hidden" name="file_type" value="{{$file_type}}" />
                 <input type="hidden" name="original_url" value="{{$page_resource->url()}}" />
                 <input type="hidden" name="template_name" value="{{$page_resource->templateName()}}" />
