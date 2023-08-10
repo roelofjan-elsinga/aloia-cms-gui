@@ -4,7 +4,6 @@ namespace AloiaCms\GUI\Tests\Mocks;
 
 class MockMix
 {
-
     /**
      * Get the path to a versioned Mix file.
      *

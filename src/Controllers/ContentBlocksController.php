@@ -12,7 +12,6 @@ use Illuminate\Contracts\View\View as ViewResponse;
 
 class ContentBlocksController extends Controller
 {
-
     /**
      * Return a page to show all content blocks
      *

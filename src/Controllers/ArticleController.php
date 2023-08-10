@@ -14,7 +14,6 @@ use Illuminate\Contracts\View\View as ViewResponse;
 
 class ArticleController extends Controller
 {
-
     /**
      * Show all articles
      *

@@ -12,7 +12,6 @@ use Illuminate\Contracts\View\View as ViewResponse;
 
 class PagesController extends Controller
 {
-
     /**
      * Show all pages
      *

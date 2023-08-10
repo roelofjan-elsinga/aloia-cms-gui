@@ -34,5 +34,4 @@ class ConfigCommand extends Command
     }
 }
 {
-
 }

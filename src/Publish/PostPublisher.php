@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Artisan;
 
 class PostPublisher
 {
-
     /**
      * @var string
      */

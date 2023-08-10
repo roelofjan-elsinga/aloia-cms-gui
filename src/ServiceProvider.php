@@ -10,7 +10,6 @@ use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 class ServiceProvider extends BaseServiceProvider
 {
-
     /**
      * This namespace is applied to the controller routes in your routes file.
      *
