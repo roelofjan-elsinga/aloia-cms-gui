@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .link {
+    @apply text-theme-darkest;
+    font-weight: 700;
+    padding-bottom: 0.25rem;
+    text-decoration: none;
+
+    &:hover,
+    &--underline {
+      border-bottom-width: 2px;
+      @apply border-theme-darkest;
+    }
+
+    &--light {
+      font-weight: 400;
+    }
+  }
+
+  .link-no-underline {
+    @extend .link;
+
+    &:hover {
+      border: none;
+    }
+  }
+}
+
+@import "./config/fonts.css";
+
+@import "./components/menu.css";
+@import "./components/forms.css";
+@import "./components/labels.css";
+@import "./components/buttons.css";
