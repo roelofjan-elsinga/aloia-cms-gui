@@ -12,8 +12,8 @@ This package includes the latest version of the Aloia CMS, Authentication, User 
 Media management and the ability to manage the data used by Aloia CMS in a clear and visual web environment.
 
 ## Requirements
-- PHP >= 8.0
-- Laravel 8 or 9
+- PHP >= 8.4
+- Laravel 12 or 13
 
 ## Installation
 You can include this package through Composer using:

@@ -2,6 +2,7 @@
 
 namespace AloiaCms\GUI\Tests;
 
+use AloiaCms\AloiaCmsServiceProvider;
 use AloiaCms\GUI\ServiceProvider;
 use AloiaCms\GUI\Tests\Mocks\MockMix;
 use AloiaCms\GUI\User;
@@ -44,8 +45,12 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
     protected function getPackageProviders($app)
     {
+        // AloiaCmsServiceProvider is auto-discovered in a real app, but testbench
+        // only boots what is listed here — and aloia-cms registers the
+        // Collection::keysToSnakeCase macro its front matter writer needs.
         return [
-            ServiceProvider::class
+            AloiaCmsServiceProvider::class,
+            ServiceProvider::class,
         ];
     }
 }
